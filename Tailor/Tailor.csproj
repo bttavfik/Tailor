@@ -45,14 +45,45 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Form1.cs">
+    <Compile Include="csColor.cs" />
+    <Compile Include="frmClothes.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <Compile Include="frmClothes.Designer.cs">
+      <DependentUpon>frmClothes.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmClothesDetails.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmClothesDetails.Designer.cs">
+      <DependentUpon>frmClothesDetails.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmStaff.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmStaff.Designer.cs">
+      <DependentUpon>frmStaff.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmViewStaff.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmViewStaff.Designer.cs">
+      <DependentUpon>frmViewStaff.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="frmClothes.resx">
+      <DependentUpon>frmClothes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmClothesDetails.resx">
+      <DependentUpon>frmClothesDetails.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmStaff.resx">
+      <DependentUpon>frmStaff.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmViewStaff.resx">
+      <DependentUpon>frmViewStaff.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -61,6 +92,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -77,6 +109,30 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Model\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-search-32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\add_icons_free_icons_in_aeon__icon_search_engine__12_v8c_icon.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-recycle-bin-48.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-compose-48.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-data-recovery-48.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-picture-50.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-picture-48.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\if_plus-sign_173078.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
