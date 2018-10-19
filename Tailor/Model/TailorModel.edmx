@@ -1,0 +1,1061 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="TailorModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Budget">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Amount" Type="decimal" Precision="18" Scale="3" Nullable="false" />
+          <Property Name="LastUpdatedDate" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="BudgetAdjustments">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="AdjustedDate" Type="datetime" Nullable="false" />
+          <Property Name="Amount" Type="decimal" Precision="18" Scale="3" Nullable="false" />
+          <Property Name="Status" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Remark" Type="nvarchar" MaxLength="500" />
+        </EntityType>
+        <EntityType Name="Clothes">
+          <Key>
+            <PropertyRef Name="Code" />
+          </Key>
+          <Property Name="Code" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Description" Type="nvarchar" MaxLength="250" Nullable="false" />
+          <Property Name="KindId" Type="int" Nullable="false" />
+          <Property Name="GenderId" Type="int" Nullable="false" />
+          <Property Name="DurationOfMade" Type="float" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ClothesDetails">
+          <Key>
+            <PropertyRef Name="ClothesCode" />
+            <PropertyRef Name="SizeId" />
+          </Key>
+          <Property Name="ClothesCode" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="SizeId" Type="int" Nullable="false" />
+          <Property Name="PriceIn" Type="decimal" Precision="18" Scale="3" Nullable="false" />
+          <Property Name="PriceOut" Type="decimal" Precision="18" Scale="3" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ClothesKinds">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Description" Type="nvarchar" MaxLength="250" />
+          <Property Name="Remark" Type="nvarchar" MaxLength="500" />
+        </EntityType>
+        <EntityType Name="ClothesMaterials">
+          <Key>
+            <PropertyRef Name="ClothesCode" />
+            <PropertyRef Name="MaterialId" />
+          </Key>
+          <Property Name="ClothesCode" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="MaterialId" Type="int" Nullable="false" />
+          <Property Name="Unit" Type="float" Nullable="false" />
+          <Property Name="UnitCost" Type="decimal" Precision="18" Scale="3" Nullable="false" />
+          <Property Name="Amount" Type="decimal" Precision="18" Scale="3" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ClothesSizes">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Size" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Remark" Type="nvarchar" MaxLength="500" />
+        </EntityType>
+        <EntityType Name="ClothesStock">
+          <Key>
+            <PropertyRef Name="ClothesCode" />
+          </Key>
+          <Property Name="ClothesCode" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Quantity" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Expends">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Date" Type="datetime" Nullable="false" />
+          <Property Name="Amount" Type="decimal" Precision="18" Scale="3" Nullable="false" />
+          <Property Name="Remark" Type="nvarchar" MaxLength="500" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Genders">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Description" Type="nvarchar" MaxLength="250" />
+        </EntityType>
+        <EntityType Name="Materials">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Description" Type="nvarchar" MaxLength="250" />
+          <Property Name="MeasurementId" Type="int" />
+          <Property Name="PriceIn" Type="decimal" Precision="18" Scale="3" />
+        </EntityType>
+        <EntityType Name="MaterialStock">
+          <Key>
+            <PropertyRef Name="MaterialId" />
+          </Key>
+          <Property Name="MaterialId" Type="int" Nullable="false" />
+          <Property Name="Unit" Type="float" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Measurements">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Description" Type="nvarchar" MaxLength="250" />
+        </EntityType>
+        <EntityType Name="Skills">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="Description" Type="nvarchar" MaxLength="300" Nullable="false" />
+          <Property Name="Remark" Type="nvarchar" MaxLength="500" />
+        </EntityType>
+        <EntityType Name="StaffAttendance">
+          <Key>
+            <PropertyRef Name="StaffId" />
+            <PropertyRef Name="Date" />
+          </Key>
+          <Property Name="StaffId" Type="int" Nullable="false" />
+          <Property Name="Date" Type="date" Nullable="false" />
+          <Property Name="Status" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="StaffDeductions">
+          <Key>
+            <PropertyRef Name="StaffId" />
+          </Key>
+          <Property Name="StaffId" Type="int" Nullable="false" />
+          <Property Name="Date" Type="date" Nullable="false" />
+          <Property Name="Amount" Type="decimal" Precision="18" Scale="3" Nullable="false" />
+          <Property Name="Reason" Type="nvarchar" MaxLength="500" Nullable="false" />
+          <Property Name="Status" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="StaffPermissions">
+          <Key>
+            <PropertyRef Name="StaffId" />
+          </Key>
+          <Property Name="StaffId" Type="int" Nullable="false" />
+          <Property Name="FromDate" Type="date" Nullable="false" />
+          <Property Name="UntilDate" Type="date" Nullable="false" />
+          <Property Name="Reason" Type="nvarchar" MaxLength="500" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Staffs">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NameKh" Type="nvarchar" MaxLength="300" Nullable="false" />
+          <Property Name="NameEn" Type="varchar" MaxLength="300" />
+          <Property Name="GenderId" Type="int" Nullable="false" />
+          <Property Name="NationalId" Type="varchar" MaxLength="50" />
+          <Property Name="DateOfBirth" Type="date" />
+          <Property Name="PlaceOfBirth" Type="nvarchar" MaxLength="500" />
+          <Property Name="CurrentAddress" Type="nvarchar" MaxLength="500" />
+          <Property Name="Phone" Type="varchar" MaxLength="50" />
+          <Property Name="SkillId" Type="int" />
+          <Property Name="BasicSalary" Type="decimal" Precision="18" Scale="3" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <Association Name="FK_Clothes_ClothesKinds">
+          <End Role="ClothesKinds" Type="Self.ClothesKinds" Multiplicity="1" />
+          <End Role="Clothes" Type="Self.Clothes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ClothesKinds">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Clothes">
+              <PropertyRef Name="KindId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Clothes_Genders">
+          <End Role="Genders" Type="Self.Genders" Multiplicity="1" />
+          <End Role="Clothes" Type="Self.Clothes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Genders">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Clothes">
+              <PropertyRef Name="GenderId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ClothesDetails_Clothes">
+          <End Role="Clothes" Type="Self.Clothes" Multiplicity="1" />
+          <End Role="ClothesDetails" Type="Self.ClothesDetails" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Clothes">
+              <PropertyRef Name="Code" />
+            </Principal>
+            <Dependent Role="ClothesDetails">
+              <PropertyRef Name="ClothesCode" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ClothesDetails_ClothesSizes">
+          <End Role="ClothesSizes" Type="Self.ClothesSizes" Multiplicity="1" />
+          <End Role="ClothesDetails" Type="Self.ClothesDetails" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ClothesSizes">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ClothesDetails">
+              <PropertyRef Name="SizeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ClothesMaterials_Clothes">
+          <End Role="Clothes" Type="Self.Clothes" Multiplicity="1" />
+          <End Role="ClothesMaterials" Type="Self.ClothesMaterials" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Clothes">
+              <PropertyRef Name="Code" />
+            </Principal>
+            <Dependent Role="ClothesMaterials">
+              <PropertyRef Name="ClothesCode" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ClothesMaterials_Materials">
+          <End Role="Materials" Type="Self.Materials" Multiplicity="1" />
+          <End Role="ClothesMaterials" Type="Self.ClothesMaterials" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Materials">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ClothesMaterials">
+              <PropertyRef Name="MaterialId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ClothesStock_Clothes">
+          <End Role="Clothes" Type="Self.Clothes" Multiplicity="1" />
+          <End Role="ClothesStock" Type="Self.ClothesStock" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Clothes">
+              <PropertyRef Name="Code" />
+            </Principal>
+            <Dependent Role="ClothesStock">
+              <PropertyRef Name="ClothesCode" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Materials_Measurements">
+          <End Role="Measurements" Type="Self.Measurements" Multiplicity="0..1" />
+          <End Role="Materials" Type="Self.Materials" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Measurements">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Materials">
+              <PropertyRef Name="MeasurementId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MaterialStock_Materials">
+          <End Role="Materials" Type="Self.Materials" Multiplicity="1" />
+          <End Role="MaterialStock" Type="Self.MaterialStock" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Materials">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="MaterialStock">
+              <PropertyRef Name="MaterialId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_StaffDeductions_Staffs">
+          <End Role="Staffs" Type="Self.Staffs" Multiplicity="1" />
+          <End Role="StaffDeductions" Type="Self.StaffDeductions" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Staffs">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="StaffDeductions">
+              <PropertyRef Name="StaffId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_StaffPermissions_Staffs">
+          <End Role="Staffs" Type="Self.Staffs" Multiplicity="1" />
+          <End Role="StaffPermissions" Type="Self.StaffPermissions" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Staffs">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="StaffPermissions">
+              <PropertyRef Name="StaffId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Staffs_Genders">
+          <End Role="Genders" Type="Self.Genders" Multiplicity="1" />
+          <End Role="Staffs" Type="Self.Staffs" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Genders">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Staffs">
+              <PropertyRef Name="GenderId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Staffs_Skills">
+          <End Role="Skills" Type="Self.Skills" Multiplicity="0..1" />
+          <End Role="Staffs" Type="Self.Staffs" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Skills">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Staffs">
+              <PropertyRef Name="SkillId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="TailorModelStoreContainer">
+          <EntitySet Name="Budget" EntityType="Self.Budget" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="BudgetAdjustments" EntityType="Self.BudgetAdjustments" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Clothes" EntityType="Self.Clothes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ClothesDetails" EntityType="Self.ClothesDetails" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ClothesKinds" EntityType="Self.ClothesKinds" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ClothesMaterials" EntityType="Self.ClothesMaterials" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ClothesSizes" EntityType="Self.ClothesSizes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ClothesStock" EntityType="Self.ClothesStock" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Expends" EntityType="Self.Expends" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Genders" EntityType="Self.Genders" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Materials" EntityType="Self.Materials" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MaterialStock" EntityType="Self.MaterialStock" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Measurements" EntityType="Self.Measurements" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Skills" EntityType="Self.Skills" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="StaffAttendance" EntityType="Self.StaffAttendance" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="StaffDeductions" EntityType="Self.StaffDeductions" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="StaffPermissions" EntityType="Self.StaffPermissions" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Staffs" EntityType="Self.Staffs" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Clothes_ClothesKinds" Association="Self.FK_Clothes_ClothesKinds">
+            <End Role="ClothesKinds" EntitySet="ClothesKinds" />
+            <End Role="Clothes" EntitySet="Clothes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Clothes_Genders" Association="Self.FK_Clothes_Genders">
+            <End Role="Genders" EntitySet="Genders" />
+            <End Role="Clothes" EntitySet="Clothes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ClothesDetails_Clothes" Association="Self.FK_ClothesDetails_Clothes">
+            <End Role="Clothes" EntitySet="Clothes" />
+            <End Role="ClothesDetails" EntitySet="ClothesDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ClothesDetails_ClothesSizes" Association="Self.FK_ClothesDetails_ClothesSizes">
+            <End Role="ClothesSizes" EntitySet="ClothesSizes" />
+            <End Role="ClothesDetails" EntitySet="ClothesDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ClothesMaterials_Clothes" Association="Self.FK_ClothesMaterials_Clothes">
+            <End Role="Clothes" EntitySet="Clothes" />
+            <End Role="ClothesMaterials" EntitySet="ClothesMaterials" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ClothesMaterials_Materials" Association="Self.FK_ClothesMaterials_Materials">
+            <End Role="Materials" EntitySet="Materials" />
+            <End Role="ClothesMaterials" EntitySet="ClothesMaterials" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ClothesStock_Clothes" Association="Self.FK_ClothesStock_Clothes">
+            <End Role="Clothes" EntitySet="Clothes" />
+            <End Role="ClothesStock" EntitySet="ClothesStock" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Materials_Measurements" Association="Self.FK_Materials_Measurements">
+            <End Role="Measurements" EntitySet="Measurements" />
+            <End Role="Materials" EntitySet="Materials" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MaterialStock_Materials" Association="Self.FK_MaterialStock_Materials">
+            <End Role="Materials" EntitySet="Materials" />
+            <End Role="MaterialStock" EntitySet="MaterialStock" />
+          </AssociationSet>
+          <AssociationSet Name="FK_StaffDeductions_Staffs" Association="Self.FK_StaffDeductions_Staffs">
+            <End Role="Staffs" EntitySet="Staffs" />
+            <End Role="StaffDeductions" EntitySet="StaffDeductions" />
+          </AssociationSet>
+          <AssociationSet Name="FK_StaffPermissions_Staffs" Association="Self.FK_StaffPermissions_Staffs">
+            <End Role="Staffs" EntitySet="Staffs" />
+            <End Role="StaffPermissions" EntitySet="StaffPermissions" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Staffs_Genders" Association="Self.FK_Staffs_Genders">
+            <End Role="Genders" EntitySet="Genders" />
+            <End Role="Staffs" EntitySet="Staffs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Staffs_Skills" Association="Self.FK_Staffs_Skills">
+            <End Role="Skills" EntitySet="Skills" />
+            <End Role="Staffs" EntitySet="Staffs" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="TailorModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Budget">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Amount" Type="Decimal" Precision="18" Scale="3" Nullable="false" />
+          <Property Name="LastUpdatedDate" Type="DateTime" Nullable="false" Precision="3" />
+        </EntityType>
+        <EntityType Name="BudgetAdjustment">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="AdjustedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Amount" Type="Decimal" Precision="18" Scale="3" Nullable="false" />
+          <Property Name="Status" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Remark" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Cloth">
+          <Key>
+            <PropertyRef Name="Code" />
+          </Key>
+          <Property Name="Code" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Description" Type="String" MaxLength="250" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="KindId" Type="Int32" Nullable="false" />
+          <Property Name="GenderId" Type="Int32" Nullable="false" />
+          <Property Name="DurationOfMade" Type="Double" Nullable="false" />
+          <NavigationProperty Name="ClothesKind" Relationship="Self.FK_Clothes_ClothesKinds" FromRole="Clothes" ToRole="ClothesKinds" />
+          <NavigationProperty Name="Gender" Relationship="Self.FK_Clothes_Genders" FromRole="Clothes" ToRole="Genders" />
+          <NavigationProperty Name="ClothesDetails" Relationship="Self.FK_ClothesDetails_Clothes" FromRole="Clothes" ToRole="ClothesDetails" />
+          <NavigationProperty Name="ClothesMaterials" Relationship="Self.FK_ClothesMaterials_Clothes" FromRole="Clothes" ToRole="ClothesMaterials" />
+          <NavigationProperty Name="ClothesStock" Relationship="Self.FK_ClothesStock_Clothes" FromRole="Clothes" ToRole="ClothesStock" />
+        </EntityType>
+        <EntityType Name="ClothesDetail">
+          <Key>
+            <PropertyRef Name="ClothesCode" />
+            <PropertyRef Name="SizeId" />
+          </Key>
+          <Property Name="ClothesCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="SizeId" Type="Int32" Nullable="false" />
+          <Property Name="PriceIn" Type="Decimal" Precision="18" Scale="3" Nullable="false" />
+          <Property Name="PriceOut" Type="Decimal" Precision="18" Scale="3" Nullable="false" />
+          <NavigationProperty Name="Cloth" Relationship="Self.FK_ClothesDetails_Clothes" FromRole="ClothesDetails" ToRole="Clothes" />
+          <NavigationProperty Name="ClothesSize" Relationship="Self.FK_ClothesDetails_ClothesSizes" FromRole="ClothesDetails" ToRole="ClothesSizes" />
+        </EntityType>
+        <EntityType Name="ClothesKind">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Description" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="Remark" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Clothes" Relationship="Self.FK_Clothes_ClothesKinds" FromRole="ClothesKinds" ToRole="Clothes" />
+        </EntityType>
+        <EntityType Name="ClothesMaterial">
+          <Key>
+            <PropertyRef Name="ClothesCode" />
+            <PropertyRef Name="MaterialId" />
+          </Key>
+          <Property Name="ClothesCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="MaterialId" Type="Int32" Nullable="false" />
+          <Property Name="Unit" Type="Double" Nullable="false" />
+          <Property Name="UnitCost" Type="Decimal" Precision="18" Scale="3" Nullable="false" />
+          <Property Name="Amount" Type="Decimal" Precision="18" Scale="3" Nullable="false" />
+          <NavigationProperty Name="Cloth" Relationship="Self.FK_ClothesMaterials_Clothes" FromRole="ClothesMaterials" ToRole="Clothes" />
+          <NavigationProperty Name="Material" Relationship="Self.FK_ClothesMaterials_Materials" FromRole="ClothesMaterials" ToRole="Materials" />
+        </EntityType>
+        <EntityType Name="ClothesSize">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Size" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Remark" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="ClothesDetails" Relationship="Self.FK_ClothesDetails_ClothesSizes" FromRole="ClothesSizes" ToRole="ClothesDetails" />
+        </EntityType>
+        <EntityType Name="ClothesStock">
+          <Key>
+            <PropertyRef Name="ClothesCode" />
+          </Key>
+          <Property Name="ClothesCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Quantity" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Cloth" Relationship="Self.FK_ClothesStock_Clothes" FromRole="ClothesStock" ToRole="Clothes" />
+        </EntityType>
+        <EntityType Name="Expend">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Date" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Amount" Type="Decimal" Precision="18" Scale="3" Nullable="false" />
+          <Property Name="Remark" Type="String" MaxLength="500" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Gender">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Description" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Clothes" Relationship="Self.FK_Clothes_Genders" FromRole="Genders" ToRole="Clothes" />
+          <NavigationProperty Name="Staffs" Relationship="Self.FK_Staffs_Genders" FromRole="Genders" ToRole="Staffs" />
+        </EntityType>
+        <EntityType Name="Material">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Description" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="MeasurementId" Type="Int32" />
+          <Property Name="PriceIn" Type="Decimal" Precision="18" Scale="3" />
+          <NavigationProperty Name="ClothesMaterials" Relationship="Self.FK_ClothesMaterials_Materials" FromRole="Materials" ToRole="ClothesMaterials" />
+          <NavigationProperty Name="Measurement" Relationship="Self.FK_Materials_Measurements" FromRole="Materials" ToRole="Measurements" />
+          <NavigationProperty Name="MaterialStock" Relationship="Self.FK_MaterialStock_Materials" FromRole="Materials" ToRole="MaterialStock" />
+        </EntityType>
+        <EntityType Name="MaterialStock">
+          <Key>
+            <PropertyRef Name="MaterialId" />
+          </Key>
+          <Property Name="MaterialId" Type="Int32" Nullable="false" />
+          <Property Name="Unit" Type="Double" Nullable="false" />
+          <NavigationProperty Name="Material" Relationship="Self.FK_MaterialStock_Materials" FromRole="MaterialStock" ToRole="Materials" />
+        </EntityType>
+        <EntityType Name="Measurement">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Description" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Materials" Relationship="Self.FK_Materials_Measurements" FromRole="Measurements" ToRole="Materials" />
+        </EntityType>
+        <EntityType Name="Skill">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="Description" Type="String" MaxLength="300" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Remark" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Staffs" Relationship="Self.FK_Staffs_Skills" FromRole="Skills" ToRole="Staffs" />
+        </EntityType>
+        <EntityType Name="StaffAttendance">
+          <Key>
+            <PropertyRef Name="StaffId" />
+            <PropertyRef Name="Date" />
+          </Key>
+          <Property Name="StaffId" Type="Int32" Nullable="false" />
+          <Property Name="Date" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Status" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="StaffDeduction">
+          <Key>
+            <PropertyRef Name="StaffId" />
+          </Key>
+          <Property Name="StaffId" Type="Int32" Nullable="false" />
+          <Property Name="Date" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Amount" Type="Decimal" Precision="18" Scale="3" Nullable="false" />
+          <Property Name="Reason" Type="String" MaxLength="500" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Status" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Staff" Relationship="Self.FK_StaffDeductions_Staffs" FromRole="StaffDeductions" ToRole="Staffs" />
+        </EntityType>
+        <EntityType Name="StaffPermission">
+          <Key>
+            <PropertyRef Name="StaffId" />
+          </Key>
+          <Property Name="StaffId" Type="Int32" Nullable="false" />
+          <Property Name="FromDate" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="UntilDate" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Reason" Type="String" MaxLength="500" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Staff" Relationship="Self.FK_StaffPermissions_Staffs" FromRole="StaffPermissions" ToRole="Staffs" />
+        </EntityType>
+        <EntityType Name="Staff">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NameKh" Type="String" MaxLength="300" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="NameEn" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
+          <Property Name="GenderId" Type="Int32" Nullable="false" />
+          <Property Name="NationalId" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="DateOfBirth" Type="DateTime" Precision="0" />
+          <Property Name="PlaceOfBirth" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="CurrentAddress" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="Phone" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="SkillId" Type="Int32" />
+          <Property Name="BasicSalary" Type="Decimal" Precision="18" Scale="3" />
+          <NavigationProperty Name="Gender" Relationship="Self.FK_Staffs_Genders" FromRole="Staffs" ToRole="Genders" />
+          <NavigationProperty Name="Skill" Relationship="Self.FK_Staffs_Skills" FromRole="Staffs" ToRole="Skills" />
+          <NavigationProperty Name="StaffDeduction" Relationship="Self.FK_StaffDeductions_Staffs" FromRole="Staffs" ToRole="StaffDeductions" />
+          <NavigationProperty Name="StaffPermission" Relationship="Self.FK_StaffPermissions_Staffs" FromRole="Staffs" ToRole="StaffPermissions" />
+        </EntityType>
+        <EntityType Name="sysdiagram">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <Association Name="FK_Clothes_ClothesKinds">
+          <End Role="ClothesKinds" Type="Self.ClothesKind" Multiplicity="1" />
+          <End Role="Clothes" Type="Self.Cloth" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ClothesKinds">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Clothes">
+              <PropertyRef Name="KindId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Clothes_Genders">
+          <End Role="Genders" Type="Self.Gender" Multiplicity="1" />
+          <End Role="Clothes" Type="Self.Cloth" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Genders">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Clothes">
+              <PropertyRef Name="GenderId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ClothesDetails_Clothes">
+          <End Role="Clothes" Type="Self.Cloth" Multiplicity="1" />
+          <End Role="ClothesDetails" Type="Self.ClothesDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Clothes">
+              <PropertyRef Name="Code" />
+            </Principal>
+            <Dependent Role="ClothesDetails">
+              <PropertyRef Name="ClothesCode" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ClothesMaterials_Clothes">
+          <End Role="Clothes" Type="Self.Cloth" Multiplicity="1" />
+          <End Role="ClothesMaterials" Type="Self.ClothesMaterial" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Clothes">
+              <PropertyRef Name="Code" />
+            </Principal>
+            <Dependent Role="ClothesMaterials">
+              <PropertyRef Name="ClothesCode" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ClothesStock_Clothes">
+          <End Role="Clothes" Type="Self.Cloth" Multiplicity="1" />
+          <End Role="ClothesStock" Type="Self.ClothesStock" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Clothes">
+              <PropertyRef Name="Code" />
+            </Principal>
+            <Dependent Role="ClothesStock">
+              <PropertyRef Name="ClothesCode" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ClothesDetails_ClothesSizes">
+          <End Role="ClothesSizes" Type="Self.ClothesSize" Multiplicity="1" />
+          <End Role="ClothesDetails" Type="Self.ClothesDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ClothesSizes">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ClothesDetails">
+              <PropertyRef Name="SizeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ClothesMaterials_Materials">
+          <End Role="Materials" Type="Self.Material" Multiplicity="1" />
+          <End Role="ClothesMaterials" Type="Self.ClothesMaterial" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Materials">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ClothesMaterials">
+              <PropertyRef Name="MaterialId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Staffs_Genders">
+          <End Role="Genders" Type="Self.Gender" Multiplicity="1" />
+          <End Role="Staffs" Type="Self.Staff" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Genders">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Staffs">
+              <PropertyRef Name="GenderId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Materials_Measurements">
+          <End Role="Measurements" Type="Self.Measurement" Multiplicity="0..1" />
+          <End Role="Materials" Type="Self.Material" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Measurements">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Materials">
+              <PropertyRef Name="MeasurementId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MaterialStock_Materials">
+          <End Role="Materials" Type="Self.Material" Multiplicity="1" />
+          <End Role="MaterialStock" Type="Self.MaterialStock" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Materials">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="MaterialStock">
+              <PropertyRef Name="MaterialId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Staffs_Skills">
+          <End Role="Skills" Type="Self.Skill" Multiplicity="0..1" />
+          <End Role="Staffs" Type="Self.Staff" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Skills">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Staffs">
+              <PropertyRef Name="SkillId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_StaffDeductions_Staffs">
+          <End Role="Staffs" Type="Self.Staff" Multiplicity="1" />
+          <End Role="StaffDeductions" Type="Self.StaffDeduction" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Staffs">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="StaffDeductions">
+              <PropertyRef Name="StaffId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_StaffPermissions_Staffs">
+          <End Role="Staffs" Type="Self.Staff" Multiplicity="1" />
+          <End Role="StaffPermissions" Type="Self.StaffPermission" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Staffs">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="StaffPermissions">
+              <PropertyRef Name="StaffId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="TailorEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Budgets" EntityType="Self.Budget" />
+          <EntitySet Name="BudgetAdjustments" EntityType="Self.BudgetAdjustment" />
+          <EntitySet Name="Clothes" EntityType="Self.Cloth" />
+          <EntitySet Name="ClothesDetails" EntityType="Self.ClothesDetail" />
+          <EntitySet Name="ClothesKinds" EntityType="Self.ClothesKind" />
+          <EntitySet Name="ClothesMaterials" EntityType="Self.ClothesMaterial" />
+          <EntitySet Name="ClothesSizes" EntityType="Self.ClothesSize" />
+          <EntitySet Name="ClothesStocks" EntityType="Self.ClothesStock" />
+          <EntitySet Name="Expends" EntityType="Self.Expend" />
+          <EntitySet Name="Genders" EntityType="Self.Gender" />
+          <EntitySet Name="Materials" EntityType="Self.Material" />
+          <EntitySet Name="MaterialStocks" EntityType="Self.MaterialStock" />
+          <EntitySet Name="Measurements" EntityType="Self.Measurement" />
+          <EntitySet Name="Skills" EntityType="Self.Skill" />
+          <EntitySet Name="StaffAttendances" EntityType="Self.StaffAttendance" />
+          <EntitySet Name="StaffDeductions" EntityType="Self.StaffDeduction" />
+          <EntitySet Name="StaffPermissions" EntityType="Self.StaffPermission" />
+          <EntitySet Name="Staffs" EntityType="Self.Staff" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
+          <AssociationSet Name="FK_Clothes_ClothesKinds" Association="Self.FK_Clothes_ClothesKinds">
+            <End Role="ClothesKinds" EntitySet="ClothesKinds" />
+            <End Role="Clothes" EntitySet="Clothes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Clothes_Genders" Association="Self.FK_Clothes_Genders">
+            <End Role="Genders" EntitySet="Genders" />
+            <End Role="Clothes" EntitySet="Clothes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ClothesDetails_Clothes" Association="Self.FK_ClothesDetails_Clothes">
+            <End Role="Clothes" EntitySet="Clothes" />
+            <End Role="ClothesDetails" EntitySet="ClothesDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ClothesMaterials_Clothes" Association="Self.FK_ClothesMaterials_Clothes">
+            <End Role="Clothes" EntitySet="Clothes" />
+            <End Role="ClothesMaterials" EntitySet="ClothesMaterials" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ClothesStock_Clothes" Association="Self.FK_ClothesStock_Clothes">
+            <End Role="Clothes" EntitySet="Clothes" />
+            <End Role="ClothesStock" EntitySet="ClothesStocks" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ClothesDetails_ClothesSizes" Association="Self.FK_ClothesDetails_ClothesSizes">
+            <End Role="ClothesSizes" EntitySet="ClothesSizes" />
+            <End Role="ClothesDetails" EntitySet="ClothesDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ClothesMaterials_Materials" Association="Self.FK_ClothesMaterials_Materials">
+            <End Role="Materials" EntitySet="Materials" />
+            <End Role="ClothesMaterials" EntitySet="ClothesMaterials" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Staffs_Genders" Association="Self.FK_Staffs_Genders">
+            <End Role="Genders" EntitySet="Genders" />
+            <End Role="Staffs" EntitySet="Staffs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Materials_Measurements" Association="Self.FK_Materials_Measurements">
+            <End Role="Measurements" EntitySet="Measurements" />
+            <End Role="Materials" EntitySet="Materials" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MaterialStock_Materials" Association="Self.FK_MaterialStock_Materials">
+            <End Role="Materials" EntitySet="Materials" />
+            <End Role="MaterialStock" EntitySet="MaterialStocks" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Staffs_Skills" Association="Self.FK_Staffs_Skills">
+            <End Role="Skills" EntitySet="Skills" />
+            <End Role="Staffs" EntitySet="Staffs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_StaffDeductions_Staffs" Association="Self.FK_StaffDeductions_Staffs">
+            <End Role="Staffs" EntitySet="Staffs" />
+            <End Role="StaffDeductions" EntitySet="StaffDeductions" />
+          </AssociationSet>
+          <AssociationSet Name="FK_StaffPermissions_Staffs" Association="Self.FK_StaffPermissions_Staffs">
+            <End Role="Staffs" EntitySet="Staffs" />
+            <End Role="StaffPermissions" EntitySet="StaffPermissions" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="TailorModelStoreContainer" CdmEntityContainer="TailorEntities">
+          <EntitySetMapping Name="Budgets">
+            <EntityTypeMapping TypeName="TailorModel.Budget">
+              <MappingFragment StoreEntitySet="Budget">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Amount" ColumnName="Amount" />
+                <ScalarProperty Name="LastUpdatedDate" ColumnName="LastUpdatedDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="BudgetAdjustments">
+            <EntityTypeMapping TypeName="TailorModel.BudgetAdjustment">
+              <MappingFragment StoreEntitySet="BudgetAdjustments">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="AdjustedDate" ColumnName="AdjustedDate" />
+                <ScalarProperty Name="Amount" ColumnName="Amount" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="Remark" ColumnName="Remark" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Clothes">
+            <EntityTypeMapping TypeName="TailorModel.Cloth">
+              <MappingFragment StoreEntitySet="Clothes">
+                <ScalarProperty Name="Code" ColumnName="Code" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="KindId" ColumnName="KindId" />
+                <ScalarProperty Name="GenderId" ColumnName="GenderId" />
+                <ScalarProperty Name="DurationOfMade" ColumnName="DurationOfMade" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ClothesDetails">
+            <EntityTypeMapping TypeName="TailorModel.ClothesDetail">
+              <MappingFragment StoreEntitySet="ClothesDetails">
+                <ScalarProperty Name="ClothesCode" ColumnName="ClothesCode" />
+                <ScalarProperty Name="SizeId" ColumnName="SizeId" />
+                <ScalarProperty Name="PriceIn" ColumnName="PriceIn" />
+                <ScalarProperty Name="PriceOut" ColumnName="PriceOut" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ClothesKinds">
+            <EntityTypeMapping TypeName="TailorModel.ClothesKind">
+              <MappingFragment StoreEntitySet="ClothesKinds">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Remark" ColumnName="Remark" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ClothesMaterials">
+            <EntityTypeMapping TypeName="TailorModel.ClothesMaterial">
+              <MappingFragment StoreEntitySet="ClothesMaterials">
+                <ScalarProperty Name="ClothesCode" ColumnName="ClothesCode" />
+                <ScalarProperty Name="MaterialId" ColumnName="MaterialId" />
+                <ScalarProperty Name="Unit" ColumnName="Unit" />
+                <ScalarProperty Name="UnitCost" ColumnName="UnitCost" />
+                <ScalarProperty Name="Amount" ColumnName="Amount" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ClothesSizes">
+            <EntityTypeMapping TypeName="TailorModel.ClothesSize">
+              <MappingFragment StoreEntitySet="ClothesSizes">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Size" ColumnName="Size" />
+                <ScalarProperty Name="Remark" ColumnName="Remark" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ClothesStocks">
+            <EntityTypeMapping TypeName="TailorModel.ClothesStock">
+              <MappingFragment StoreEntitySet="ClothesStock">
+                <ScalarProperty Name="ClothesCode" ColumnName="ClothesCode" />
+                <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Expends">
+            <EntityTypeMapping TypeName="TailorModel.Expend">
+              <MappingFragment StoreEntitySet="Expends">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="Amount" ColumnName="Amount" />
+                <ScalarProperty Name="Remark" ColumnName="Remark" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Genders">
+            <EntityTypeMapping TypeName="TailorModel.Gender">
+              <MappingFragment StoreEntitySet="Genders">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Materials">
+            <EntityTypeMapping TypeName="TailorModel.Material">
+              <MappingFragment StoreEntitySet="Materials">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="MeasurementId" ColumnName="MeasurementId" />
+                <ScalarProperty Name="PriceIn" ColumnName="PriceIn" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MaterialStocks">
+            <EntityTypeMapping TypeName="TailorModel.MaterialStock">
+              <MappingFragment StoreEntitySet="MaterialStock">
+                <ScalarProperty Name="MaterialId" ColumnName="MaterialId" />
+                <ScalarProperty Name="Unit" ColumnName="Unit" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Measurements">
+            <EntityTypeMapping TypeName="TailorModel.Measurement">
+              <MappingFragment StoreEntitySet="Measurements">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Skills">
+            <EntityTypeMapping TypeName="TailorModel.Skill">
+              <MappingFragment StoreEntitySet="Skills">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Remark" ColumnName="Remark" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="StaffAttendances">
+            <EntityTypeMapping TypeName="TailorModel.StaffAttendance">
+              <MappingFragment StoreEntitySet="StaffAttendance">
+                <ScalarProperty Name="StaffId" ColumnName="StaffId" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="StaffDeductions">
+            <EntityTypeMapping TypeName="TailorModel.StaffDeduction">
+              <MappingFragment StoreEntitySet="StaffDeductions">
+                <ScalarProperty Name="StaffId" ColumnName="StaffId" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="Amount" ColumnName="Amount" />
+                <ScalarProperty Name="Reason" ColumnName="Reason" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="StaffPermissions">
+            <EntityTypeMapping TypeName="TailorModel.StaffPermission">
+              <MappingFragment StoreEntitySet="StaffPermissions">
+                <ScalarProperty Name="StaffId" ColumnName="StaffId" />
+                <ScalarProperty Name="FromDate" ColumnName="FromDate" />
+                <ScalarProperty Name="UntilDate" ColumnName="UntilDate" />
+                <ScalarProperty Name="Reason" ColumnName="Reason" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Staffs">
+            <EntityTypeMapping TypeName="TailorModel.Staff">
+              <MappingFragment StoreEntitySet="Staffs">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="NameKh" ColumnName="NameKh" />
+                <ScalarProperty Name="NameEn" ColumnName="NameEn" />
+                <ScalarProperty Name="GenderId" ColumnName="GenderId" />
+                <ScalarProperty Name="NationalId" ColumnName="NationalId" />
+                <ScalarProperty Name="DateOfBirth" ColumnName="DateOfBirth" />
+                <ScalarProperty Name="PlaceOfBirth" ColumnName="PlaceOfBirth" />
+                <ScalarProperty Name="CurrentAddress" ColumnName="CurrentAddress" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="SkillId" ColumnName="SkillId" />
+                <ScalarProperty Name="BasicSalary" ColumnName="BasicSalary" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="TailorModel.sysdiagram">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

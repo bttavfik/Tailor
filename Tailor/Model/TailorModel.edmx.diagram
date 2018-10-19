@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="2f30536f61e145d0a946e2d7cdf17901" Name="Diagram1">
+        <EntityTypeShape EntityType="TailorModel.Budget" Width="1.5" PointX="0.75" PointY="2.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="TailorModel.BudgetAdjustment" Width="1.5" PointX="10.75" PointY="2.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="TailorModel.Cloth" Width="1.5" PointX="3" PointY="8.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="TailorModel.ClothesDetail" Width="1.5" PointX="5.25" PointY="4.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="TailorModel.ClothesKind" Width="1.5" PointX="0.75" PointY="6" IsExpanded="true" />
+        <EntityTypeShape EntityType="TailorModel.ClothesMaterial" Width="1.5" PointX="8.25" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TailorModel.ClothesSize" Width="1.5" PointX="3" PointY="5" IsExpanded="true" />
+        <EntityTypeShape EntityType="TailorModel.ClothesStock" Width="1.5" PointX="5.25" PointY="15.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="TailorModel.Expend" Width="1.5" PointX="0.75" PointY="12.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="TailorModel.Gender" Width="1.5" PointX="0.75" PointY="9" IsExpanded="true" />
+        <EntityTypeShape EntityType="TailorModel.Material" Width="1.5" PointX="6" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TailorModel.MaterialStock" Width="1.5" PointX="8.25" PointY="1.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="TailorModel.Measurement" Width="1.5" PointX="3.75" PointY="2.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="TailorModel.Skill" Width="1.5" PointX="3.75" PointY="19" IsExpanded="true" />
+        <EntityTypeShape EntityType="TailorModel.StaffAttendance" Width="1.5" PointX="2.75" PointY="12.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="TailorModel.StaffDeduction" Width="1.5" PointX="8.25" PointY="7.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="TailorModel.StaffPermission" Width="1.5" PointX="8.25" PointY="10.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="TailorModel.Staff" Width="1.5" PointX="6" PointY="8" IsExpanded="true" />
+        <EntityTypeShape EntityType="TailorModel.sysdiagram" Width="1.5" PointX="10.75" PointY="5.5" IsExpanded="true" />
+        <AssociationConnector Association="TailorModel.FK_Clothes_ClothesKinds" ManuallyRouted="false" />
+        <AssociationConnector Association="TailorModel.FK_Clothes_Genders" ManuallyRouted="false" />
+        <AssociationConnector Association="TailorModel.FK_ClothesDetails_Clothes" ManuallyRouted="false" />
+        <AssociationConnector Association="TailorModel.FK_ClothesMaterials_Clothes" ManuallyRouted="false" />
+        <AssociationConnector Association="TailorModel.FK_ClothesStock_Clothes" ManuallyRouted="false" />
+        <AssociationConnector Association="TailorModel.FK_ClothesDetails_ClothesSizes" ManuallyRouted="false" />
+        <AssociationConnector Association="TailorModel.FK_ClothesMaterials_Materials" ManuallyRouted="false" />
+        <AssociationConnector Association="TailorModel.FK_Staffs_Genders" ManuallyRouted="false" />
+        <AssociationConnector Association="TailorModel.FK_Materials_Measurements" ManuallyRouted="false" />
+        <AssociationConnector Association="TailorModel.FK_MaterialStock_Materials" ManuallyRouted="false" />
+        <AssociationConnector Association="TailorModel.FK_Staffs_Skills" ManuallyRouted="false" />
+        <AssociationConnector Association="TailorModel.FK_StaffDeductions_Staffs" ManuallyRouted="false" />
+        <AssociationConnector Association="TailorModel.FK_StaffPermissions_Staffs" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
