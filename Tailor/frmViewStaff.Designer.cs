@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
-            this.label1 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.btnEdit = new System.Windows.Forms.Button();
             this.btnDelete = new System.Windows.Forms.Button();
@@ -44,7 +43,6 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(234)))), ((int)(((byte)(242)))), ((int)(((byte)(248)))));
-            this.panel1.Controls.Add(this.label1);
             this.panel1.Controls.Add(this.pictureBox1);
             this.panel1.Controls.Add(this.btnEdit);
             this.panel1.Controls.Add(this.btnDelete);
@@ -58,24 +56,13 @@
             this.panel1.Size = new System.Drawing.Size(1343, 821);
             this.panel1.TabIndex = 0;
             // 
-            // label1
-            // 
-            this.label1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.label1.Font = new System.Drawing.Font("Khmer OS Muol Light", 24F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(128)))), ((int)(((byte)(185)))));
-            this.label1.Location = new System.Drawing.Point(0, 0);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(1343, 87);
-            this.label1.TabIndex = 7;
-            this.label1.Text = "ទំរង់មើលព័ត៌មានបុគ្គលិក";
-            // 
             // pictureBox1
             // 
             this.pictureBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.pictureBox1.BackColor = System.Drawing.Color.White;
             this.pictureBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.pictureBox1.Image = global::Tailor.Properties.Resources.icons8_search_32;
-            this.pictureBox1.Location = new System.Drawing.Point(1279, 541);
+            this.pictureBox1.Location = new System.Drawing.Point(1279, 550);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(52, 46);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
@@ -89,10 +76,10 @@
             this.btnEdit.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnEdit.Font = new System.Drawing.Font("Khmer OS Siemreap", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnEdit.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.btnEdit.Image = global::Tailor.Properties.Resources.icons8_compose_48;
-            this.btnEdit.Location = new System.Drawing.Point(459, 497);
+            this.btnEdit.Image = global::Tailor.Properties.Resources.edit_32px;
+            this.btnEdit.Location = new System.Drawing.Point(410, 522);
             this.btnEdit.Name = "btnEdit";
-            this.btnEdit.Size = new System.Drawing.Size(270, 101);
+            this.btnEdit.Size = new System.Drawing.Size(240, 77);
             this.btnEdit.TabIndex = 5;
             this.btnEdit.Text = "Edit";
             this.btnEdit.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -106,10 +93,10 @@
             this.btnDelete.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnDelete.Font = new System.Drawing.Font("Khmer OS Siemreap", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnDelete.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.btnDelete.Image = global::Tailor.Properties.Resources.icons8_recycle_bin_48;
-            this.btnDelete.Location = new System.Drawing.Point(751, 497);
+            this.btnDelete.Image = global::Tailor.Properties.Resources.recycle_bin_32px;
+            this.btnDelete.Location = new System.Drawing.Point(702, 522);
             this.btnDelete.Name = "btnDelete";
-            this.btnDelete.Size = new System.Drawing.Size(258, 101);
+            this.btnDelete.Size = new System.Drawing.Size(240, 77);
             this.btnDelete.TabIndex = 4;
             this.btnDelete.Text = "Delete";
             this.btnDelete.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -122,10 +109,10 @@
             this.btnAddNew.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnAddNew.Font = new System.Drawing.Font("Khmer OS Siemreap", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAddNew.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.btnAddNew.Image = global::Tailor.Properties.Resources.add_icons_free_icons_in_aeon__icon_search_engine__12_v8c_icon;
-            this.btnAddNew.Location = new System.Drawing.Point(12, 497);
+            this.btnAddNew.Image = global::Tailor.Properties.Resources.add_new_32px;
+            this.btnAddNew.Location = new System.Drawing.Point(19, 519);
             this.btnAddNew.Name = "btnAddNew";
-            this.btnAddNew.Size = new System.Drawing.Size(235, 101);
+            this.btnAddNew.Size = new System.Drawing.Size(240, 77);
             this.btnAddNew.TabIndex = 3;
             this.btnAddNew.Text = "Add New";
             this.btnAddNew.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -136,9 +123,9 @@
             // txtSearch
             // 
             this.txtSearch.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtSearch.Location = new System.Drawing.Point(1035, 539);
+            this.txtSearch.Location = new System.Drawing.Point(962, 548);
             this.txtSearch.Name = "txtSearch";
-            this.txtSearch.Size = new System.Drawing.Size(296, 44);
+            this.txtSearch.Size = new System.Drawing.Size(369, 44);
             this.txtSearch.TabIndex = 2;
             // 
             // dgvInformation
@@ -180,7 +167,6 @@
         private System.Windows.Forms.Button btnDelete;
         private System.Windows.Forms.Button btnAddNew;
         private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.Label label1;
     }
 }
 

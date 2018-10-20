@@ -63,9 +63,9 @@ namespace Tailor.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap add_icons_free_icons_in_aeon__icon_search_engine__12_v8c_icon {
+        internal static System.Drawing.Bitmap add_new__blue__32px {
             get {
-                object obj = ResourceManager.GetObject("add_icons_free_icons_in_aeon__icon_search_engine__12_v8c_icon", resourceCulture);
+                object obj = ResourceManager.GetObject("add new (blue) 32px", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -73,9 +73,9 @@ namespace Tailor.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap icons8_compose_48 {
+        internal static System.Drawing.Bitmap add_new_32px {
             get {
-                object obj = ResourceManager.GetObject("icons8-compose-48", resourceCulture);
+                object obj = ResourceManager.GetObject("add new 32px", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -83,9 +83,9 @@ namespace Tailor.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap icons8_data_recovery_48 {
+        internal static System.Drawing.Bitmap cancel_32px {
             get {
-                object obj = ResourceManager.GetObject("icons8-data-recovery-48", resourceCulture);
+                object obj = ResourceManager.GetObject("cancel 32px", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -93,29 +93,9 @@ namespace Tailor.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap icons8_picture_48 {
+        internal static System.Drawing.Bitmap edit_32px {
             get {
-                object obj = ResourceManager.GetObject("icons8-picture-48", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap icons8_picture_50 {
-            get {
-                object obj = ResourceManager.GetObject("icons8-picture-50", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap icons8_recycle_bin_48 {
-            get {
-                object obj = ResourceManager.GetObject("icons8-recycle-bin-48", resourceCulture);
+                object obj = ResourceManager.GetObject("edit 32px", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -133,9 +113,19 @@ namespace Tailor.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap if_plus_sign_173078 {
+        internal static System.Drawing.Bitmap recycle_bin_32px {
             get {
-                object obj = ResourceManager.GetObject("if_plus-sign_173078", resourceCulture);
+                object obj = ResourceManager.GetObject("recycle bin 32px", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap save_32px {
+            get {
+                object obj = ResourceManager.GetObject("save 32px", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

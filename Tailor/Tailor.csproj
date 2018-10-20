@@ -56,18 +56,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="csColor.cs" />
     <Compile Include="frmClothes.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="frmClothes.Designer.cs">
       <DependentUpon>frmClothes.cs</DependentUpon>
-    </Compile>
-    <Compile Include="frmClothesDetails.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="frmClothesDetails.Designer.cs">
-      <DependentUpon>frmClothesDetails.cs</DependentUpon>
     </Compile>
     <Compile Include="frmStaff.cs">
       <SubType>Form</SubType>
@@ -158,9 +151,6 @@
     <EmbeddedResource Include="frmClothes.resx">
       <DependentUpon>frmClothes.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmClothesDetails.resx">
-      <DependentUpon>frmClothesDetails.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="frmStaff.resx">
       <DependentUpon>frmStaff.cs</DependentUpon>
     </EmbeddedResource>
@@ -210,33 +200,18 @@
       <DependentUpon>TailorModel.edmx</DependentUpon>
       <LastGenOutput>TailorModel.cs</LastGenOutput>
     </Content>
+    <None Include="Resources\add new %28blue%29 32px.png" />
+    <None Include="Resources\cancel 32px.png" />
+    <None Include="Resources\save 32px.png" />
+    <None Include="Resources\add new 32px.png" />
+    <None Include="Resources\edit 32px.png" />
+    <None Include="Resources\recycle bin 32px.png" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\icons8-search-32.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\add_icons_free_icons_in_aeon__icon_search_engine__12_v8c_icon.ico" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\icons8-recycle-bin-48.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\icons8-compose-48.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\icons8-data-recovery-48.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\icons8-picture-50.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\icons8-picture-48.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\if_plus-sign_173078.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
