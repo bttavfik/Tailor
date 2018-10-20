@@ -10,19 +10,11 @@ using System.Windows.Forms;
 
 namespace Tailor
 {
-    public partial class frmViewStaff : Form
+    public partial class frmClothesSize : Form
     {
-        public frmViewStaff()
+        public frmClothesSize()
         {
             InitializeComponent();
         }
-
-        private void btnAddNew_Click(object sender, EventArgs e)
-        {
-            frmStaff formstaff = new frmStaff();
-            formstaff.ShowDialog();
-        }
-
-    
     }
 }

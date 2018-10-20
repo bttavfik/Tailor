@@ -73,6 +73,16 @@ namespace Tailor.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap add_new__blue__32px1 {
+            get {
+                object obj = ResourceManager.GetObject("add new (blue) 32px1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap add_new_32px {
             get {
                 object obj = ResourceManager.GetObject("add new 32px", resourceCulture);
@@ -93,9 +103,29 @@ namespace Tailor.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap edit_32px {
+        internal static System.Drawing.Bitmap delete_32px {
             get {
-                object obj = ResourceManager.GetObject("edit 32px", resourceCulture);
+                object obj = ResourceManager.GetObject("delete-32px", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap edit_32 {
+            get {
+                object obj = ResourceManager.GetObject("edit-32", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap edit_32px1 {
+            get {
+                object obj = ResourceManager.GetObject("edit-32px1", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -106,6 +136,16 @@ namespace Tailor.Properties {
         internal static System.Drawing.Bitmap icons8_search_32 {
             get {
                 object obj = ResourceManager.GetObject("icons8-search-32", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap print_32px {
+            get {
+                object obj = ResourceManager.GetObject("print-32px", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -126,6 +166,16 @@ namespace Tailor.Properties {
         internal static System.Drawing.Bitmap save_32px {
             get {
                 object obj = ResourceManager.GetObject("save 32px", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap search_32px {
+            get {
+                object obj = ResourceManager.GetObject("search-32px", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

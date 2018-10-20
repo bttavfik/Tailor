@@ -62,6 +62,54 @@
     <Compile Include="frmClothes.Designer.cs">
       <DependentUpon>frmClothes.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmClothesKinds.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmClothesKinds.Designer.cs">
+      <DependentUpon>frmClothesKinds.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmClothesMaterials.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmClothesMaterials.Designer.cs">
+      <DependentUpon>frmClothesMaterials.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmClothesSize.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmClothesSize.Designer.cs">
+      <DependentUpon>frmClothesSize.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmGender.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmGender.Designer.cs">
+      <DependentUpon>frmGender.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmViewGender.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmViewGender.Designer.cs">
+      <DependentUpon>frmViewGender.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmViewClothesKinds.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmViewClothesKinds.Designer.cs">
+      <DependentUpon>frmViewClothesKinds.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmViewClothesSize.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmViewClothesSize.Designer.cs">
+      <DependentUpon>frmViewClothesSize.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmViewClothesMaterials.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmViewClothesMaterials.Designer.cs">
+      <DependentUpon>frmViewClothesMaterials.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmStaff.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -151,6 +199,30 @@
     <EmbeddedResource Include="frmClothes.resx">
       <DependentUpon>frmClothes.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frmClothesKinds.resx">
+      <DependentUpon>frmClothesKinds.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmClothesMaterials.resx">
+      <DependentUpon>frmClothesMaterials.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmClothesSize.resx">
+      <DependentUpon>frmClothesSize.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmGender.resx">
+      <DependentUpon>frmGender.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmViewGender.resx">
+      <DependentUpon>frmViewGender.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmViewClothesKinds.resx">
+      <DependentUpon>frmViewClothesKinds.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmViewClothesSize.resx">
+      <DependentUpon>frmViewClothesSize.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmViewClothesMaterials.resx">
+      <DependentUpon>frmViewClothesMaterials.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmStaff.resx">
       <DependentUpon>frmStaff.cs</DependentUpon>
     </EmbeddedResource>
@@ -200,6 +272,13 @@
       <DependentUpon>TailorModel.edmx</DependentUpon>
       <LastGenOutput>TailorModel.cs</LastGenOutput>
     </Content>
+    <None Include="Resources\print-32px.png" />
+    <None Include="Resources\edit-32px1.png" />
+    <None Include="Resources\edit-32px.png" />
+    <None Include="Resources\delete-32px.png" />
+    <None Include="Resources\search-32px.png" />
+    <None Include="Resources\add new %28blue%29 32px1.png" />
+    <None Include="Resources\edit-32.png" />
     <None Include="Resources\add new %28blue%29 32px.png" />
     <None Include="Resources\cancel 32px.png" />
     <None Include="Resources\save 32px.png" />

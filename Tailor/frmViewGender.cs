@@ -10,19 +10,17 @@ using System.Windows.Forms;
 
 namespace Tailor
 {
-    public partial class frmViewStaff : Form
+    public partial class frmViewGender : Form
     {
-        public frmViewStaff()
+        public frmViewGender()
         {
             InitializeComponent();
         }
 
-        private void btnAddNew_Click(object sender, EventArgs e)
+        private void button1_Click(object sender, EventArgs e)
         {
-            frmStaff formstaff = new frmStaff();
-            formstaff.ShowDialog();
+            frmGender gender = new frmGender();
+            gender.ShowDialog();
         }
-
-    
     }
 }
