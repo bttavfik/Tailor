@@ -10,17 +10,11 @@ using System.Windows.Forms;
 
 namespace Tailor
 {
-    public partial class frmViewClothesKinds : Form
+    public partial class frmSkill : Form
     {
-        public frmViewClothesKinds()
+        public frmSkill()
         {
             InitializeComponent();
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-            frmClothesKinds clotheskind = new frmClothesKinds();
-            clotheskind.ShowDialog();
         }
     }
 }

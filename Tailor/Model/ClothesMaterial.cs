@@ -20,7 +20,7 @@ namespace Tailor.Model
         public decimal UnitCost { get; set; }
         public decimal Amount { get; set; }
     
-        public virtual Cloth Cloth { get; set; }
+        public virtual Clothes Cloth { get; set; }
         public virtual Material Material { get; set; }
     }
 }

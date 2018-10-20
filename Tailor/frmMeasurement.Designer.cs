@@ -1,6 +1,6 @@
 ﻿namespace Tailor
 {
-    partial class frmGender
+    partial class frmMeasurement
     {
         /// <summary>
         /// Required designer variable.
@@ -31,12 +31,12 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.btnRemove = new System.Windows.Forms.Button();
             this.btnAdd = new System.Windows.Forms.Button();
-            this.lstGender = new System.Windows.Forms.ListBox();
+            this.lstMeasurement = new System.Windows.Forms.ListBox();
             this.txtDescription = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
             this.btnCancel = new System.Windows.Forms.Button();
             this.btnSave = new System.Windows.Forms.Button();
-            this.label3 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -45,7 +45,7 @@
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(234)))), ((int)(((byte)(242)))), ((int)(((byte)(248)))));
             this.panel1.Controls.Add(this.btnRemove);
             this.panel1.Controls.Add(this.btnAdd);
-            this.panel1.Controls.Add(this.lstGender);
+            this.panel1.Controls.Add(this.lstMeasurement);
             this.panel1.Controls.Add(this.txtDescription);
             this.panel1.Controls.Add(this.label1);
             this.panel1.Controls.Add(this.btnCancel);
@@ -57,7 +57,7 @@
             this.panel1.Margin = new System.Windows.Forms.Padding(2);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(509, 343);
-            this.panel1.TabIndex = 1;
+            this.panel1.TabIndex = 2;
             // 
             // btnRemove
             // 
@@ -77,14 +77,14 @@
             this.btnAdd.Text = "បន្ថែម";
             this.btnAdd.UseVisualStyleBackColor = true;
             // 
-            // lstGender
+            // lstMeasurement
             // 
-            this.lstGender.FormattingEnabled = true;
-            this.lstGender.ItemHeight = 24;
-            this.lstGender.Location = new System.Drawing.Point(290, 20);
-            this.lstGender.Name = "lstGender";
-            this.lstGender.Size = new System.Drawing.Size(200, 220);
-            this.lstGender.TabIndex = 2;
+            this.lstMeasurement.FormattingEnabled = true;
+            this.lstMeasurement.ItemHeight = 24;
+            this.lstMeasurement.Location = new System.Drawing.Point(290, 20);
+            this.lstMeasurement.Name = "lstMeasurement";
+            this.lstMeasurement.Size = new System.Drawing.Size(200, 220);
+            this.lstMeasurement.TabIndex = 2;
             // 
             // txtDescription
             // 
@@ -100,7 +100,17 @@
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(44, 25);
             this.label1.TabIndex = 2;
-            this.label1.Text = "ភេទ :";
+            this.label1.Text = "ខ្នាត :";
+            // 
+            // label3
+            // 
+            this.label3.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.label3.Location = new System.Drawing.Point(20, 260);
+            this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(470, 2);
+            this.label3.TabIndex = 1;
+            this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // btnCancel
             // 
@@ -134,26 +144,14 @@
             this.btnSave.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
             this.btnSave.UseVisualStyleBackColor = false;
             // 
-            // label3
-            // 
-            this.label3.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.label3.Location = new System.Drawing.Point(20, 260);
-            this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(470, 2);
-            this.label3.TabIndex = 1;
-            this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // frmGender
+            // frmMeasurement
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(509, 343);
             this.Controls.Add(this.panel1);
-            this.Margin = new System.Windows.Forms.Padding(2);
-            this.Name = "frmGender";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Gender Info";
+            this.Name = "frmMeasurement";
+            this.Text = "Measurements";
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.ResumeLayout(false);
@@ -163,13 +161,13 @@
         #endregion
 
         private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Button btnRemove;
+        private System.Windows.Forms.Button btnAdd;
+        private System.Windows.Forms.ListBox lstMeasurement;
+        private System.Windows.Forms.TextBox txtDescription;
+        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button btnCancel;
         private System.Windows.Forms.Button btnSave;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox txtDescription;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.ListBox lstGender;
-        private System.Windows.Forms.Button btnRemove;
-        private System.Windows.Forms.Button btnAdd;
     }
 }

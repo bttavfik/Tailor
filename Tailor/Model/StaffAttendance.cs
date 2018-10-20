@@ -17,5 +17,7 @@ namespace Tailor.Model
         public int StaffId { get; set; }
         public System.DateTime Date { get; set; }
         public string Status { get; set; }
+    
+        public virtual Staff Staff { get; set; }
     }
 }

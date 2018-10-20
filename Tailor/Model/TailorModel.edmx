@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="TailorModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="TailorModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Budget">
           <Key>
             <PropertyRef Name="Id" />
@@ -30,7 +30,6 @@
           <Property Name="Code" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="Description" Type="nvarchar" MaxLength="250" Nullable="false" />
           <Property Name="KindId" Type="int" Nullable="false" />
-          <Property Name="GenderId" Type="int" Nullable="false" />
           <Property Name="DurationOfMade" Type="float" Nullable="false" />
         </EntityType>
         <EntityType Name="ClothesDetails">
@@ -48,7 +47,7 @@
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Description" Type="nvarchar" MaxLength="250" />
+          <Property Name="Description" Type="nvarchar" MaxLength="250" Nullable="false" />
           <Property Name="Remark" Type="nvarchar" MaxLength="500" />
         </EntityType>
         <EntityType Name="ClothesMaterials">
@@ -68,7 +67,6 @@
           </Key>
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Size" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="Remark" Type="nvarchar" MaxLength="500" />
         </EntityType>
         <EntityType Name="ClothesStock">
           <Key>
@@ -91,7 +89,7 @@
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Description" Type="nvarchar" MaxLength="250" />
+          <Property Name="Description" Type="nvarchar" MaxLength="250" Nullable="false" />
         </EntityType>
         <EntityType Name="Materials">
           <Key>
@@ -114,15 +112,14 @@
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Description" Type="nvarchar" MaxLength="250" />
+          <Property Name="Description" Type="nvarchar" MaxLength="250" Nullable="false" />
         </EntityType>
         <EntityType Name="Skills">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Description" Type="nvarchar" MaxLength="300" Nullable="false" />
-          <Property Name="Remark" Type="nvarchar" MaxLength="500" />
         </EntityType>
         <EntityType Name="StaffAttendance">
           <Key>
@@ -160,13 +157,13 @@
           <Property Name="NameKh" Type="nvarchar" MaxLength="300" Nullable="false" />
           <Property Name="NameEn" Type="varchar" MaxLength="300" />
           <Property Name="GenderId" Type="int" Nullable="false" />
-          <Property Name="NationalId" Type="varchar" MaxLength="50" />
+          <Property Name="NationalId" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="DateOfBirth" Type="date" />
           <Property Name="PlaceOfBirth" Type="nvarchar" MaxLength="500" />
           <Property Name="CurrentAddress" Type="nvarchar" MaxLength="500" />
-          <Property Name="Phone" Type="varchar" MaxLength="50" />
-          <Property Name="SkillId" Type="int" />
-          <Property Name="BasicSalary" Type="decimal" Precision="18" Scale="3" />
+          <Property Name="Phone" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="SkillId" Type="int" Nullable="false" />
+          <Property Name="BasicSalary" Type="decimal" Precision="18" Scale="3" Nullable="false" />
         </EntityType>
         <EntityType Name="sysdiagrams">
           <Key>
@@ -187,18 +184,6 @@
             </Principal>
             <Dependent Role="Clothes">
               <PropertyRef Name="KindId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Clothes_Genders">
-          <End Role="Genders" Type="Self.Genders" Multiplicity="1" />
-          <End Role="Clothes" Type="Self.Clothes" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Genders">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="Clothes">
-              <PropertyRef Name="GenderId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -286,6 +271,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_StaffAttendance_Staffs">
+          <End Role="Staffs" Type="Self.Staffs" Multiplicity="1" />
+          <End Role="StaffAttendance" Type="Self.StaffAttendance" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Staffs">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="StaffAttendance">
+              <PropertyRef Name="StaffId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_StaffDeductions_Staffs">
           <End Role="Staffs" Type="Self.Staffs" Multiplicity="1" />
           <End Role="StaffDeductions" Type="Self.StaffDeductions" Multiplicity="0..1" />
@@ -323,7 +320,7 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Staffs_Skills">
-          <End Role="Skills" Type="Self.Skills" Multiplicity="0..1" />
+          <End Role="Skills" Type="Self.Skills" Multiplicity="1" />
           <End Role="Staffs" Type="Self.Staffs" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Skills">
@@ -358,10 +355,6 @@
             <End Role="ClothesKinds" EntitySet="ClothesKinds" />
             <End Role="Clothes" EntitySet="Clothes" />
           </AssociationSet>
-          <AssociationSet Name="FK_Clothes_Genders" Association="Self.FK_Clothes_Genders">
-            <End Role="Genders" EntitySet="Genders" />
-            <End Role="Clothes" EntitySet="Clothes" />
-          </AssociationSet>
           <AssociationSet Name="FK_ClothesDetails_Clothes" Association="Self.FK_ClothesDetails_Clothes">
             <End Role="Clothes" EntitySet="Clothes" />
             <End Role="ClothesDetails" EntitySet="ClothesDetails" />
@@ -390,6 +383,10 @@
             <End Role="Materials" EntitySet="Materials" />
             <End Role="MaterialStock" EntitySet="MaterialStock" />
           </AssociationSet>
+          <AssociationSet Name="FK_StaffAttendance_Staffs" Association="Self.FK_StaffAttendance_Staffs">
+            <End Role="Staffs" EntitySet="Staffs" />
+            <End Role="StaffAttendance" EntitySet="StaffAttendance" />
+          </AssociationSet>
           <AssociationSet Name="FK_StaffDeductions_Staffs" Association="Self.FK_StaffDeductions_Staffs">
             <End Role="Staffs" EntitySet="Staffs" />
             <End Role="StaffDeductions" EntitySet="StaffDeductions" />
@@ -407,8 +404,7 @@
             <End Role="Staffs" EntitySet="Staffs" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="TailorModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -430,17 +426,15 @@
           <Property Name="Status" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Remark" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
         </EntityType>
-        <EntityType Name="Cloth">
+        <EntityType Name="Clothes">
           <Key>
             <PropertyRef Name="Code" />
           </Key>
           <Property Name="Code" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Description" Type="String" MaxLength="250" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="KindId" Type="Int32" Nullable="false" />
-          <Property Name="GenderId" Type="Int32" Nullable="false" />
           <Property Name="DurationOfMade" Type="Double" Nullable="false" />
           <NavigationProperty Name="ClothesKind" Relationship="Self.FK_Clothes_ClothesKinds" FromRole="Clothes" ToRole="ClothesKinds" />
-          <NavigationProperty Name="Gender" Relationship="Self.FK_Clothes_Genders" FromRole="Clothes" ToRole="Genders" />
           <NavigationProperty Name="ClothesDetails" Relationship="Self.FK_ClothesDetails_Clothes" FromRole="Clothes" ToRole="ClothesDetails" />
           <NavigationProperty Name="ClothesMaterials" Relationship="Self.FK_ClothesMaterials_Clothes" FromRole="Clothes" ToRole="ClothesMaterials" />
           <NavigationProperty Name="ClothesStock" Relationship="Self.FK_ClothesStock_Clothes" FromRole="Clothes" ToRole="ClothesStock" />
@@ -462,7 +456,7 @@
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Description" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="Description" Type="String" MaxLength="250" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Remark" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Clothes" Relationship="Self.FK_Clothes_ClothesKinds" FromRole="ClothesKinds" ToRole="Clothes" />
         </EntityType>
@@ -485,7 +479,6 @@
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Size" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Remark" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="ClothesDetails" Relationship="Self.FK_ClothesDetails_ClothesSizes" FromRole="ClothesSizes" ToRole="ClothesDetails" />
         </EntityType>
         <EntityType Name="ClothesStock">
@@ -510,8 +503,7 @@
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Description" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="Clothes" Relationship="Self.FK_Clothes_Genders" FromRole="Genders" ToRole="Clothes" />
+          <Property Name="Description" Type="String" MaxLength="250" FixedLength="false" Unicode="true" Nullable="false" />
           <NavigationProperty Name="Staffs" Relationship="Self.FK_Staffs_Genders" FromRole="Genders" ToRole="Staffs" />
         </EntityType>
         <EntityType Name="Material">
@@ -539,7 +531,7 @@
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Description" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="Description" Type="String" MaxLength="250" FixedLength="false" Unicode="true" Nullable="false" />
           <NavigationProperty Name="Materials" Relationship="Self.FK_Materials_Measurements" FromRole="Measurements" ToRole="Materials" />
         </EntityType>
         <EntityType Name="Skill">
@@ -548,7 +540,6 @@
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" />
           <Property Name="Description" Type="String" MaxLength="300" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Remark" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Staffs" Relationship="Self.FK_Staffs_Skills" FromRole="Skills" ToRole="Staffs" />
         </EntityType>
         <EntityType Name="StaffAttendance">
@@ -559,6 +550,7 @@
           <Property Name="StaffId" Type="Int32" Nullable="false" />
           <Property Name="Date" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="Status" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Staff" Relationship="TailorModel.FK_StaffAttendance_Staffs" FromRole="StaffAttendance" ToRole="Staff" />
         </EntityType>
         <EntityType Name="StaffDeduction">
           <Key>
@@ -589,17 +581,18 @@
           <Property Name="NameKh" Type="String" MaxLength="300" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="NameEn" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
           <Property Name="GenderId" Type="Int32" Nullable="false" />
-          <Property Name="NationalId" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="NationalId" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="DateOfBirth" Type="DateTime" Precision="0" />
           <Property Name="PlaceOfBirth" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
           <Property Name="CurrentAddress" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
-          <Property Name="Phone" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="SkillId" Type="Int32" />
-          <Property Name="BasicSalary" Type="Decimal" Precision="18" Scale="3" />
+          <Property Name="Phone" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="SkillId" Type="Int32" Nullable="false" />
+          <Property Name="BasicSalary" Type="Decimal" Precision="18" Scale="3" Nullable="false" />
           <NavigationProperty Name="Gender" Relationship="Self.FK_Staffs_Genders" FromRole="Staffs" ToRole="Genders" />
           <NavigationProperty Name="Skill" Relationship="Self.FK_Staffs_Skills" FromRole="Staffs" ToRole="Skills" />
           <NavigationProperty Name="StaffDeduction" Relationship="Self.FK_StaffDeductions_Staffs" FromRole="Staffs" ToRole="StaffDeductions" />
           <NavigationProperty Name="StaffPermission" Relationship="Self.FK_StaffPermissions_Staffs" FromRole="Staffs" ToRole="StaffPermissions" />
+          <NavigationProperty Name="StaffAttendances" Relationship="TailorModel.FK_StaffAttendance_Staffs" FromRole="Staff" ToRole="StaffAttendance" />
         </EntityType>
         <EntityType Name="sysdiagram">
           <Key>
@@ -613,7 +606,7 @@
         </EntityType>
         <Association Name="FK_Clothes_ClothesKinds">
           <End Role="ClothesKinds" Type="Self.ClothesKind" Multiplicity="1" />
-          <End Role="Clothes" Type="Self.Cloth" Multiplicity="*" />
+          <End Role="Clothes" Type="TailorModel.Clothes" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="ClothesKinds">
               <PropertyRef Name="Id" />
@@ -623,20 +616,8 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Clothes_Genders">
-          <End Role="Genders" Type="Self.Gender" Multiplicity="1" />
-          <End Role="Clothes" Type="Self.Cloth" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Genders">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="Clothes">
-              <PropertyRef Name="GenderId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_ClothesDetails_Clothes">
-          <End Role="Clothes" Type="Self.Cloth" Multiplicity="1" />
+          <End Role="Clothes" Type="TailorModel.Clothes" Multiplicity="1" />
           <End Role="ClothesDetails" Type="Self.ClothesDetail" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Clothes">
@@ -648,7 +629,7 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_ClothesMaterials_Clothes">
-          <End Role="Clothes" Type="Self.Cloth" Multiplicity="1" />
+          <End Role="Clothes" Type="TailorModel.Clothes" Multiplicity="1" />
           <End Role="ClothesMaterials" Type="Self.ClothesMaterial" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Clothes">
@@ -660,7 +641,7 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_ClothesStock_Clothes">
-          <End Role="Clothes" Type="Self.Cloth" Multiplicity="1" />
+          <End Role="Clothes" Type="TailorModel.Clothes" Multiplicity="1" />
           <End Role="ClothesStock" Type="Self.ClothesStock" Multiplicity="0..1" />
           <ReferentialConstraint>
             <Principal Role="Clothes">
@@ -732,7 +713,7 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Staffs_Skills">
-          <End Role="Skills" Type="Self.Skill" Multiplicity="0..1" />
+          <End Role="Skills" Type="Self.Skill" Multiplicity="1" />
           <End Role="Staffs" Type="Self.Staff" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Skills">
@@ -770,7 +751,7 @@
         <EntityContainer Name="TailorEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Budgets" EntityType="Self.Budget" />
           <EntitySet Name="BudgetAdjustments" EntityType="Self.BudgetAdjustment" />
-          <EntitySet Name="Clothes" EntityType="Self.Cloth" />
+          <EntitySet Name="Clothes1" EntityType="TailorModel.Clothes" />
           <EntitySet Name="ClothesDetails" EntityType="Self.ClothesDetail" />
           <EntitySet Name="ClothesKinds" EntityType="Self.ClothesKind" />
           <EntitySet Name="ClothesMaterials" EntityType="Self.ClothesMaterial" />
@@ -789,22 +770,18 @@
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
           <AssociationSet Name="FK_Clothes_ClothesKinds" Association="Self.FK_Clothes_ClothesKinds">
             <End Role="ClothesKinds" EntitySet="ClothesKinds" />
-            <End Role="Clothes" EntitySet="Clothes" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Clothes_Genders" Association="Self.FK_Clothes_Genders">
-            <End Role="Genders" EntitySet="Genders" />
-            <End Role="Clothes" EntitySet="Clothes" />
+            <End Role="Clothes" EntitySet="Clothes1" />
           </AssociationSet>
           <AssociationSet Name="FK_ClothesDetails_Clothes" Association="Self.FK_ClothesDetails_Clothes">
-            <End Role="Clothes" EntitySet="Clothes" />
+            <End Role="Clothes" EntitySet="Clothes1" />
             <End Role="ClothesDetails" EntitySet="ClothesDetails" />
           </AssociationSet>
           <AssociationSet Name="FK_ClothesMaterials_Clothes" Association="Self.FK_ClothesMaterials_Clothes">
-            <End Role="Clothes" EntitySet="Clothes" />
+            <End Role="Clothes" EntitySet="Clothes1" />
             <End Role="ClothesMaterials" EntitySet="ClothesMaterials" />
           </AssociationSet>
           <AssociationSet Name="FK_ClothesStock_Clothes" Association="Self.FK_ClothesStock_Clothes">
-            <End Role="Clothes" EntitySet="Clothes" />
+            <End Role="Clothes" EntitySet="Clothes1" />
             <End Role="ClothesStock" EntitySet="ClothesStocks" />
           </AssociationSet>
           <AssociationSet Name="FK_ClothesDetails_ClothesSizes" Association="Self.FK_ClothesDetails_ClothesSizes">
@@ -839,7 +816,23 @@
             <End Role="Staffs" EntitySet="Staffs" />
             <End Role="StaffPermissions" EntitySet="StaffPermissions" />
           </AssociationSet>
+          <AssociationSet Name="FK_StaffAttendance_Staffs" Association="TailorModel.FK_StaffAttendance_Staffs">
+            <End Role="Staff" EntitySet="Staffs" />
+            <End Role="StaffAttendance" EntitySet="StaffAttendances" />
+          </AssociationSet>
         </EntityContainer>
+        <Association Name="FK_StaffAttendance_Staffs">
+          <End Type="TailorModel.Staff" Role="Staff" Multiplicity="1" />
+          <End Type="TailorModel.StaffAttendance" Role="StaffAttendance" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Staff">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="StaffAttendance">
+              <PropertyRef Name="StaffId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -866,13 +859,12 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Clothes">
-            <EntityTypeMapping TypeName="TailorModel.Cloth">
+          <EntitySetMapping Name="Clothes1">
+            <EntityTypeMapping TypeName="TailorModel.Clothes">
               <MappingFragment StoreEntitySet="Clothes">
                 <ScalarProperty Name="Code" ColumnName="Code" />
                 <ScalarProperty Name="Description" ColumnName="Description" />
                 <ScalarProperty Name="KindId" ColumnName="KindId" />
-                <ScalarProperty Name="GenderId" ColumnName="GenderId" />
                 <ScalarProperty Name="DurationOfMade" ColumnName="DurationOfMade" />
               </MappingFragment>
             </EntityTypeMapping>
@@ -912,7 +904,6 @@
               <MappingFragment StoreEntitySet="ClothesSizes">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="Size" ColumnName="Size" />
-                <ScalarProperty Name="Remark" ColumnName="Remark" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -973,7 +964,6 @@
               <MappingFragment StoreEntitySet="Skills">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="Description" ColumnName="Description" />
-                <ScalarProperty Name="Remark" ColumnName="Remark" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

@@ -27,7 +27,7 @@ namespace Tailor.Model
     
         public virtual DbSet<Budget> Budgets { get; set; }
         public virtual DbSet<BudgetAdjustment> BudgetAdjustments { get; set; }
-        public virtual DbSet<Cloth> Clothes { get; set; }
+        public virtual DbSet<Clothes> Clothes1 { get; set; }
         public virtual DbSet<ClothesDetail> ClothesDetails { get; set; }
         public virtual DbSet<ClothesKind> ClothesKinds { get; set; }
         public virtual DbSet<ClothesMaterial> ClothesMaterials { get; set; }

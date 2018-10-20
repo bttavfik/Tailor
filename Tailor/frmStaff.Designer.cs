@@ -29,281 +29,302 @@
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
-            this.richTextBox2 = new System.Windows.Forms.RichTextBox();
-            this.richTextBox1 = new System.Windows.Forms.RichTextBox();
-            this.textBox6 = new System.Windows.Forms.TextBox();
+            this.txtCurrentAddress = new System.Windows.Forms.RichTextBox();
+            this.txtBirthPlace = new System.Windows.Forms.RichTextBox();
+            this.txtBasicSalary = new System.Windows.Forms.TextBox();
             this.label10 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
-            this.comboBox2 = new System.Windows.Forms.ComboBox();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.maskedTextBox1 = new System.Windows.Forms.MaskedTextBox();
+            this.cboGender = new System.Windows.Forms.ComboBox();
+            this.cboSkill = new System.Windows.Forms.ComboBox();
+            this.txtPhone = new System.Windows.Forms.MaskedTextBox();
             this.label8 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
-            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.dtpBirthDate = new System.Windows.Forms.DateTimePicker();
+            this.txtNationalId = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.txtNameEn = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.txtNameKh = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.button3 = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
+            this.btnCancel = new System.Windows.Forms.Button();
+            this.btnSave = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(234)))), ((int)(((byte)(242)))), ((int)(((byte)(248)))));
-            this.panel1.Controls.Add(this.richTextBox2);
-            this.panel1.Controls.Add(this.richTextBox1);
-            this.panel1.Controls.Add(this.textBox6);
+            this.panel1.Controls.Add(this.txtCurrentAddress);
+            this.panel1.Controls.Add(this.txtBirthPlace);
+            this.panel1.Controls.Add(this.txtBasicSalary);
             this.panel1.Controls.Add(this.label10);
             this.panel1.Controls.Add(this.label9);
-            this.panel1.Controls.Add(this.comboBox2);
-            this.panel1.Controls.Add(this.comboBox1);
-            this.panel1.Controls.Add(this.maskedTextBox1);
+            this.panel1.Controls.Add(this.cboGender);
+            this.panel1.Controls.Add(this.cboSkill);
+            this.panel1.Controls.Add(this.txtPhone);
             this.panel1.Controls.Add(this.label8);
             this.panel1.Controls.Add(this.label7);
             this.panel1.Controls.Add(this.label11);
             this.panel1.Controls.Add(this.label6);
             this.panel1.Controls.Add(this.label5);
-            this.panel1.Controls.Add(this.dateTimePicker1);
-            this.panel1.Controls.Add(this.textBox3);
+            this.panel1.Controls.Add(this.dtpBirthDate);
+            this.panel1.Controls.Add(this.txtNationalId);
             this.panel1.Controls.Add(this.label4);
             this.panel1.Controls.Add(this.label3);
-            this.panel1.Controls.Add(this.textBox2);
+            this.panel1.Controls.Add(this.txtNameEn);
             this.panel1.Controls.Add(this.label2);
-            this.panel1.Controls.Add(this.textBox1);
+            this.panel1.Controls.Add(this.txtNameKh);
             this.panel1.Controls.Add(this.label1);
-            this.panel1.Controls.Add(this.button3);
-            this.panel1.Controls.Add(this.button1);
+            this.panel1.Controls.Add(this.btnCancel);
+            this.panel1.Controls.Add(this.btnSave);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Font = new System.Drawing.Font("Khmer OS Siemreap", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.panel1.Location = new System.Drawing.Point(0, 0);
+            this.panel1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1251, 709);
+            this.panel1.Size = new System.Drawing.Size(834, 461);
             this.panel1.TabIndex = 0;
             // 
-            // richTextBox2
+            // txtCurrentAddress
             // 
-            this.richTextBox2.Location = new System.Drawing.Point(843, 420);
-            this.richTextBox2.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.richTextBox2.Name = "richTextBox2";
-            this.richTextBox2.Size = new System.Drawing.Size(373, 121);
-            this.richTextBox2.TabIndex = 67;
-            this.richTextBox2.Text = "";
+            this.txtCurrentAddress.Location = new System.Drawing.Point(562, 273);
+            this.txtCurrentAddress.Name = "txtCurrentAddress";
+            this.txtCurrentAddress.Size = new System.Drawing.Size(250, 80);
+            this.txtCurrentAddress.TabIndex = 67;
+            this.txtCurrentAddress.Text = "";
             // 
-            // richTextBox1
+            // txtBirthPlace
             // 
-            this.richTextBox1.Location = new System.Drawing.Point(186, 420);
-            this.richTextBox1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.richTextBox1.Name = "richTextBox1";
-            this.richTextBox1.Size = new System.Drawing.Size(373, 121);
-            this.richTextBox1.TabIndex = 66;
-            this.richTextBox1.Text = "";
+            this.txtBirthPlace.Location = new System.Drawing.Point(124, 273);
+            this.txtBirthPlace.Name = "txtBirthPlace";
+            this.txtBirthPlace.Size = new System.Drawing.Size(250, 80);
+            this.txtBirthPlace.TabIndex = 66;
+            this.txtBirthPlace.Text = "";
             // 
-            // textBox6
+            // txtBasicSalary
             // 
-            this.textBox6.Location = new System.Drawing.Point(843, 323);
-            this.textBox6.Name = "textBox6";
-            this.textBox6.Size = new System.Drawing.Size(373, 44);
-            this.textBox6.TabIndex = 65;
+            this.txtBasicSalary.Location = new System.Drawing.Point(562, 210);
+            this.txtBasicSalary.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtBasicSalary.Name = "txtBasicSalary";
+            this.txtBasicSalary.Size = new System.Drawing.Size(250, 32);
+            this.txtBasicSalary.TabIndex = 65;
             // 
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(696, 328);
+            this.label10.Location = new System.Drawing.Point(464, 213);
+            this.label10.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(133, 36);
+            this.label10.Size = new System.Drawing.Size(94, 25);
             this.label10.TabIndex = 64;
             this.label10.Text = "ប្រាក់ខែគោល :";
             // 
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(30, 328);
+            this.label9.Location = new System.Drawing.Point(19, 213);
+            this.label9.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(141, 36);
+            this.label9.Size = new System.Drawing.Size(100, 25);
             this.label9.TabIndex = 63;
             this.label9.Text = "ផ្នែក ឬ ជំនាញ :";
             // 
-            // comboBox2
+            // cboGender
             // 
-            this.comboBox2.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.comboBox2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Location = new System.Drawing.Point(186, 129);
-            this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(373, 44);
-            this.comboBox2.TabIndex = 62;
+            this.cboGender.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.cboGender.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboGender.FormattingEnabled = true;
+            this.cboGender.Location = new System.Drawing.Point(124, 84);
+            this.cboGender.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.cboGender.Name = "cboGender";
+            this.cboGender.Size = new System.Drawing.Size(250, 32);
+            this.cboGender.TabIndex = 62;
             // 
-            // comboBox1
+            // cboSkill
             // 
-            this.comboBox1.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.comboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(186, 323);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(373, 44);
-            this.comboBox1.TabIndex = 61;
+            this.cboSkill.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.cboSkill.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboSkill.FormattingEnabled = true;
+            this.cboSkill.Location = new System.Drawing.Point(124, 210);
+            this.cboSkill.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.cboSkill.Name = "cboSkill";
+            this.cboSkill.Size = new System.Drawing.Size(250, 32);
+            this.cboSkill.TabIndex = 61;
             // 
-            // maskedTextBox1
+            // txtPhone
             // 
-            this.maskedTextBox1.Location = new System.Drawing.Point(843, 226);
-            this.maskedTextBox1.Mask = "(999) 000-0000";
-            this.maskedTextBox1.Name = "maskedTextBox1";
-            this.maskedTextBox1.Size = new System.Drawing.Size(373, 44);
-            this.maskedTextBox1.TabIndex = 60;
+            this.txtPhone.Location = new System.Drawing.Point(562, 147);
+            this.txtPhone.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtPhone.Mask = "(999) 000-0000";
+            this.txtPhone.Name = "txtPhone";
+            this.txtPhone.Size = new System.Drawing.Size(250, 32);
+            this.txtPhone.TabIndex = 60;
             // 
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(708, 231);
+            this.label8.Location = new System.Drawing.Point(472, 150);
+            this.label8.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(121, 36);
+            this.label8.Size = new System.Drawing.Size(86, 25);
             this.label8.TabIndex = 59;
             this.label8.Text = "លេខទូរស័ព្ទ :";
             // 
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(640, 425);
+            this.label7.Location = new System.Drawing.Point(428, 276);
+            this.label7.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(183, 36);
+            this.label7.Size = new System.Drawing.Size(130, 25);
             this.label7.TabIndex = 58;
             this.label7.Text = "អាស័យដ្ឋានបច្ចុប្បន្ន :";
             // 
             // label11
             // 
             this.label11.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.label11.Location = new System.Drawing.Point(30, 577);
+            this.label11.Location = new System.Drawing.Point(20, 375);
+            this.label11.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(1188, 3);
+            this.label11.Size = new System.Drawing.Size(792, 2);
             this.label11.TabIndex = 57;
             // 
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(18, 425);
+            this.label6.Location = new System.Drawing.Point(12, 276);
+            this.label6.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(150, 36);
+            this.label6.Size = new System.Drawing.Size(107, 25);
             this.label6.TabIndex = 57;
             this.label6.Text = "ទីកន្លែងកំណើត :";
             // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(22, 231);
+            this.label5.Location = new System.Drawing.Point(14, 150);
+            this.label5.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(148, 36);
+            this.label5.Size = new System.Drawing.Size(105, 25);
             this.label5.TabIndex = 56;
             this.label5.Text = "ថ្ងៃខែឆ្នាំកំណើត :";
             // 
-            // dateTimePicker1
+            // dtpBirthDate
             // 
-            this.dateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dateTimePicker1.Location = new System.Drawing.Point(186, 226);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(373, 44);
-            this.dateTimePicker1.TabIndex = 55;
+            this.dtpBirthDate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dtpBirthDate.Location = new System.Drawing.Point(124, 147);
+            this.dtpBirthDate.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.dtpBirthDate.Name = "dtpBirthDate";
+            this.dtpBirthDate.Size = new System.Drawing.Size(250, 32);
+            this.dtpBirthDate.TabIndex = 55;
             // 
-            // textBox3
+            // txtNationalId
             // 
-            this.textBox3.Location = new System.Drawing.Point(843, 129);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(373, 44);
-            this.textBox3.TabIndex = 54;
+            this.txtNationalId.Location = new System.Drawing.Point(562, 84);
+            this.txtNationalId.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtNationalId.Name = "txtNationalId";
+            this.txtNationalId.Size = new System.Drawing.Size(250, 32);
+            this.txtNationalId.TabIndex = 54;
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(615, 134);
+            this.label4.Location = new System.Drawing.Point(410, 87);
+            this.label4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(209, 36);
+            this.label4.Size = new System.Drawing.Size(148, 25);
             this.label4.TabIndex = 53;
             this.label4.Text = "លេខអត្តសញ្ញាណប័ណ្ណ :";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(114, 134);
+            this.label3.Location = new System.Drawing.Point(75, 87);
+            this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(61, 36);
+            this.label3.Size = new System.Drawing.Size(44, 25);
             this.label3.TabIndex = 52;
             this.label3.Text = "ភេទ :";
             // 
-            // textBox2
+            // txtNameEn
             // 
-            this.textBox2.Location = new System.Drawing.Point(843, 32);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(373, 44);
-            this.textBox2.TabIndex = 51;
+            this.txtNameEn.Location = new System.Drawing.Point(562, 21);
+            this.txtNameEn.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtNameEn.Name = "txtNameEn";
+            this.txtNameEn.Size = new System.Drawing.Size(250, 32);
+            this.txtNameEn.TabIndex = 51;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(681, 37);
+            this.label2.Location = new System.Drawing.Point(454, 24);
+            this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(147, 36);
+            this.label2.Size = new System.Drawing.Size(104, 25);
             this.label2.TabIndex = 50;
             this.label2.Text = "ជាអក្សរឡាតាំង :";
             // 
-            // textBox1
+            // txtNameKh
             // 
-            this.textBox1.Location = new System.Drawing.Point(186, 32);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(373, 44);
-            this.textBox1.TabIndex = 49;
+            this.txtNameKh.Location = new System.Drawing.Point(124, 21);
+            this.txtNameKh.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtNameKh.Name = "txtNameKh";
+            this.txtNameKh.Size = new System.Drawing.Size(250, 32);
+            this.txtNameKh.TabIndex = 49;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(99, 37);
+            this.label1.Location = new System.Drawing.Point(65, 24);
+            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(74, 36);
+            this.label1.Size = new System.Drawing.Size(54, 25);
             this.label1.TabIndex = 48;
             this.label1.Text = "ឈ្មោះ :";
             // 
-            // button3
+            // btnCancel
             // 
-            this.button3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(212)))), ((int)(((byte)(230)))), ((int)(((byte)(241)))));
-            this.button3.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.button3.Font = new System.Drawing.Font("Khmer OS Siemreap", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button3.Image = global::Tailor.Properties.Resources.cancel_32px;
-            this.button3.Location = new System.Drawing.Point(978, 614);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(240, 77);
-            this.button3.TabIndex = 47;
-            this.button3.Text = "បោះបង់";
-            this.button3.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.button3.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
-            this.button3.UseVisualStyleBackColor = false;
+            this.btnCancel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(212)))), ((int)(((byte)(230)))), ((int)(((byte)(241)))));
+            this.btnCancel.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnCancel.Font = new System.Drawing.Font("Khmer OS Siemreap", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCancel.Image = global::Tailor.Properties.Resources.cancel_32px;
+            this.btnCancel.Location = new System.Drawing.Point(692, 401);
+            this.btnCancel.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnCancel.Name = "btnCancel";
+            this.btnCancel.Size = new System.Drawing.Size(120, 40);
+            this.btnCancel.TabIndex = 47;
+            this.btnCancel.Text = "បោះបង់";
+            this.btnCancel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnCancel.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
+            this.btnCancel.UseVisualStyleBackColor = false;
             // 
-            // button1
+            // btnSave
             // 
-            this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(212)))), ((int)(((byte)(230)))), ((int)(((byte)(241)))));
-            this.button1.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.button1.Font = new System.Drawing.Font("Khmer OS Siemreap", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Image = global::Tailor.Properties.Resources.save_32px;
-            this.button1.Location = new System.Drawing.Point(723, 617);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(240, 77);
-            this.button1.TabIndex = 47;
-            this.button1.Text = "រក្សាទុក";
-            this.button1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.button1.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
-            this.button1.UseVisualStyleBackColor = false;
+            this.btnSave.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(212)))), ((int)(((byte)(230)))), ((int)(((byte)(241)))));
+            this.btnSave.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnSave.Font = new System.Drawing.Font("Khmer OS Siemreap", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSave.Image = global::Tailor.Properties.Resources.save_32px;
+            this.btnSave.Location = new System.Drawing.Point(562, 401);
+            this.btnSave.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnSave.Name = "btnSave";
+            this.btnSave.Size = new System.Drawing.Size(120, 40);
+            this.btnSave.TabIndex = 47;
+            this.btnSave.Text = "រក្សាទុក";
+            this.btnSave.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnSave.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
+            this.btnSave.UseVisualStyleBackColor = false;
             // 
             // frmStaff
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1251, 709);
+            this.ClientSize = new System.Drawing.Size(834, 461);
             this.Controls.Add(this.panel1);
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "frmStaff";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Staff Info";
@@ -316,28 +337,28 @@
         #endregion
 
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.RichTextBox richTextBox2;
-        private System.Windows.Forms.RichTextBox richTextBox1;
-        private System.Windows.Forms.TextBox textBox6;
+        private System.Windows.Forms.Button btnSave;
+        private System.Windows.Forms.Button btnCancel;
+        private System.Windows.Forms.RichTextBox txtCurrentAddress;
+        private System.Windows.Forms.RichTextBox txtBirthPlace;
+        private System.Windows.Forms.TextBox txtBasicSalary;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.ComboBox comboBox2;
-        private System.Windows.Forms.ComboBox comboBox1;
-        private System.Windows.Forms.MaskedTextBox maskedTextBox1;
+        private System.Windows.Forms.ComboBox cboGender;
+        private System.Windows.Forms.ComboBox cboSkill;
+        private System.Windows.Forms.MaskedTextBox txtPhone;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.DateTimePicker dateTimePicker1;
-        private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.DateTimePicker dtpBirthDate;
+        private System.Windows.Forms.TextBox txtNationalId;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox txtNameEn;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox txtNameKh;
         private System.Windows.Forms.Label label1;
     }
 }

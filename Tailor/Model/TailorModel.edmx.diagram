@@ -4,10 +4,10 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="2f30536f61e145d0a946e2d7cdf17901" Name="Diagram1">
+      <Diagram DiagramId="2f30536f61e145d0a946e2d7cdf17901" Name="Diagram1" ZoomLevel="94">
         <EntityTypeShape EntityType="TailorModel.Budget" Width="1.5" PointX="0.75" PointY="2.5" IsExpanded="true" />
         <EntityTypeShape EntityType="TailorModel.BudgetAdjustment" Width="1.5" PointX="10.75" PointY="2.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="TailorModel.Cloth" Width="1.5" PointX="3" PointY="8.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="TailorModel.Clothes" Width="1.5" PointX="3" PointY="8.5" IsExpanded="true" />
         <EntityTypeShape EntityType="TailorModel.ClothesDetail" Width="1.5" PointX="5.25" PointY="4.875" IsExpanded="true" />
         <EntityTypeShape EntityType="TailorModel.ClothesKind" Width="1.5" PointX="0.75" PointY="6" IsExpanded="true" />
         <EntityTypeShape EntityType="TailorModel.ClothesMaterial" Width="1.5" PointX="8.25" PointY="3.75" IsExpanded="true" />
@@ -25,7 +25,6 @@
         <EntityTypeShape EntityType="TailorModel.Staff" Width="1.5" PointX="6" PointY="8" IsExpanded="true" />
         <EntityTypeShape EntityType="TailorModel.sysdiagram" Width="1.5" PointX="10.75" PointY="5.5" IsExpanded="true" />
         <AssociationConnector Association="TailorModel.FK_Clothes_ClothesKinds" ManuallyRouted="false" />
-        <AssociationConnector Association="TailorModel.FK_Clothes_Genders" ManuallyRouted="false" />
         <AssociationConnector Association="TailorModel.FK_ClothesDetails_Clothes" ManuallyRouted="false" />
         <AssociationConnector Association="TailorModel.FK_ClothesMaterials_Clothes" ManuallyRouted="false" />
         <AssociationConnector Association="TailorModel.FK_ClothesStock_Clothes" ManuallyRouted="false" />
@@ -37,6 +36,7 @@
         <AssociationConnector Association="TailorModel.FK_Staffs_Skills" ManuallyRouted="false" />
         <AssociationConnector Association="TailorModel.FK_StaffDeductions_Staffs" ManuallyRouted="false" />
         <AssociationConnector Association="TailorModel.FK_StaffPermissions_Staffs" ManuallyRouted="false" />
+        <AssociationConnector Association="TailorModel.FK_StaffAttendance_Staffs" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

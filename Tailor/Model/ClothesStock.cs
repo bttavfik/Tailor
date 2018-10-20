@@ -17,6 +17,6 @@ namespace Tailor.Model
         public string ClothesCode { get; set; }
         public int Quantity { get; set; }
     
-        public virtual Cloth Cloth { get; set; }
+        public virtual Clothes Cloth { get; set; }
     }
 }

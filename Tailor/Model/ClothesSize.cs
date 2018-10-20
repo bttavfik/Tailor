@@ -22,7 +22,6 @@ namespace Tailor.Model
     
         public int Id { get; set; }
         public string Size { get; set; }
-        public string Remark { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ClothesDetail> ClothesDetails { get; set; }

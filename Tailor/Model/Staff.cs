@@ -14,6 +14,12 @@ namespace Tailor.Model
     
     public partial class Staff
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public Staff()
+        {
+            this.StaffAttendances = new HashSet<StaffAttendance>();
+        }
+    
         public int Id { get; set; }
         public string NameKh { get; set; }
         public string NameEn { get; set; }
@@ -23,12 +29,14 @@ namespace Tailor.Model
         public string PlaceOfBirth { get; set; }
         public string CurrentAddress { get; set; }
         public string Phone { get; set; }
-        public Nullable<int> SkillId { get; set; }
-        public Nullable<decimal> BasicSalary { get; set; }
+        public int SkillId { get; set; }
+        public decimal BasicSalary { get; set; }
     
         public virtual Gender Gender { get; set; }
         public virtual Skill Skill { get; set; }
         public virtual StaffDeduction StaffDeduction { get; set; }
         public virtual StaffPermission StaffPermission { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<StaffAttendance> StaffAttendances { get; set; }
     }
 }

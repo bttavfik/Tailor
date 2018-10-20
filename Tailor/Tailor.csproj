@@ -56,23 +56,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="frmClothes.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="frmClothes.Designer.cs">
-      <DependentUpon>frmClothes.cs</DependentUpon>
-    </Compile>
     <Compile Include="frmClothesKinds.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="frmClothesKinds.Designer.cs">
       <DependentUpon>frmClothesKinds.cs</DependentUpon>
-    </Compile>
-    <Compile Include="frmClothesMaterials.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="frmClothesMaterials.Designer.cs">
-      <DependentUpon>frmClothesMaterials.cs</DependentUpon>
     </Compile>
     <Compile Include="frmClothesSize.cs">
       <SubType>Form</SubType>
@@ -86,29 +74,17 @@
     <Compile Include="frmGender.Designer.cs">
       <DependentUpon>frmGender.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmViewGender.cs">
+    <Compile Include="frmMeasurement.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmViewGender.Designer.cs">
-      <DependentUpon>frmViewGender.cs</DependentUpon>
+    <Compile Include="frmMeasurement.Designer.cs">
+      <DependentUpon>frmMeasurement.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmViewClothesKinds.cs">
+    <Compile Include="frmSkill.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmViewClothesKinds.Designer.cs">
-      <DependentUpon>frmViewClothesKinds.cs</DependentUpon>
-    </Compile>
-    <Compile Include="frmViewClothesSize.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="frmViewClothesSize.Designer.cs">
-      <DependentUpon>frmViewClothesSize.cs</DependentUpon>
-    </Compile>
-    <Compile Include="frmViewClothesMaterials.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="frmViewClothesMaterials.Designer.cs">
-      <DependentUpon>frmViewClothesMaterials.cs</DependentUpon>
+    <Compile Include="frmSkill.Designer.cs">
+      <DependentUpon>frmSkill.cs</DependentUpon>
     </Compile>
     <Compile Include="frmStaff.cs">
       <SubType>Form</SubType>
@@ -116,11 +92,11 @@
     <Compile Include="frmStaff.Designer.cs">
       <DependentUpon>frmStaff.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmViewStaff.cs">
+    <Compile Include="frmStaffView.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmViewStaff.Designer.cs">
-      <DependentUpon>frmViewStaff.cs</DependentUpon>
+    <Compile Include="frmStaffView.Designer.cs">
+      <DependentUpon>frmStaffView.cs</DependentUpon>
     </Compile>
     <Compile Include="Model\Budget.cs">
       <DependentUpon>TailorModel.tt</DependentUpon>
@@ -128,7 +104,7 @@
     <Compile Include="Model\BudgetAdjustment.cs">
       <DependentUpon>TailorModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Model\Cloth.cs">
+    <Compile Include="Model\Clothes.cs">
       <DependentUpon>TailorModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\ClothesDetail.cs">
@@ -196,14 +172,8 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="frmClothes.resx">
-      <DependentUpon>frmClothes.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="frmClothesKinds.resx">
       <DependentUpon>frmClothesKinds.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="frmClothesMaterials.resx">
-      <DependentUpon>frmClothesMaterials.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmClothesSize.resx">
       <DependentUpon>frmClothesSize.cs</DependentUpon>
@@ -211,23 +181,17 @@
     <EmbeddedResource Include="frmGender.resx">
       <DependentUpon>frmGender.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmViewGender.resx">
-      <DependentUpon>frmViewGender.cs</DependentUpon>
+    <EmbeddedResource Include="frmMeasurement.resx">
+      <DependentUpon>frmMeasurement.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmViewClothesKinds.resx">
-      <DependentUpon>frmViewClothesKinds.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="frmViewClothesSize.resx">
-      <DependentUpon>frmViewClothesSize.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="frmViewClothesMaterials.resx">
-      <DependentUpon>frmViewClothesMaterials.cs</DependentUpon>
+    <EmbeddedResource Include="frmSkill.resx">
+      <DependentUpon>frmSkill.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmStaff.resx">
       <DependentUpon>frmStaff.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmViewStaff.resx">
-      <DependentUpon>frmViewStaff.cs</DependentUpon>
+    <EmbeddedResource Include="frmStaffView.resx">
+      <DependentUpon>frmStaffView.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

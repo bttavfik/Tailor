@@ -17,7 +17,7 @@ namespace Tailor.Model
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public ClothesKind()
         {
-            this.Clothes = new HashSet<Cloth>();
+            this.Clothes = new HashSet<Clothes>();
         }
     
         public int Id { get; set; }
@@ -25,6 +25,6 @@ namespace Tailor.Model
         public string Remark { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Cloth> Clothes { get; set; }
+        public virtual ICollection<Clothes> Clothes { get; set; }
     }
 }

@@ -12,10 +12,10 @@ namespace Tailor.Model
     using System;
     using System.Collections.Generic;
     
-    public partial class Cloth
+    public partial class Clothes
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Cloth()
+        public Clothes()
         {
             this.ClothesDetails = new HashSet<ClothesDetail>();
             this.ClothesMaterials = new HashSet<ClothesMaterial>();
@@ -24,11 +24,9 @@ namespace Tailor.Model
         public string Code { get; set; }
         public string Description { get; set; }
         public int KindId { get; set; }
-        public int GenderId { get; set; }
         public double DurationOfMade { get; set; }
     
         public virtual ClothesKind ClothesKind { get; set; }
-        public virtual Gender Gender { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ClothesDetail> ClothesDetails { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

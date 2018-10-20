@@ -10,17 +10,11 @@ using System.Windows.Forms;
 
 namespace Tailor
 {
-    public partial class frmViewGender : Form
+    public partial class frmMeasurement : Form
     {
-        public frmViewGender()
+        public frmMeasurement()
         {
             InitializeComponent();
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-            frmGender gender = new frmGender();
-            gender.ShowDialog();
         }
     }
 }
