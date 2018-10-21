@@ -98,11 +98,23 @@
     <Compile Include="frmStaffDeduction.Designer.cs">
       <DependentUpon>frmStaffDeduction.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmStaffDeductionView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmStaffDeductionView.Designer.cs">
+      <DependentUpon>frmStaffDeductionView.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmStaffPermission.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="frmStaffPermission.Designer.cs">
       <DependentUpon>frmStaffPermission.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmStaffPermissionView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmStaffPermissionView.Designer.cs">
+      <DependentUpon>frmStaffPermissionView.cs</DependentUpon>
     </Compile>
     <Compile Include="frmStaffView.cs">
       <SubType>Form</SubType>
@@ -205,8 +217,14 @@
     <EmbeddedResource Include="frmStaffDeduction.resx">
       <DependentUpon>frmStaffDeduction.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frmStaffDeductionView.resx">
+      <DependentUpon>frmStaffDeductionView.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmStaffPermission.resx">
       <DependentUpon>frmStaffPermission.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmStaffPermissionView.resx">
+      <DependentUpon>frmStaffPermissionView.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmStaffView.resx">
       <DependentUpon>frmStaffView.cs</DependentUpon>
