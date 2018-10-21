@@ -38,11 +38,11 @@ namespace Tailor.Model
         public virtual DbSet<Material> Materials { get; set; }
         public virtual DbSet<MaterialStock> MaterialStocks { get; set; }
         public virtual DbSet<Measurement> Measurements { get; set; }
-        public virtual DbSet<Position> Positions { get; set; }
         public virtual DbSet<StaffAttendance> StaffAttendances { get; set; }
+        public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
         public virtual DbSet<StaffDeduction> StaffDeductions { get; set; }
         public virtual DbSet<StaffPermission> StaffPermissions { get; set; }
         public virtual DbSet<Staff> Staffs { get; set; }
-        public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
+        public virtual DbSet<Position> Positions { get; set; }
     }
 }

@@ -19,6 +19,8 @@ namespace Tailor.Model
         public decimal Amount { get; set; }
         public string Reason { get; set; }
         public bool Status { get; set; }
+        public int ComputerCode { get; set; }
+        public System.DateTime ComputeTime { get; set; }
     
         public virtual Staff Staff { get; set; }
     }

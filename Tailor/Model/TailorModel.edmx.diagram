@@ -18,11 +18,7 @@
         <EntityTypeShape EntityType="TailorModel.Material" Width="1.5" PointX="6" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="TailorModel.MaterialStock" Width="1.5" PointX="8.25" PointY="1.25" IsExpanded="true" />
         <EntityTypeShape EntityType="TailorModel.Measurement" Width="1.5" PointX="3.75" PointY="2.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="TailorModel.Position" Width="1.5" PointX="3.75" PointY="19" IsExpanded="true" />
         <EntityTypeShape EntityType="TailorModel.StaffAttendance" Width="1.5" PointX="2.75" PointY="12.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="TailorModel.StaffDeduction" Width="1.5" PointX="8.25" PointY="7.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="TailorModel.StaffPermission" Width="1.5" PointX="8.25" PointY="10.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="TailorModel.Staff" Width="1.5" PointX="6" PointY="8" IsExpanded="true" />
         <EntityTypeShape EntityType="TailorModel.sysdiagram" Width="1.5" PointX="10.75" PointY="5.5" IsExpanded="true" />
         <AssociationConnector Association="TailorModel.FK_Clothes_ClothesKinds" ManuallyRouted="false" />
         <AssociationConnector Association="TailorModel.FK_ClothesDetails_Clothes" ManuallyRouted="false" />
@@ -30,15 +26,19 @@
         <AssociationConnector Association="TailorModel.FK_ClothesStock_Clothes" ManuallyRouted="false" />
         <AssociationConnector Association="TailorModel.FK_ClothesDetails_ClothesSizes" ManuallyRouted="false" />
         <AssociationConnector Association="TailorModel.FK_ClothesMaterials_Materials" ManuallyRouted="false" />
-        <AssociationConnector Association="TailorModel.FK_Staffs_Genders" ManuallyRouted="false" />
         <AssociationConnector Association="TailorModel.FK_Materials_Measurements" ManuallyRouted="false" />
         <AssociationConnector Association="TailorModel.FK_MaterialStock_Materials" ManuallyRouted="false" />
-        <AssociationConnector Association="TailorModel.FK_Staffs_Skills" ManuallyRouted="false" />
-        <AssociationConnector Association="TailorModel.FK_StaffDeductions_Staffs" ManuallyRouted="false" />
-        <AssociationConnector Association="TailorModel.FK_StaffPermissions_Staffs" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="TailorModel.StaffDeduction" Width="1.5" PointX="5.25" PointY="25.125" />
+        <EntityTypeShape EntityType="TailorModel.StaffPermission" Width="1.5" PointX="5.25" PointY="21.875" />
+        <EntityTypeShape EntityType="TailorModel.Staff" Width="1.5" PointX="3" PointY="20.125" />
+        <AssociationConnector Association="TailorModel.FK_Staffs_Genders" />
         <AssociationConnector Association="TailorModel.FK_StaffAttendance_Staffs" />
+        <AssociationConnector Association="TailorModel.FK_StaffDeductions_Staffs" />
+        <AssociationConnector Association="TailorModel.FK_StaffPermissions_Staffs" />
         <AssociationConnector Association="TailorModel.FK_StaffPermissions_Staffs1" />
-      </Diagram>
+        <EntityTypeShape EntityType="TailorModel.Position" Width="1.5" PointX="7.375" PointY="7.75" />
+        <AssociationConnector Association="TailorModel.FK_Staffs_Positions" />
+        </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
 </edmx:Edmx>
