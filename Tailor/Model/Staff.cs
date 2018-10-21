@@ -31,6 +31,7 @@ namespace Tailor.Model
         public string Phone { get; set; }
         public int SkillId { get; set; }
         public decimal BasicSalary { get; set; }
+        public bool IsActive { get; set; }
     
         public virtual Gender Gender { get; set; }
         public virtual Skill Skill { get; set; }

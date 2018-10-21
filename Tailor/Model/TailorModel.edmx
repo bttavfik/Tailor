@@ -96,9 +96,10 @@
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Description" Type="nvarchar" MaxLength="250" />
-          <Property Name="MeasurementId" Type="int" />
-          <Property Name="PriceIn" Type="decimal" Precision="18" Scale="3" />
+          <Property Name="Description" Type="nvarchar" MaxLength="250" Nullable="false" />
+          <Property Name="MeasurementId" Type="int" Nullable="false" />
+          <Property Name="PriceIn" Type="decimal" Precision="18" Scale="3" Nullable="false" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
         </EntityType>
         <EntityType Name="MaterialStock">
           <Key>
@@ -113,6 +114,7 @@
           </Key>
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Description" Type="nvarchar" MaxLength="250" Nullable="false" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
         </EntityType>
         <EntityType Name="Skills">
           <Key>
@@ -120,6 +122,7 @@
           </Key>
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Description" Type="nvarchar" MaxLength="300" Nullable="false" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
         </EntityType>
         <EntityType Name="StaffAttendance">
           <Key>
@@ -164,6 +167,7 @@
           <Property Name="Phone" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="SkillId" Type="int" Nullable="false" />
           <Property Name="BasicSalary" Type="decimal" Precision="18" Scale="3" Nullable="false" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
         </EntityType>
         <EntityType Name="sysdiagrams">
           <Key>
@@ -248,7 +252,7 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Materials_Measurements">
-          <End Role="Measurements" Type="Self.Measurements" Multiplicity="0..1" />
+          <End Role="Measurements" Type="Self.Measurements" Multiplicity="1" />
           <End Role="Materials" Type="Self.Materials" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Measurements">
@@ -511,12 +515,13 @@
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Description" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
-          <Property Name="MeasurementId" Type="Int32" />
-          <Property Name="PriceIn" Type="Decimal" Precision="18" Scale="3" />
+          <Property Name="Description" Type="String" MaxLength="250" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="MeasurementId" Type="Int32" Nullable="false" />
+          <Property Name="PriceIn" Type="Decimal" Precision="18" Scale="3" Nullable="false" />
           <NavigationProperty Name="ClothesMaterials" Relationship="Self.FK_ClothesMaterials_Materials" FromRole="Materials" ToRole="ClothesMaterials" />
           <NavigationProperty Name="Measurement" Relationship="Self.FK_Materials_Measurements" FromRole="Materials" ToRole="Measurements" />
           <NavigationProperty Name="MaterialStock" Relationship="Self.FK_MaterialStock_Materials" FromRole="Materials" ToRole="MaterialStock" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
         </EntityType>
         <EntityType Name="MaterialStock">
           <Key>
@@ -533,6 +538,7 @@
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Description" Type="String" MaxLength="250" FixedLength="false" Unicode="true" Nullable="false" />
           <NavigationProperty Name="Materials" Relationship="Self.FK_Materials_Measurements" FromRole="Measurements" ToRole="Materials" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
         </EntityType>
         <EntityType Name="Skill">
           <Key>
@@ -541,6 +547,7 @@
           <Property Name="Id" Type="Int32" Nullable="false" />
           <Property Name="Description" Type="String" MaxLength="300" FixedLength="false" Unicode="true" Nullable="false" />
           <NavigationProperty Name="Staffs" Relationship="Self.FK_Staffs_Skills" FromRole="Skills" ToRole="Staffs" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
         </EntityType>
         <EntityType Name="StaffAttendance">
           <Key>
@@ -593,6 +600,7 @@
           <NavigationProperty Name="StaffDeduction" Relationship="Self.FK_StaffDeductions_Staffs" FromRole="Staffs" ToRole="StaffDeductions" />
           <NavigationProperty Name="StaffPermission" Relationship="Self.FK_StaffPermissions_Staffs" FromRole="Staffs" ToRole="StaffPermissions" />
           <NavigationProperty Name="StaffAttendances" Relationship="TailorModel.FK_StaffAttendance_Staffs" FromRole="Staff" ToRole="StaffAttendance" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
         </EntityType>
         <EntityType Name="sysdiagram">
           <Key>
@@ -689,7 +697,7 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Materials_Measurements">
-          <End Role="Measurements" Type="Self.Measurement" Multiplicity="0..1" />
+          <End Role="Measurements" Type="Self.Measurement" Multiplicity="1" />
           <End Role="Materials" Type="Self.Material" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Measurements">
@@ -936,6 +944,7 @@
           <EntitySetMapping Name="Materials">
             <EntityTypeMapping TypeName="TailorModel.Material">
               <MappingFragment StoreEntitySet="Materials">
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="Description" ColumnName="Description" />
                 <ScalarProperty Name="MeasurementId" ColumnName="MeasurementId" />
@@ -954,6 +963,7 @@
           <EntitySetMapping Name="Measurements">
             <EntityTypeMapping TypeName="TailorModel.Measurement">
               <MappingFragment StoreEntitySet="Measurements">
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="Description" ColumnName="Description" />
               </MappingFragment>
@@ -962,6 +972,7 @@
           <EntitySetMapping Name="Skills">
             <EntityTypeMapping TypeName="TailorModel.Skill">
               <MappingFragment StoreEntitySet="Skills">
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="Description" ColumnName="Description" />
               </MappingFragment>
@@ -1000,6 +1011,7 @@
           <EntitySetMapping Name="Staffs">
             <EntityTypeMapping TypeName="TailorModel.Staff">
               <MappingFragment StoreEntitySet="Staffs">
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="NameKh" ColumnName="NameKh" />
                 <ScalarProperty Name="NameEn" ColumnName="NameEn" />
