@@ -18,7 +18,9 @@ namespace Tailor.Model
         public System.DateTime FromDate { get; set; }
         public System.DateTime UntilDate { get; set; }
         public string Reason { get; set; }
+        public int Approver { get; set; }
     
         public virtual Staff Staff { get; set; }
+        public virtual Staff Staff1 { get; set; }
     }
 }

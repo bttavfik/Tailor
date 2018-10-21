@@ -25,6 +25,7 @@ namespace Tailor.Model
         public string Description { get; set; }
         public int KindId { get; set; }
         public double DurationOfMade { get; set; }
+        public bool IsActive { get; set; }
     
         public virtual ClothesKind ClothesKind { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

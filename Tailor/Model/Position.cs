@@ -12,10 +12,10 @@ namespace Tailor.Model
     using System;
     using System.Collections.Generic;
     
-    public partial class Skill
+    public partial class Position
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Skill()
+        public Position()
         {
             this.Staffs = new HashSet<Staff>();
         }

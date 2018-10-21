@@ -18,7 +18,7 @@
         <EntityTypeShape EntityType="TailorModel.Material" Width="1.5" PointX="6" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="TailorModel.MaterialStock" Width="1.5" PointX="8.25" PointY="1.25" IsExpanded="true" />
         <EntityTypeShape EntityType="TailorModel.Measurement" Width="1.5" PointX="3.75" PointY="2.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="TailorModel.Skill" Width="1.5" PointX="3.75" PointY="19" IsExpanded="true" />
+        <EntityTypeShape EntityType="TailorModel.Position" Width="1.5" PointX="3.75" PointY="19" IsExpanded="true" />
         <EntityTypeShape EntityType="TailorModel.StaffAttendance" Width="1.5" PointX="2.75" PointY="12.5" IsExpanded="true" />
         <EntityTypeShape EntityType="TailorModel.StaffDeduction" Width="1.5" PointX="8.25" PointY="7.5" IsExpanded="true" />
         <EntityTypeShape EntityType="TailorModel.StaffPermission" Width="1.5" PointX="8.25" PointY="10.375" IsExpanded="true" />
@@ -37,6 +37,7 @@
         <AssociationConnector Association="TailorModel.FK_StaffDeductions_Staffs" ManuallyRouted="false" />
         <AssociationConnector Association="TailorModel.FK_StaffPermissions_Staffs" ManuallyRouted="false" />
         <AssociationConnector Association="TailorModel.FK_StaffAttendance_Staffs" />
+        <AssociationConnector Association="TailorModel.FK_StaffPermissions_Staffs1" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
