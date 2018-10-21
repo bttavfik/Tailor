@@ -10,14 +10,11 @@ using System.Windows.Forms;
 
 namespace Tailor
 {
-    public partial class frmStaffView : Form
+    public partial class frmStaffPermission : Form
     {
-        public frmStaffView()
+        public frmStaffPermission()
         {
             InitializeComponent();
         }
-
-      
-        
     }
 }

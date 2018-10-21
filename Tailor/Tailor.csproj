@@ -92,6 +92,18 @@
     <Compile Include="frmStaff.Designer.cs">
       <DependentUpon>frmStaff.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmStaffDeduction.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmStaffDeduction.Designer.cs">
+      <DependentUpon>frmStaffDeduction.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmStaffPermission.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmStaffPermission.Designer.cs">
+      <DependentUpon>frmStaffPermission.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmStaffView.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -189,6 +201,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmStaff.resx">
       <DependentUpon>frmStaff.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmStaffDeduction.resx">
+      <DependentUpon>frmStaffDeduction.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmStaffPermission.resx">
+      <DependentUpon>frmStaffPermission.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmStaffView.resx">
       <DependentUpon>frmStaffView.cs</DependentUpon>
