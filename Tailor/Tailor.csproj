@@ -149,7 +149,7 @@
     <Compile Include="Model\Measurement.cs">
       <DependentUpon>TailorModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Model\Skill.cs">
+    <Compile Include="Model\Position.cs">
       <DependentUpon>TailorModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\Staff.cs">

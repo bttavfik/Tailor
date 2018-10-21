@@ -33,15 +33,14 @@ namespace Tailor.Model
         public int PositionId { get; set; }
         public decimal BasicSalary { get; set; }
         public bool IsActive { get; set; }
-        public int PositionId1 { get; set; }
     
         public virtual Gender Gender { get; set; }
-        public virtual Position Skill { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<StaffAttendance> StaffAttendances { get; set; }
         public virtual StaffDeduction StaffDeduction { get; set; }
         public virtual StaffPermission StaffPermission { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<StaffAttendance> StaffAttendances { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<StaffPermission> StaffPermissions { get; set; }
+        public virtual Position Position { get; set; }
     }
 }

@@ -118,6 +118,14 @@
           <Property Name="Description" Type="nvarchar" MaxLength="250" Nullable="false" />
           <Property Name="IsActive" Type="bit" Nullable="false" />
         </EntityType>
+        <EntityType Name="Positions">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Description" Type="nvarchar" MaxLength="300" Nullable="false" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+        </EntityType>
         <EntityType Name="StaffAttendance">
           <Key>
             <PropertyRef Name="StaffId" />
@@ -136,6 +144,8 @@
           <Property Name="Amount" Type="decimal" Precision="18" Scale="3" Nullable="false" />
           <Property Name="Reason" Type="nvarchar" MaxLength="500" Nullable="false" />
           <Property Name="Status" Type="bit" Nullable="false" />
+          <Property Name="ComputerCode" Type="int" Nullable="false" />
+          <Property Name="ComputeTime" Type="datetime" Nullable="false" />
         </EntityType>
         <EntityType Name="StaffPermissions">
           <Key>
@@ -145,7 +155,8 @@
           <Property Name="FromDate" Type="date" Nullable="false" />
           <Property Name="UntilDate" Type="date" Nullable="false" />
           <Property Name="Reason" Type="nvarchar" MaxLength="500" Nullable="false" />
-          <Property Name="Approver" Type="int" Nullable="false" />
+          <Property Name="ComputerCode" Type="int" Nullable="false" />
+          <Property Name="ComputeTime" Type="datetime" Nullable="false" />
         </EntityType>
         <EntityType Name="Staffs">
           <Key>
@@ -314,7 +325,7 @@
               <PropertyRef Name="Id" />
             </Principal>
             <Dependent Role="StaffPermissions">
-              <PropertyRef Name="Approver" />
+              <PropertyRef Name="ComputerCode" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -327,6 +338,18 @@
             </Principal>
             <Dependent Role="Staffs">
               <PropertyRef Name="GenderId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Staffs_Positions">
+          <End Role="Positions" Type="Self.Positions" Multiplicity="1" />
+          <End Role="Staffs" Type="Self.Staffs" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Positions">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Staffs">
+              <PropertyRef Name="PositionId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -344,6 +367,7 @@
           <EntitySet Name="Materials" EntityType="Self.Materials" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="MaterialStock" EntityType="Self.MaterialStock" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Measurements" EntityType="Self.Measurements" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Positions" EntityType="Self.Positions" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="StaffAttendance" EntityType="Self.StaffAttendance" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="StaffDeductions" EntityType="Self.StaffDeductions" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="StaffPermissions" EntityType="Self.StaffPermissions" Schema="dbo" store:Type="Tables" />
@@ -399,6 +423,10 @@
           </AssociationSet>
           <AssociationSet Name="FK_Staffs_Genders" Association="Self.FK_Staffs_Genders">
             <End Role="Genders" EntitySet="Genders" />
+            <End Role="Staffs" EntitySet="Staffs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Staffs_Positions" Association="Self.FK_Staffs_Positions">
+            <End Role="Positions" EntitySet="Positions" />
             <End Role="Staffs" EntitySet="Staffs" />
           </AssociationSet>
         </EntityContainer>
@@ -504,7 +532,7 @@
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Description" Type="String" MaxLength="250" FixedLength="false" Unicode="true" Nullable="false" />
-          <NavigationProperty Name="Staffs" Relationship="Self.FK_Staffs_Genders" FromRole="Genders" ToRole="Staffs" />
+          <NavigationProperty Name="Staffs" Relationship="TailorModel.FK_Staffs_Genders" FromRole="Gender" ToRole="Staff" />
         </EntityType>
         <EntityType Name="Material">
           <Key>
@@ -536,15 +564,6 @@
           <NavigationProperty Name="Materials" Relationship="Self.FK_Materials_Measurements" FromRole="Measurements" ToRole="Materials" />
           <Property Name="IsActive" Type="Boolean" Nullable="false" />
         </EntityType>
-        <EntityType Name="Position">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" />
-          <Property Name="Description" Type="String" MaxLength="300" FixedLength="false" Unicode="true" Nullable="false" />
-          <NavigationProperty Name="Staffs" Relationship="Self.FK_Staffs_Skills" FromRole="Skills" ToRole="Staffs" />
-          <Property Name="IsActive" Type="Boolean" Nullable="false" />
-        </EntityType>
         <EntityType Name="StaffAttendance">
           <Key>
             <PropertyRef Name="StaffId" />
@@ -554,53 +573,6 @@
           <Property Name="Date" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="Status" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <NavigationProperty Name="Staff" Relationship="TailorModel.FK_StaffAttendance_Staffs" FromRole="StaffAttendance" ToRole="Staff" />
-        </EntityType>
-        <EntityType Name="StaffDeduction">
-          <Key>
-            <PropertyRef Name="StaffId" />
-          </Key>
-          <Property Name="StaffId" Type="Int32" Nullable="false" />
-          <Property Name="Date" Type="DateTime" Nullable="false" Precision="0" />
-          <Property Name="Amount" Type="Decimal" Precision="18" Scale="3" Nullable="false" />
-          <Property Name="Reason" Type="String" MaxLength="500" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Status" Type="Boolean" Nullable="false" />
-          <NavigationProperty Name="Staff" Relationship="Self.FK_StaffDeductions_Staffs" FromRole="StaffDeductions" ToRole="Staffs" />
-        </EntityType>
-        <EntityType Name="StaffPermission">
-          <Key>
-            <PropertyRef Name="StaffId" />
-          </Key>
-          <Property Name="StaffId" Type="Int32" Nullable="false" />
-          <Property Name="FromDate" Type="DateTime" Nullable="false" Precision="0" />
-          <Property Name="UntilDate" Type="DateTime" Nullable="false" Precision="0" />
-          <Property Name="Reason" Type="String" MaxLength="500" FixedLength="false" Unicode="true" Nullable="false" />
-          <NavigationProperty Name="Staff" Relationship="Self.FK_StaffPermissions_Staffs" FromRole="StaffPermissions" ToRole="Staffs" />
-          <Property Name="Approver" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Staff1" Relationship="TailorModel.FK_StaffPermissions_Staffs1" FromRole="StaffPermission" ToRole="Staff" />
-        </EntityType>
-        <EntityType Name="Staff">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="NameKh" Type="String" MaxLength="300" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="NameEn" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
-          <Property Name="GenderId" Type="Int32" Nullable="false" />
-          <Property Name="NationalId" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="DateOfBirth" Type="DateTime" Precision="0" />
-          <Property Name="PlaceOfBirth" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
-          <Property Name="CurrentAddress" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
-          <Property Name="Phone" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="PositionId" Type="Int32" Nullable="false" />
-          <Property Name="BasicSalary" Type="Decimal" Precision="18" Scale="3" Nullable="false" />
-          <NavigationProperty Name="Gender" Relationship="Self.FK_Staffs_Genders" FromRole="Staffs" ToRole="Genders" />
-          <NavigationProperty Name="Skill" Relationship="Self.FK_Staffs_Skills" FromRole="Staffs" ToRole="Skills" />
-          <NavigationProperty Name="StaffDeduction" Relationship="Self.FK_StaffDeductions_Staffs" FromRole="Staffs" ToRole="StaffDeductions" />
-          <NavigationProperty Name="StaffPermission" Relationship="Self.FK_StaffPermissions_Staffs" FromRole="Staffs" ToRole="StaffPermissions" />
-          <NavigationProperty Name="StaffAttendances" Relationship="TailorModel.FK_StaffAttendance_Staffs" FromRole="Staff" ToRole="StaffAttendance" />
-          <Property Name="IsActive" Type="Boolean" Nullable="false" />
-          <NavigationProperty Name="StaffPermissions" Relationship="TailorModel.FK_StaffPermissions_Staffs1" FromRole="Staff" ToRole="StaffPermission" />
-          <Property Name="PositionId1" Type="Int32" Nullable="false" />
         </EntityType>
         <EntityType Name="sysdiagram">
           <Key>
@@ -684,18 +656,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Staffs_Genders">
-          <End Role="Genders" Type="Self.Gender" Multiplicity="1" />
-          <End Role="Staffs" Type="Self.Staff" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Genders">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="Staffs">
-              <PropertyRef Name="GenderId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_Materials_Measurements">
           <End Role="Measurements" Type="Self.Measurement" Multiplicity="1" />
           <End Role="Materials" Type="Self.Material" Multiplicity="*" />
@@ -720,42 +680,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Staffs_Skills">
-          <End Role="Skills" Type="TailorModel.Position" Multiplicity="1" />
-          <End Role="Staffs" Type="Self.Staff" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Skills">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="Staffs">
-              <PropertyRef Name="PositionId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_StaffDeductions_Staffs">
-          <End Role="Staffs" Type="Self.Staff" Multiplicity="1" />
-          <End Role="StaffDeductions" Type="Self.StaffDeduction" Multiplicity="0..1" />
-          <ReferentialConstraint>
-            <Principal Role="Staffs">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="StaffDeductions">
-              <PropertyRef Name="StaffId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_StaffPermissions_Staffs">
-          <End Role="Staffs" Type="Self.Staff" Multiplicity="1" />
-          <End Role="StaffPermissions" Type="Self.StaffPermission" Multiplicity="0..1" />
-          <ReferentialConstraint>
-            <Principal Role="Staffs">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="StaffPermissions">
-              <PropertyRef Name="StaffId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <EntityContainer Name="TailorEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Budgets" EntityType="Self.Budget" />
           <EntitySet Name="BudgetAdjustments" EntityType="Self.BudgetAdjustment" />
@@ -770,11 +694,7 @@
           <EntitySet Name="Materials" EntityType="Self.Material" />
           <EntitySet Name="MaterialStocks" EntityType="Self.MaterialStock" />
           <EntitySet Name="Measurements" EntityType="Self.Measurement" />
-          <EntitySet Name="Positions" EntityType="TailorModel.Position" />
           <EntitySet Name="StaffAttendances" EntityType="Self.StaffAttendance" />
-          <EntitySet Name="StaffDeductions" EntityType="Self.StaffDeduction" />
-          <EntitySet Name="StaffPermissions" EntityType="Self.StaffPermission" />
-          <EntitySet Name="Staffs" EntityType="Self.Staff" />
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
           <AssociationSet Name="FK_Clothes_ClothesKinds" Association="Self.FK_Clothes_ClothesKinds">
             <End Role="ClothesKinds" EntitySet="ClothesKinds" />
@@ -800,10 +720,6 @@
             <End Role="Materials" EntitySet="Materials" />
             <End Role="ClothesMaterials" EntitySet="ClothesMaterials" />
           </AssociationSet>
-          <AssociationSet Name="FK_Staffs_Genders" Association="Self.FK_Staffs_Genders">
-            <End Role="Genders" EntitySet="Genders" />
-            <End Role="Staffs" EntitySet="Staffs" />
-          </AssociationSet>
           <AssociationSet Name="FK_Materials_Measurements" Association="Self.FK_Materials_Measurements">
             <End Role="Measurements" EntitySet="Measurements" />
             <End Role="Materials" EntitySet="Materials" />
@@ -812,27 +728,96 @@
             <End Role="Materials" EntitySet="Materials" />
             <End Role="MaterialStock" EntitySet="MaterialStocks" />
           </AssociationSet>
-          <AssociationSet Name="FK_Staffs_Skills" Association="Self.FK_Staffs_Skills">
-            <End Role="Skills" EntitySet="Positions" />
-            <End Role="Staffs" EntitySet="Staffs" />
-          </AssociationSet>
-          <AssociationSet Name="FK_StaffDeductions_Staffs" Association="Self.FK_StaffDeductions_Staffs">
-            <End Role="Staffs" EntitySet="Staffs" />
-            <End Role="StaffDeductions" EntitySet="StaffDeductions" />
-          </AssociationSet>
-          <AssociationSet Name="FK_StaffPermissions_Staffs" Association="Self.FK_StaffPermissions_Staffs">
-            <End Role="Staffs" EntitySet="Staffs" />
-            <End Role="StaffPermissions" EntitySet="StaffPermissions" />
+          <EntitySet Name="StaffDeductions" EntityType="TailorModel.StaffDeduction" />
+          <EntitySet Name="StaffPermissions" EntityType="TailorModel.StaffPermission" />
+          <EntitySet Name="Staffs" EntityType="TailorModel.Staff" />
+          <AssociationSet Name="FK_Staffs_Genders" Association="TailorModel.FK_Staffs_Genders">
+            <End Role="Gender" EntitySet="Genders" />
+            <End Role="Staff" EntitySet="Staffs" />
           </AssociationSet>
           <AssociationSet Name="FK_StaffAttendance_Staffs" Association="TailorModel.FK_StaffAttendance_Staffs">
             <End Role="Staff" EntitySet="Staffs" />
             <End Role="StaffAttendance" EntitySet="StaffAttendances" />
           </AssociationSet>
+          <AssociationSet Name="FK_StaffDeductions_Staffs" Association="TailorModel.FK_StaffDeductions_Staffs">
+            <End Role="Staff" EntitySet="Staffs" />
+            <End Role="StaffDeduction" EntitySet="StaffDeductions" />
+          </AssociationSet>
+          <AssociationSet Name="FK_StaffPermissions_Staffs" Association="TailorModel.FK_StaffPermissions_Staffs">
+            <End Role="Staff" EntitySet="Staffs" />
+            <End Role="StaffPermission" EntitySet="StaffPermissions" />
+          </AssociationSet>
           <AssociationSet Name="FK_StaffPermissions_Staffs1" Association="TailorModel.FK_StaffPermissions_Staffs1">
             <End Role="Staff" EntitySet="Staffs" />
             <End Role="StaffPermission" EntitySet="StaffPermissions" />
           </AssociationSet>
-        </EntityContainer>
+          <EntitySet Name="Positions" EntityType="TailorModel.Position" />
+          <AssociationSet Name="FK_Staffs_Positions" Association="TailorModel.FK_Staffs_Positions">
+            <End Role="Position" EntitySet="Positions" />
+            <End Role="Staff" EntitySet="Staffs" />
+          </AssociationSet>
+          </EntityContainer>
+        <EntityType Name="StaffDeduction">
+          <Key>
+            <PropertyRef Name="StaffId" />
+          </Key>
+          <Property Name="StaffId" Type="Int32" Nullable="false" />
+          <Property Name="Date" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Amount" Type="Decimal" Nullable="false" Precision="18" Scale="3" />
+          <Property Name="Reason" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="Status" Type="Boolean" Nullable="false" />
+          <Property Name="ComputerCode" Type="Int32" Nullable="false" />
+          <Property Name="ComputeTime" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="Staff" Relationship="TailorModel.FK_StaffDeductions_Staffs" FromRole="StaffDeduction" ToRole="Staff" />
+        </EntityType>
+        <EntityType Name="StaffPermission">
+          <Key>
+            <PropertyRef Name="StaffId" />
+          </Key>
+          <Property Name="StaffId" Type="Int32" Nullable="false" />
+          <Property Name="FromDate" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="UntilDate" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Reason" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="ComputerCode" Type="Int32" Nullable="false" />
+          <Property Name="ComputeTime" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="Staff" Relationship="TailorModel.FK_StaffPermissions_Staffs" FromRole="StaffPermission" ToRole="Staff" />
+          <NavigationProperty Name="Staff1" Relationship="TailorModel.FK_StaffPermissions_Staffs1" FromRole="StaffPermission" ToRole="Staff" />
+        </EntityType>
+        <EntityType Name="Staff">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NameKh" Type="String" Nullable="false" MaxLength="300" FixedLength="false" Unicode="true" />
+          <Property Name="NameEn" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
+          <Property Name="GenderId" Type="Int32" Nullable="false" />
+          <Property Name="NationalId" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="DateOfBirth" Type="DateTime" Precision="0" />
+          <Property Name="PlaceOfBirth" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="CurrentAddress" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="Phone" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="PositionId" Type="Int32" Nullable="false" />
+          <Property Name="BasicSalary" Type="Decimal" Nullable="false" Precision="18" Scale="3" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Gender" Relationship="TailorModel.FK_Staffs_Genders" FromRole="Staff" ToRole="Gender" />
+          <NavigationProperty Name="StaffAttendances" Relationship="TailorModel.FK_StaffAttendance_Staffs" FromRole="Staff" ToRole="StaffAttendance" />
+          <NavigationProperty Name="StaffDeduction" Relationship="TailorModel.FK_StaffDeductions_Staffs" FromRole="Staff" ToRole="StaffDeduction" />
+          <NavigationProperty Name="StaffPermission" Relationship="TailorModel.FK_StaffPermissions_Staffs" FromRole="Staff" ToRole="StaffPermission" />
+          <NavigationProperty Name="StaffPermissions" Relationship="TailorModel.FK_StaffPermissions_Staffs1" FromRole="Staff" ToRole="StaffPermission" />
+          <NavigationProperty Name="Position" Relationship="TailorModel.FK_Staffs_Positions" FromRole="Staff" ToRole="Position" />
+        </EntityType>
+        <Association Name="FK_Staffs_Genders">
+          <End Type="TailorModel.Gender" Role="Gender" Multiplicity="1" />
+          <End Type="TailorModel.Staff" Role="Staff" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Gender">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Staff">
+              <PropertyRef Name="GenderId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_StaffAttendance_Staffs">
           <End Type="TailorModel.Staff" Role="Staff" Multiplicity="1" />
           <End Type="TailorModel.StaffAttendance" Role="StaffAttendance" Multiplicity="*" />
@@ -845,6 +830,30 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_StaffDeductions_Staffs">
+          <End Type="TailorModel.Staff" Role="Staff" Multiplicity="1" />
+          <End Type="TailorModel.StaffDeduction" Role="StaffDeduction" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Staff">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="StaffDeduction">
+              <PropertyRef Name="StaffId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_StaffPermissions_Staffs">
+          <End Type="TailorModel.Staff" Role="Staff" Multiplicity="1" />
+          <End Type="TailorModel.StaffPermission" Role="StaffPermission" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Staff">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="StaffPermission">
+              <PropertyRef Name="StaffId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_StaffPermissions_Staffs1">
           <End Type="TailorModel.Staff" Role="Staff" Multiplicity="1" />
           <End Type="TailorModel.StaffPermission" Role="StaffPermission" Multiplicity="*" />
@@ -853,7 +862,28 @@
               <PropertyRef Name="Id" />
             </Principal>
             <Dependent Role="StaffPermission">
-              <PropertyRef Name="Approver" />
+              <PropertyRef Name="ComputerCode" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Position">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Description" Type="String" Nullable="false" MaxLength="300" FixedLength="false" Unicode="true" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Staffs" Relationship="TailorModel.FK_Staffs_Positions" FromRole="Position" ToRole="Staff" />
+        </EntityType>
+        <Association Name="FK_Staffs_Positions">
+          <End Type="TailorModel.Position" Role="Position" Multiplicity="1" />
+          <End Type="TailorModel.Staff" Role="Staff" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Position">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Staff">
+              <PropertyRef Name="PositionId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -996,46 +1026,6 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="StaffDeductions">
-            <EntityTypeMapping TypeName="TailorModel.StaffDeduction">
-              <MappingFragment StoreEntitySet="StaffDeductions">
-                <ScalarProperty Name="StaffId" ColumnName="StaffId" />
-                <ScalarProperty Name="Date" ColumnName="Date" />
-                <ScalarProperty Name="Amount" ColumnName="Amount" />
-                <ScalarProperty Name="Reason" ColumnName="Reason" />
-                <ScalarProperty Name="Status" ColumnName="Status" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="StaffPermissions">
-            <EntityTypeMapping TypeName="TailorModel.StaffPermission">
-              <MappingFragment StoreEntitySet="StaffPermissions">
-                <ScalarProperty Name="Approver" ColumnName="Approver" />
-                <ScalarProperty Name="StaffId" ColumnName="StaffId" />
-                <ScalarProperty Name="FromDate" ColumnName="FromDate" />
-                <ScalarProperty Name="UntilDate" ColumnName="UntilDate" />
-                <ScalarProperty Name="Reason" ColumnName="Reason" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Staffs">
-            <EntityTypeMapping TypeName="TailorModel.Staff">
-              <MappingFragment StoreEntitySet="Staffs">
-                <ScalarProperty Name="PositionId1" ColumnName="PositionId" />
-                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
-                <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="NameKh" ColumnName="NameKh" />
-                <ScalarProperty Name="NameEn" ColumnName="NameEn" />
-                <ScalarProperty Name="GenderId" ColumnName="GenderId" />
-                <ScalarProperty Name="NationalId" ColumnName="NationalId" />
-                <ScalarProperty Name="DateOfBirth" ColumnName="DateOfBirth" />
-                <ScalarProperty Name="PlaceOfBirth" ColumnName="PlaceOfBirth" />
-                <ScalarProperty Name="CurrentAddress" ColumnName="CurrentAddress" />
-                <ScalarProperty Name="Phone" ColumnName="Phone" />
-                <ScalarProperty Name="BasicSalary" ColumnName="BasicSalary" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="sysdiagrams">
             <EntityTypeMapping TypeName="TailorModel.sysdiagram">
               <MappingFragment StoreEntitySet="sysdiagrams">
@@ -1044,6 +1034,58 @@
                 <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
                 <ScalarProperty Name="version" ColumnName="version" />
                 <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="StaffDeductions">
+            <EntityTypeMapping TypeName="TailorModel.StaffDeduction">
+              <MappingFragment StoreEntitySet="StaffDeductions">
+                <ScalarProperty Name="ComputeTime" ColumnName="ComputeTime" />
+                <ScalarProperty Name="ComputerCode" ColumnName="ComputerCode" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="Reason" ColumnName="Reason" />
+                <ScalarProperty Name="Amount" ColumnName="Amount" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="StaffId" ColumnName="StaffId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="StaffPermissions">
+            <EntityTypeMapping TypeName="TailorModel.StaffPermission">
+              <MappingFragment StoreEntitySet="StaffPermissions">
+                <ScalarProperty Name="ComputeTime" ColumnName="ComputeTime" />
+                <ScalarProperty Name="ComputerCode" ColumnName="ComputerCode" />
+                <ScalarProperty Name="Reason" ColumnName="Reason" />
+                <ScalarProperty Name="UntilDate" ColumnName="UntilDate" />
+                <ScalarProperty Name="FromDate" ColumnName="FromDate" />
+                <ScalarProperty Name="StaffId" ColumnName="StaffId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Staffs">
+            <EntityTypeMapping TypeName="TailorModel.Staff">
+              <MappingFragment StoreEntitySet="Staffs">
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="BasicSalary" ColumnName="BasicSalary" />
+                <ScalarProperty Name="PositionId" ColumnName="PositionId" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="CurrentAddress" ColumnName="CurrentAddress" />
+                <ScalarProperty Name="PlaceOfBirth" ColumnName="PlaceOfBirth" />
+                <ScalarProperty Name="DateOfBirth" ColumnName="DateOfBirth" />
+                <ScalarProperty Name="NationalId" ColumnName="NationalId" />
+                <ScalarProperty Name="GenderId" ColumnName="GenderId" />
+                <ScalarProperty Name="NameEn" ColumnName="NameEn" />
+                <ScalarProperty Name="NameKh" ColumnName="NameKh" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Positions">
+            <EntityTypeMapping TypeName="TailorModel.Position">
+              <MappingFragment StoreEntitySet="Positions">
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
