@@ -56,6 +56,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="frmClothes.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmClothes.Designer.cs">
+      <DependentUpon>frmClothes.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmClothesKinds.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -68,6 +74,12 @@
     <Compile Include="frmClothesSize.Designer.cs">
       <DependentUpon>frmClothesSize.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmClothesView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmClothesView.Designer.cs">
+      <DependentUpon>frmClothesView.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmLogin.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -79,6 +91,24 @@
     </Compile>
     <Compile Include="frmMeasurement.Designer.cs">
       <DependentUpon>frmMeasurement.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmMessageBoxFail.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmMessageBoxFail.Designer.cs">
+      <DependentUpon>frmMessageBoxFail.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmMessageBoxQuestion.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmMessageBoxQuestion.Designer.cs">
+      <DependentUpon>frmMessageBoxQuestion.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmMessageBoxSuccessfull.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmMessageBoxSuccessfull.Designer.cs">
+      <DependentUpon>frmMessageBoxSuccessfull.cs</DependentUpon>
     </Compile>
     <Compile Include="frmPosition.cs">
       <SubType>Form</SubType>
@@ -121,6 +151,12 @@
     </Compile>
     <Compile Include="frmStaffView.Designer.cs">
       <DependentUpon>frmStaffView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmUser.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmUser.Designer.cs">
+      <DependentUpon>frmUser.cs</DependentUpon>
     </Compile>
     <Compile Include="Model\Budget.cs">
       <DependentUpon>TailorModel.tt</DependentUpon>
@@ -196,17 +232,32 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="frmClothes.resx">
+      <DependentUpon>frmClothes.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmClothesKinds.resx">
       <DependentUpon>frmClothesKinds.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmClothesSize.resx">
       <DependentUpon>frmClothesSize.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frmClothesView.resx">
+      <DependentUpon>frmClothesView.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmLogin.resx">
       <DependentUpon>frmLogin.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmMeasurement.resx">
       <DependentUpon>frmMeasurement.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmMessageBoxFail.resx">
+      <DependentUpon>frmMessageBoxFail.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmMessageBoxQuestion.resx">
+      <DependentUpon>frmMessageBoxQuestion.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmMessageBoxSuccessfull.resx">
+      <DependentUpon>frmMessageBoxSuccessfull.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmPosition.resx">
       <DependentUpon>frmPosition.cs</DependentUpon>
@@ -228,6 +279,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmStaffView.resx">
       <DependentUpon>frmStaffView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmUser.resx">
+      <DependentUpon>frmUser.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -272,6 +326,7 @@
       <DependentUpon>TailorModel.edmx</DependentUpon>
       <LastGenOutput>TailorModel.cs</LastGenOutput>
     </Content>
+    <None Include="Resources\Check.png" />
     <None Include="Resources\print-32px.png" />
     <None Include="Resources\edit-32px1.png" />
     <None Include="Resources\edit-32px.png" />
