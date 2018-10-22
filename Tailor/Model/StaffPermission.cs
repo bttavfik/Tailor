@@ -22,6 +22,6 @@ namespace Tailor.Model
         public System.DateTime ComputeTime { get; set; }
     
         public virtual Staff Staff { get; set; }
-        public virtual Staff Staff1 { get; set; }
+        public virtual Staff Computer { get; set; }
     }
 }

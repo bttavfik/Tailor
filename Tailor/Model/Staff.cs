@@ -17,8 +17,8 @@ namespace Tailor.Model
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Staff()
         {
-            this.StaffAttendances = new HashSet<StaffAttendance>();
-            this.StaffPermissions = new HashSet<StaffPermission>();
+            this.Attendances = new HashSet<StaffAttendance>();
+            this.PermissionNote = new HashSet<StaffPermission>();
         }
     
         public int Id { get; set; }
@@ -36,11 +36,11 @@ namespace Tailor.Model
     
         public virtual Gender Gender { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<StaffAttendance> StaffAttendances { get; set; }
-        public virtual StaffDeduction StaffDeduction { get; set; }
-        public virtual StaffPermission StaffPermission { get; set; }
+        public virtual ICollection<StaffAttendance> Attendances { get; set; }
+        public virtual StaffDeduction Deductions { get; set; }
+        public virtual StaffPermission Permissions { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<StaffPermission> StaffPermissions { get; set; }
+        public virtual ICollection<StaffPermission> PermissionNote { get; set; }
         public virtual Position Position { get; set; }
     }
 }

@@ -1,6 +1,6 @@
 ﻿namespace Tailor
 {
-    partial class frmSkill
+    partial class frmPosition
     {
         /// <summary>
         /// Required designer variable.

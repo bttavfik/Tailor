@@ -781,7 +781,7 @@
           <Property Name="ComputerCode" Type="Int32" Nullable="false" />
           <Property Name="ComputeTime" Type="DateTime" Nullable="false" Precision="3" />
           <NavigationProperty Name="Staff" Relationship="TailorModel.FK_StaffPermissions_Staffs" FromRole="StaffPermission" ToRole="Staff" />
-          <NavigationProperty Name="Staff1" Relationship="TailorModel.FK_StaffPermissions_Staffs1" FromRole="StaffPermission" ToRole="Staff" />
+          <NavigationProperty Name="Computer" Relationship="TailorModel.FK_StaffPermissions_Staffs1" FromRole="StaffPermission" ToRole="Staff" />
         </EntityType>
         <EntityType Name="Staff">
           <Key>
@@ -800,10 +800,10 @@
           <Property Name="BasicSalary" Type="Decimal" Nullable="false" Precision="18" Scale="3" />
           <Property Name="IsActive" Type="Boolean" Nullable="false" />
           <NavigationProperty Name="Gender" Relationship="TailorModel.FK_Staffs_Genders" FromRole="Staff" ToRole="Gender" />
-          <NavigationProperty Name="StaffAttendances" Relationship="TailorModel.FK_StaffAttendance_Staffs" FromRole="Staff" ToRole="StaffAttendance" />
-          <NavigationProperty Name="StaffDeduction" Relationship="TailorModel.FK_StaffDeductions_Staffs" FromRole="Staff" ToRole="StaffDeduction" />
-          <NavigationProperty Name="StaffPermission" Relationship="TailorModel.FK_StaffPermissions_Staffs" FromRole="Staff" ToRole="StaffPermission" />
-          <NavigationProperty Name="StaffPermissions" Relationship="TailorModel.FK_StaffPermissions_Staffs1" FromRole="Staff" ToRole="StaffPermission" />
+          <NavigationProperty Name="Attendances" Relationship="TailorModel.FK_StaffAttendance_Staffs" FromRole="Staff" ToRole="StaffAttendance" />
+          <NavigationProperty Name="Deductions" Relationship="TailorModel.FK_StaffDeductions_Staffs" FromRole="Staff" ToRole="StaffDeduction" />
+          <NavigationProperty Name="Permissions" Relationship="TailorModel.FK_StaffPermissions_Staffs" FromRole="Staff" ToRole="StaffPermission" />
+          <NavigationProperty Name="PermissionNote" Relationship="TailorModel.FK_StaffPermissions_Staffs1" FromRole="Staff" ToRole="StaffPermission" />
           <NavigationProperty Name="Position" Relationship="TailorModel.FK_Staffs_Positions" FromRole="Staff" ToRole="Position" />
         </EntityType>
         <Association Name="FK_Staffs_Genders">

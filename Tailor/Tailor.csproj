@@ -80,11 +80,11 @@
     <Compile Include="frmMeasurement.Designer.cs">
       <DependentUpon>frmMeasurement.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmSkill.cs">
+    <Compile Include="frmPosition.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmSkill.Designer.cs">
-      <DependentUpon>frmSkill.cs</DependentUpon>
+    <Compile Include="frmPosition.Designer.cs">
+      <DependentUpon>frmPosition.cs</DependentUpon>
     </Compile>
     <Compile Include="frmStaff.cs">
       <SubType>Form</SubType>
@@ -208,8 +208,8 @@
     <EmbeddedResource Include="frmMeasurement.resx">
       <DependentUpon>frmMeasurement.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmSkill.resx">
-      <DependentUpon>frmSkill.cs</DependentUpon>
+    <EmbeddedResource Include="frmPosition.resx">
+      <DependentUpon>frmPosition.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmStaff.resx">
       <DependentUpon>frmStaff.cs</DependentUpon>

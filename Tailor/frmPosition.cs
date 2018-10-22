@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace Tailor
 {
-    public partial class frmSkill : Form
+    public partial class frmPosition : Form
     {
-        public frmSkill()
+        public frmPosition()
         {
             InitializeComponent();
         }
