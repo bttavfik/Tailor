@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.panel1 = new System.Windows.Forms.Panel();
             this.txtCurrentAddress = new System.Windows.Forms.RichTextBox();
             this.txtBirthPlace = new System.Windows.Forms.RichTextBox();
@@ -52,7 +53,9 @@
             this.label1 = new System.Windows.Forms.Label();
             this.btnCancel = new System.Windows.Forms.Button();
             this.btnSave = new System.Windows.Forms.Button();
+            this.error = new System.Windows.Forms.ErrorProvider(this.components);
             this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.error)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
@@ -84,7 +87,7 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Font = new System.Drawing.Font("Khmer OS Siemreap", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.panel1.Location = new System.Drawing.Point(0, 0);
-            this.panel1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel1.Margin = new System.Windows.Forms.Padding(2);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(834, 461);
             this.panel1.TabIndex = 0;
@@ -94,7 +97,7 @@
             this.txtCurrentAddress.Location = new System.Drawing.Point(562, 273);
             this.txtCurrentAddress.Name = "txtCurrentAddress";
             this.txtCurrentAddress.Size = new System.Drawing.Size(250, 80);
-            this.txtCurrentAddress.TabIndex = 67;
+            this.txtCurrentAddress.TabIndex = 9;
             this.txtCurrentAddress.Text = "";
             // 
             // txtBirthPlace
@@ -102,16 +105,19 @@
             this.txtBirthPlace.Location = new System.Drawing.Point(124, 273);
             this.txtBirthPlace.Name = "txtBirthPlace";
             this.txtBirthPlace.Size = new System.Drawing.Size(250, 80);
-            this.txtBirthPlace.TabIndex = 66;
+            this.txtBirthPlace.TabIndex = 4;
             this.txtBirthPlace.Text = "";
             // 
             // txtBasicSalary
             // 
             this.txtBasicSalary.Location = new System.Drawing.Point(562, 210);
-            this.txtBasicSalary.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtBasicSalary.Margin = new System.Windows.Forms.Padding(2);
             this.txtBasicSalary.Name = "txtBasicSalary";
             this.txtBasicSalary.Size = new System.Drawing.Size(250, 32);
-            this.txtBasicSalary.TabIndex = 65;
+            this.txtBasicSalary.TabIndex = 8;
+            this.txtBasicSalary.Enter += new System.EventHandler(this.txtBasicSalary_Enter);
+            this.txtBasicSalary.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtBasicSalary_KeyPress);
+            this.txtBasicSalary.Leave += new System.EventHandler(this.txtBasicSalary_Leave);
             // 
             // label10
             // 
@@ -139,10 +145,10 @@
             this.cboGender.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboGender.FormattingEnabled = true;
             this.cboGender.Location = new System.Drawing.Point(124, 84);
-            this.cboGender.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.cboGender.Margin = new System.Windows.Forms.Padding(2);
             this.cboGender.Name = "cboGender";
             this.cboGender.Size = new System.Drawing.Size(250, 32);
-            this.cboGender.TabIndex = 62;
+            this.cboGender.TabIndex = 1;
             // 
             // cboSkill
             // 
@@ -150,19 +156,19 @@
             this.cboSkill.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboSkill.FormattingEnabled = true;
             this.cboSkill.Location = new System.Drawing.Point(124, 210);
-            this.cboSkill.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.cboSkill.Margin = new System.Windows.Forms.Padding(2);
             this.cboSkill.Name = "cboSkill";
             this.cboSkill.Size = new System.Drawing.Size(250, 32);
-            this.cboSkill.TabIndex = 61;
+            this.cboSkill.TabIndex = 3;
             // 
             // txtPhone
             // 
             this.txtPhone.Location = new System.Drawing.Point(562, 147);
-            this.txtPhone.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtPhone.Margin = new System.Windows.Forms.Padding(2);
             this.txtPhone.Mask = "(999) 000-0000";
             this.txtPhone.Name = "txtPhone";
             this.txtPhone.Size = new System.Drawing.Size(250, 32);
-            this.txtPhone.TabIndex = 60;
+            this.txtPhone.TabIndex = 7;
             // 
             // label8
             // 
@@ -217,18 +223,19 @@
             // 
             this.dtpBirthDate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.dtpBirthDate.Location = new System.Drawing.Point(124, 147);
-            this.dtpBirthDate.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.dtpBirthDate.Margin = new System.Windows.Forms.Padding(2);
             this.dtpBirthDate.Name = "dtpBirthDate";
             this.dtpBirthDate.Size = new System.Drawing.Size(250, 32);
-            this.dtpBirthDate.TabIndex = 55;
+            this.dtpBirthDate.TabIndex = 2;
             // 
             // txtNationalId
             // 
             this.txtNationalId.Location = new System.Drawing.Point(562, 84);
-            this.txtNationalId.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtNationalId.Margin = new System.Windows.Forms.Padding(2);
             this.txtNationalId.Name = "txtNationalId";
             this.txtNationalId.Size = new System.Drawing.Size(250, 32);
-            this.txtNationalId.TabIndex = 54;
+            this.txtNationalId.TabIndex = 6;
+            this.txtNationalId.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtNationalId_KeyPress);
             // 
             // label4
             // 
@@ -253,10 +260,12 @@
             // txtNameEn
             // 
             this.txtNameEn.Location = new System.Drawing.Point(562, 21);
-            this.txtNameEn.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtNameEn.Margin = new System.Windows.Forms.Padding(2);
             this.txtNameEn.Name = "txtNameEn";
             this.txtNameEn.Size = new System.Drawing.Size(250, 32);
-            this.txtNameEn.TabIndex = 51;
+            this.txtNameEn.TabIndex = 5;
+            this.txtNameEn.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtNameEn_KeyPress);
+            this.txtNameEn.Leave += new System.EventHandler(this.txtNameEn_Leave);
             // 
             // label2
             // 
@@ -271,10 +280,10 @@
             // txtNameKh
             // 
             this.txtNameKh.Location = new System.Drawing.Point(124, 21);
-            this.txtNameKh.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtNameKh.Margin = new System.Windows.Forms.Padding(2);
             this.txtNameKh.Name = "txtNameKh";
             this.txtNameKh.Size = new System.Drawing.Size(250, 32);
-            this.txtNameKh.TabIndex = 49;
+            this.txtNameKh.TabIndex = 0;
             // 
             // label1
             // 
@@ -293,14 +302,15 @@
             this.btnCancel.Font = new System.Drawing.Font("Khmer OS Siemreap", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCancel.Image = global::Tailor.Properties.Resources.cancel_32px;
             this.btnCancel.Location = new System.Drawing.Point(692, 401);
-            this.btnCancel.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnCancel.Margin = new System.Windows.Forms.Padding(2);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(120, 40);
-            this.btnCancel.TabIndex = 47;
+            this.btnCancel.TabIndex = 11;
             this.btnCancel.Text = "បោះបង់";
             this.btnCancel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnCancel.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
             this.btnCancel.UseVisualStyleBackColor = false;
+            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
             // btnSave
             // 
@@ -309,14 +319,19 @@
             this.btnSave.Font = new System.Drawing.Font("Khmer OS Siemreap", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSave.Image = global::Tailor.Properties.Resources.save_32px;
             this.btnSave.Location = new System.Drawing.Point(562, 401);
-            this.btnSave.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnSave.Margin = new System.Windows.Forms.Padding(2);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(120, 40);
-            this.btnSave.TabIndex = 47;
+            this.btnSave.TabIndex = 10;
             this.btnSave.Text = "រក្សាទុក";
             this.btnSave.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnSave.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
             this.btnSave.UseVisualStyleBackColor = false;
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
+            // 
+            // error
+            // 
+            this.error.ContainerControl = this;
             // 
             // frmStaff
             // 
@@ -324,12 +339,17 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(834, 461);
             this.Controls.Add(this.panel1);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            this.Margin = new System.Windows.Forms.Padding(2);
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "frmStaff";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Staff Info";
+            this.Load += new System.EventHandler(this.frmStaff_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.error)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -360,5 +380,6 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox txtNameKh;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.ErrorProvider error;
     }
 }

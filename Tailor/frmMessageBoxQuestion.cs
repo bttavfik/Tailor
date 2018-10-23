@@ -17,9 +17,22 @@ namespace Tailor
             InitializeComponent();
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        public bool btnOkClick;
+
+        private void btnCancel_Click(object sender, EventArgs e)
         {
-            this.Dispose();
+            this.Close();
+        }
+
+        private void btnOk_Click(object sender, EventArgs e)
+        {
+            btnOkClick = true;
+            this.Close();
+        }
+
+        private void frmMessageBoxQuestion_Load(object sender, EventArgs e)
+        {
+            btnOkClick = false;
         }
     }
 }
