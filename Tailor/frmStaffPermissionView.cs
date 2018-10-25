@@ -41,7 +41,7 @@ namespace Tailor
         {
             try
             {
-                var permission = db.StaffPermissions.ToList();
+                var permission = db.StaffPermissions.ToList().Where(s => s.Staff.IsActive);
                 dgvList.Rows.Clear();
                 foreach (var staff in permission)
                 {
@@ -90,6 +90,7 @@ namespace Tailor
             frmMessageBoxQuestion confirm = new frmMessageBoxQuestion();
             confirm.label1.Text = "តើអ្នកចង់លុបទិន្នន័យមែនទេ?";
             confirm.ShowDialog();
+
             if (confirm.btnOkClick)
             {
                 try
@@ -107,7 +108,7 @@ namespace Tailor
                         }
                     }
                 }
-                catch (Exception exc)
+                catch (Exception)
                 {
                     frmMessageBoxFail message = new frmMessageBoxFail();
                     message.ShowDialog();
@@ -121,9 +122,11 @@ namespace Tailor
             {
                 try
                 {
-                    var staff = db.StaffPermissions.Where(s => s.FromDate >= dtpFromDate.Value)
-                        .Where(s => s.FromDate <= dtpUntillDate.Value)
-                        .Where(s => s.Staff.NameKh.Contains(txtSearch.Text.Trim().ToLower())).ToList();
+                    var staff = db.StaffPermissions.ToList()
+                        .Where(s => s.FromDate >= dtpFromDate.Value 
+                        &&  s.FromDate <= dtpUntillDate.Value 
+                        && s.Staff.NameKh.Contains(txtSearch.Text.Trim().ToLower()));
+
                     dgvList.Rows.Clear();
                     foreach (var s in staff)
                     {
@@ -139,7 +142,10 @@ namespace Tailor
             {
                 try
                 {
-                    var staff = db.StaffPermissions.Where(s => s.Staff.NameEn.Contains(txtSearch.Text.Trim().ToLower())).ToList();
+                    var staff = db.StaffPermissions.ToList()
+                        .Where(s => s.Staff.NameEn.Contains(txtSearch.Text.Trim()) 
+                        || s.Staff.NameKh.Contains(txtSearch.Text.Trim().ToLower()));
+
                     dgvList.Rows.Clear();
                     foreach (var s in staff)
                     {
@@ -151,10 +157,6 @@ namespace Tailor
                     MessageBox.Show(exc.Message);
                 }
             }
-            else
-            {
-                LoadData();
-            }
         }
 
         private void dtpUntillDate_ValueChanged(object sender, EventArgs e)
@@ -163,8 +165,10 @@ namespace Tailor
             {
                 try
                 {
-                    var staff = db.StaffPermissions.Where(s => s.FromDate >= dtpFromDate.Value)
-                        .Where(s => s.FromDate <= dtpUntillDate.Value).ToList();
+                    var staff = db.StaffPermissions.ToList()
+                        .Where(s => s.FromDate >= dtpFromDate.Value
+                        && s.FromDate <= dtpUntillDate.Value);
+
                     dgvList.Rows.Clear();
                     foreach (var s in staff)
                     {

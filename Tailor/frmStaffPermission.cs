@@ -108,7 +108,7 @@ namespace Tailor
                         }
                     }
                 }
-                catch (Exception exc)
+                catch (Exception)
                 {
                     frmMessageBoxFail message = new frmMessageBoxFail();
                     message.ShowDialog();
@@ -148,7 +148,7 @@ namespace Tailor
                         }
                     }
                 }
-                catch (Exception exc)
+                catch (Exception)
                 {
                     frmMessageBoxFail message = new frmMessageBoxFail();
                     message.ShowDialog();

@@ -41,7 +41,7 @@ namespace Tailor
 
         public void LoadData()
         {
-            var staff = db.Staffs.Where(s => s.IsActive == true).ToList();
+            var staff = db.Staffs.Where(s => s.IsActive).ToList();
             dgvList.Rows.Clear();
             foreach (var s in staff)
             {
@@ -52,7 +52,7 @@ namespace Tailor
         public void LoadInfo()
         {
             //Count all boy staff in database
-            var bStaff = db.Staffs.Where(s => s.GenderId == 1).Where(s => s.IsActive == true).Count();
+            var bStaff = db.Staffs.Where(s => s.GenderId == 1).Where(s => s.IsActive).Count();
             lblBoy.Text = bStaff + " នាក់";
 
             //Count all girl staff in database 
@@ -60,7 +60,7 @@ namespace Tailor
             lblGirl.Text = gStaff + " នាក់";
 
             //Count all staff in database 
-            var staff = db.Staffs.Where(s => s.IsActive == true).Count();
+            var staff = db.Staffs.Where(s => s.IsActive).Count();
             lblAllStaff.Text = staff + "​​​​​​​​ នាក់";
         }
 
@@ -117,7 +117,7 @@ namespace Tailor
                         }
                     }
                 }
-                catch (Exception exc)
+                catch (Exception)
                 {
                     frmMessageBoxFail message = new frmMessageBoxFail();
                     message.ShowDialog();
@@ -128,8 +128,8 @@ namespace Tailor
         private void txtSearch_TextChanged(object sender, EventArgs e)
         {
             var staff = from s in db.Staffs.ToList()
-                        where s.NameKh.Contains(txtSearch.Text.ToLower())
-                        where s.IsActive == true
+                        where s.NameKh.Contains(txtSearch.Text.Trim()) && s.NameEn.Contains(txtSearch.Text.Trim().ToLower())
+                        where s.IsActive
                         select s;
             dgvList.Rows.Clear();
             foreach (var s in staff)

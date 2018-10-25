@@ -114,11 +114,6 @@ namespace Tailor
                 return;
             }
 
-            if (txtPhone.Text == "")
-            {
-
-            }
-
             if (string.IsNullOrEmpty(txtBasicSalary.Text.Trim()))
             {
                 txtBasicSalary.Focus();
@@ -167,7 +162,7 @@ namespace Tailor
                             this.Close();
                         }
                     }
-                    catch (Exception exc)
+                    catch (Exception)
                     {
                         frmMessageBoxFail message = new frmMessageBoxFail();
                         message.ShowDialog();
@@ -210,7 +205,7 @@ namespace Tailor
                         }
 
                     }
-                    catch (Exception exc)
+                    catch (Exception)
                     {
                         frmMessageBoxFail message = new frmMessageBoxFail();
                         message.ShowDialog();
