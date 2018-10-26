@@ -58,8 +58,9 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Font = new System.Drawing.Font("Khmer OS Siemreap", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.panel1.Location = new System.Drawing.Point(0, 0);
+            this.panel1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(764, 528);
+            this.panel1.Size = new System.Drawing.Size(679, 422);
             this.panel1.TabIndex = 2;
             // 
             // dgvList
@@ -73,12 +74,12 @@
             this.Column1,
             this.Column2,
             this.Column3});
-            this.dgvList.Location = new System.Drawing.Point(435, 31);
-            this.dgvList.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.dgvList.Location = new System.Drawing.Point(387, 25);
+            this.dgvList.Margin = new System.Windows.Forms.Padding(4);
             this.dgvList.Name = "dgvList";
             this.dgvList.ReadOnly = true;
             this.dgvList.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvList.Size = new System.Drawing.Size(300, 338);
+            this.dgvList.Size = new System.Drawing.Size(267, 270);
             this.dgvList.TabIndex = 15;
             // 
             // Column1
@@ -106,40 +107,42 @@
             // btnRemove
             // 
             this.btnRemove.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(212)))), ((int)(((byte)(230)))), ((int)(((byte)(241)))));
-            this.btnRemove.Location = new System.Drawing.Point(256, 318);
-            this.btnRemove.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.btnRemove.Location = new System.Drawing.Point(228, 254);
+            this.btnRemove.Margin = new System.Windows.Forms.Padding(4);
             this.btnRemove.Name = "btnRemove";
-            this.btnRemove.Size = new System.Drawing.Size(148, 51);
+            this.btnRemove.Size = new System.Drawing.Size(132, 41);
             this.btnRemove.TabIndex = 4;
             this.btnRemove.Text = "លុប";
             this.btnRemove.UseVisualStyleBackColor = false;
+            this.btnRemove.Click += new System.EventHandler(this.btnRemove_Click);
             // 
             // btnAdd
             // 
             this.btnAdd.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(212)))), ((int)(((byte)(230)))), ((int)(((byte)(241)))));
-            this.btnAdd.Location = new System.Drawing.Point(256, 89);
-            this.btnAdd.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.btnAdd.Location = new System.Drawing.Point(228, 71);
+            this.btnAdd.Margin = new System.Windows.Forms.Padding(4);
             this.btnAdd.Name = "btnAdd";
-            this.btnAdd.Size = new System.Drawing.Size(148, 51);
+            this.btnAdd.Size = new System.Drawing.Size(132, 41);
             this.btnAdd.TabIndex = 4;
             this.btnAdd.Text = "បន្ថែម";
             this.btnAdd.UseVisualStyleBackColor = false;
+            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
             // 
             // txtDescription
             // 
-            this.txtDescription.Location = new System.Drawing.Point(105, 31);
-            this.txtDescription.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.txtDescription.Location = new System.Drawing.Point(93, 25);
+            this.txtDescription.Margin = new System.Windows.Forms.Padding(4);
             this.txtDescription.Name = "txtDescription";
-            this.txtDescription.Size = new System.Drawing.Size(298, 44);
+            this.txtDescription.Size = new System.Drawing.Size(265, 38);
             this.txtDescription.TabIndex = 3;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(30, 35);
+            this.label1.Location = new System.Drawing.Point(27, 28);
             this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(61, 36);
+            this.label1.Size = new System.Drawing.Size(53, 31);
             this.label1.TabIndex = 2;
             this.label1.Text = "ខ្នាត :";
             // 
@@ -149,14 +152,16 @@
             this.btnCancel.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnCancel.Font = new System.Drawing.Font("Khmer OS Siemreap", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCancel.Image = global::Tailor.Properties.Resources.cancel_32px;
-            this.btnCancel.Location = new System.Drawing.Point(555, 434);
+            this.btnCancel.Location = new System.Drawing.Point(493, 347);
+            this.btnCancel.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnCancel.Name = "btnCancel";
-            this.btnCancel.Size = new System.Drawing.Size(180, 62);
+            this.btnCancel.Size = new System.Drawing.Size(160, 50);
             this.btnCancel.TabIndex = 1;
             this.btnCancel.Text = "បោះបង់";
             this.btnCancel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnCancel.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
             this.btnCancel.UseVisualStyleBackColor = false;
+            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
             // btnSave
             // 
@@ -164,33 +169,36 @@
             this.btnSave.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnSave.Font = new System.Drawing.Font("Khmer OS Siemreap", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSave.Image = global::Tailor.Properties.Resources.save_32px;
-            this.btnSave.Location = new System.Drawing.Point(351, 434);
+            this.btnSave.Location = new System.Drawing.Point(312, 347);
+            this.btnSave.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(180, 62);
+            this.btnSave.Size = new System.Drawing.Size(160, 50);
             this.btnSave.TabIndex = 0;
             this.btnSave.Text = "រក្សាទុក";
             this.btnSave.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnSave.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
             this.btnSave.UseVisualStyleBackColor = false;
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
             // label3
             // 
             this.label3.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.label3.Location = new System.Drawing.Point(30, 400);
+            this.label3.Location = new System.Drawing.Point(27, 320);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(705, 3);
+            this.label3.Size = new System.Drawing.Size(627, 2);
             this.label3.TabIndex = 1;
             this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // frmMeasurement
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(764, 528);
+            this.ClientSize = new System.Drawing.Size(679, 422);
             this.Controls.Add(this.panel1);
-            this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "frmMeasurement";
             this.Text = "Measurements";
+            this.Load += new System.EventHandler(this.frmMeasurement_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvList)).EndInit();

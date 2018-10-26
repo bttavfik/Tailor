@@ -16,7 +16,7 @@ namespace Tailor
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new frmStaffPermissionView());
+            Application.Run(new frmStaffDeductionView());
         }
     }
 }
