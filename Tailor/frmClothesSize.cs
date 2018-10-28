@@ -21,16 +21,16 @@ namespace Tailor
         private void LoadData()
         {
             //Load clothes Size
-            dgvList.Rows.Clear();
-            i = 1;
-            var clothes = db.ClothesSizes.ToList();
-            foreach(var c in clothes)
-            {
-                if (c.IsActive == true)
-                {
-                    dgvList.Rows.Add(i++, c.Id, c.Size);
-                }
-            };
+            //dgvList.Rows.Clear();
+            //i = 1;
+            //var clothes = db.ClothesSizes.ToList();
+            //foreach(var c in clothes)
+            //{
+            //    if (c.IsActive == true)
+            //    {
+            //        dgvList.Rows.Add(i++, c.Id, c.Size);
+            //    }
+            //};
         }
        
         private void frmClothesSize_Load(object sender, EventArgs e)

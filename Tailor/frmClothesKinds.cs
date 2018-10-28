@@ -25,10 +25,16 @@ namespace Tailor
             dgvList.Rows.Clear();
             i = 1;
             var clothes = db.ClothesKinds.ToList();
-            foreach(var c  in clothes)
+            foreach (var c in clothes)
             {
                 dgvList.Rows.Add(i++, c.Id, c.Description);
             }
+            //dgvList.Rows.Clear();
+            //var c = db.ClothesKinds.ToList();
+            //foreach (var clothes in c)
+            //{
+            //    dgvList.Rows.Add(i++, clothes.Id, clothes.Description);
+            //}
         }
        
         private void frmClothesKinds_Load(object sender, EventArgs e)

@@ -42,7 +42,6 @@ namespace Tailor.Model
         public virtual DbSet<StaffAttendance> StaffAttendances { get; set; }
         public virtual DbSet<StaffOverTime> StaffOverTimes { get; set; }
         public virtual DbSet<Staff> Staffs { get; set; }
-        public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
         public virtual DbSet<StaffBonu> StaffBonus { get; set; }
         public virtual DbSet<StaffDeduction> StaffDeductions { get; set; }
     }
