@@ -14,14 +14,14 @@ namespace Tailor.Model
     
     public partial class StaffDeduction
     {
-        public int StaffId { get; set; }
+        public string StaffCode { get; set; }
         public System.DateTime Date { get; set; }
         public decimal Amount { get; set; }
         public string Reason { get; set; }
-        public bool Status { get; set; }
-        public int ComputerCode { get; set; }
+        public string ComputerCode { get; set; }
         public System.DateTime ComputeTime { get; set; }
     
         public virtual Staff Staff { get; set; }
+        public virtual Staff Staff1 { get; set; }
     }
 }

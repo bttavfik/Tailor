@@ -12,15 +12,17 @@ namespace Tailor.Model
     using System;
     using System.Collections.Generic;
     
-    public partial class ClothesMaterial
+    public partial class StaffOverTime
     {
-        public string ClothesCode { get; set; }
-        public int MaterialId { get; set; }
-        public double Unit { get; set; }
-        public decimal UnitCost { get; set; }
-        public decimal Amount { get; set; }
+        public string StaffCode { get; set; }
+        public System.DateTime FromDate { get; set; }
+        public Nullable<System.DateTime> UntilDate { get; set; }
+        public string Status { get; set; }
+        public decimal Wage { get; set; }
+        public string ComputerCode { get; set; }
+        public System.DateTime ComputeTime { get; set; }
     
-        public virtual Cloth Cloth { get; set; }
-        public virtual Material Material { get; set; }
+        public virtual Staff Staff { get; set; }
+        public virtual Staff Staff1 { get; set; }
     }
 }

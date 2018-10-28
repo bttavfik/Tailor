@@ -27,7 +27,7 @@ namespace Tailor.Model
     
         public virtual DbSet<Budget> Budgets { get; set; }
         public virtual DbSet<BudgetAdjustment> BudgetAdjustments { get; set; }
-        public virtual DbSet<Clothes> Clothes { get; set; }
+        public virtual DbSet<Cloth> Clothes { get; set; }
         public virtual DbSet<ClothesDetail> ClothesDetails { get; set; }
         public virtual DbSet<ClothesKind> ClothesKinds { get; set; }
         public virtual DbSet<ClothesMaterial> ClothesMaterials { get; set; }
@@ -38,11 +38,12 @@ namespace Tailor.Model
         public virtual DbSet<Material> Materials { get; set; }
         public virtual DbSet<MaterialStock> MaterialStocks { get; set; }
         public virtual DbSet<Measurement> Measurements { get; set; }
-        public virtual DbSet<StaffAttendance> StaffAttendances { get; set; }
-        public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
-        public virtual DbSet<StaffDeduction> StaffDeductions { get; set; }
-        public virtual DbSet<StaffPermission> StaffPermissions { get; set; }
-        public virtual DbSet<Staff> Staffs { get; set; }
         public virtual DbSet<Position> Positions { get; set; }
+        public virtual DbSet<StaffAttendance> StaffAttendances { get; set; }
+        public virtual DbSet<StaffOverTime> StaffOverTimes { get; set; }
+        public virtual DbSet<Staff> Staffs { get; set; }
+        public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
+        public virtual DbSet<StaffBonu> StaffBonus { get; set; }
+        public virtual DbSet<StaffDeduction> StaffDeductions { get; set; }
     }
 }

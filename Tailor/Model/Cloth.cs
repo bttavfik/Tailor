@@ -12,10 +12,10 @@ namespace Tailor.Model
     using System;
     using System.Collections.Generic;
     
-    public partial class Clothes
+    public partial class Cloth
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Clothes()
+        public Cloth()
         {
             this.ClothesDetails = new HashSet<ClothesDetail>();
             this.ClothesMaterials = new HashSet<ClothesMaterial>();

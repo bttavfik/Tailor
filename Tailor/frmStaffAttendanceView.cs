@@ -10,16 +10,16 @@ using System.Windows.Forms;
 
 namespace Tailor
 {
-    public partial class frmMessageBoxFail : Form
+    public partial class frmStaffAttendanceView : Form
     {
-        public frmMessageBoxFail()
+        public frmStaffAttendanceView()
         {
             InitializeComponent();
         }
 
-        private void btnOK_Click(object sender, EventArgs e)
+        private void frmStaffAttendanceView_Load(object sender, EventArgs e)
         {
-            this.Close();
+            this.WindowState = FormWindowState.Maximized;
         }
     }
 }

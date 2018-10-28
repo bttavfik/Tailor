@@ -133,84 +133,84 @@ namespace Tailor
 
             if (edit)
             {
-                frmMessageBoxQuestion confirm = new frmMessageBoxQuestion();
-                confirm.label1.Text = "តើអ្នកចង់កែប្រែទិន្នន័យមែនទេ?";
-                confirm.btnOkClick = true;
-                confirm.ShowDialog();
-                if (confirm.btnOkClick)
-                {
-                    try
-                    {
-                        //Update staff 
-                        var staff = db.Staffs.Find(id);
-                        staff.NameKh = txtNameKh.Text;
-                        staff.NameEn = txtNameEn.Text;
-                        staff.GenderId = Convert.ToInt32(cboGender.SelectedValue.ToString());
-                        staff.NationalId = txtNationalId.Text;
-                        staff.DateOfBirth = dtpBirthDate.Value;
-                        staff.PlaceOfBirth = txtBirthPlace.Text;
-                        staff.CurrentAddress = txtCurrentAddress.Text;
-                        staff.Phone = txtPhone.Text;
-                        staff.PositionId = Convert.ToInt32(cboSkill.SelectedValue.ToString());
-                        staff.BasicSalary = salary;
-                        staff.IsActive = true;
-                        int action = db.SaveChanges();
-                        if (action >= 1)
-                        {
-                            frmMessageBoxSuccessfull message = new frmMessageBoxSuccessfull();
-                            message.ShowDialog();
-                            this.Close();
-                        }
-                    }
-                    catch (Exception)
-                    {
-                        frmMessageBoxFail message = new frmMessageBoxFail();
-                        message.ShowDialog();
-                    }
-                }
+                //frmMessageBoxQuestion confirm = new frmMessageBoxQuestion();
+                //confirm.label1.Text = "តើអ្នកចង់កែប្រែទិន្នន័យមែនទេ?";
+                //confirm.btnOkClick = true;
+                //confirm.ShowDialog();
+                //if (confirm.btnOkClick)
+                //{
+                //    try
+                //    {
+                //        //Update staff 
+                //        var staff = db.Staffs.Find(id);
+                //        staff.NameKh = txtNameKh.Text;
+                //        staff.NameEn = txtNameEn.Text;
+                //        staff.GenderId = Convert.ToInt32(cboGender.SelectedValue.ToString());
+                //        staff.NationalId = txtNationalId.Text;
+                //        staff.DateOfBirth = dtpBirthDate.Value;
+                //        staff.PlaceOfBirth = txtBirthPlace.Text;
+                //        staff.CurrentAddress = txtCurrentAddress.Text;
+                //        staff.Phone = txtPhone.Text;
+                //        staff.PositionId = Convert.ToInt32(cboSkill.SelectedValue.ToString());
+                //        staff.BasicSalary = salary;
+                //        staff.IsActive = true;
+                //        int action = db.SaveChanges();
+                //        if (action >= 1)
+                //        {
+                //            frmMessageBoxSuccessfull message = new frmMessageBoxSuccessfull();
+                //            message.ShowDialog();
+                //            this.Close();
+                //        }
+                //    }
+                //    catch (Exception)
+                //    {
+                //        frmMessageBoxFail message = new frmMessageBoxFail();
+                //        message.ShowDialog();
+                //    }
+                //}
             }
             else
             {
-                frmMessageBoxQuestion confirm = new frmMessageBoxQuestion();
-                confirm.label1.Text = "តើអ្នកចង់រក្សាទុក្ខទិន្នន័យមែនទេ?";
-                confirm.btnOkClick = true;
-                confirm.ShowDialog();
+                //frmMessageBoxQuestion confirm = new frmMessageBoxQuestion();
+                //confirm.label1.Text = "តើអ្នកចង់រក្សាទុក្ខទិន្នន័យមែនទេ?";
+                //confirm.btnOkClick = true;
+                //confirm.ShowDialog();
 
-                if (confirm.btnOkClick)
-                {
-                    try
-                    {
-                        //Insert new staff
-                        Staff staff = new Staff()
-                        {
-                            NameKh = txtNameKh.Text,
-                            NameEn = txtNameEn.Text,
-                            GenderId = Convert.ToInt32(cboGender.SelectedValue.ToString()),
-                            NationalId = txtNationalId.Text,
-                            DateOfBirth = dtpBirthDate.Value,
-                            PlaceOfBirth = txtBirthPlace.Text,
-                            CurrentAddress = txtCurrentAddress.Text,
-                            Phone = txtPhone.Text,
-                            PositionId = Convert.ToInt32(cboSkill.SelectedValue.ToString()),
-                            BasicSalary = salary,
-                            IsActive = true
-                        };
-                        db.Staffs.Add(staff);
-                        int action = db.SaveChanges();
-                        if (action >= 1)
-                        {
-                            ClearData();
-                            frmMessageBoxSuccessfull message = new frmMessageBoxSuccessfull();
-                            message.ShowDialog();
-                        }
+                //if (confirm.btnOkClick)
+                //{
+                //    try
+                //    {
+                //        //Insert new staff
+                //        Staff staff = new Staff()
+                //        {
+                //            NameKh = txtNameKh.Text,
+                //            NameEn = txtNameEn.Text,
+                //            GenderId = Convert.ToInt32(cboGender.SelectedValue.ToString()),
+                //            NationalId = txtNationalId.Text,
+                //            DateOfBirth = dtpBirthDate.Value,
+                //            PlaceOfBirth = txtBirthPlace.Text,
+                //            CurrentAddress = txtCurrentAddress.Text,
+                //            Phone = txtPhone.Text,
+                //            PositionId = Convert.ToInt32(cboSkill.SelectedValue.ToString()),
+                //            BasicSalary = salary,
+                //            IsActive = true
+                //        };
+                //        db.Staffs.Add(staff);
+                //        int action = db.SaveChanges();
+                //        if (action >= 1)
+                //        {
+                //            ClearData();
+                //            frmMessageBoxSuccessfull message = new frmMessageBoxSuccessfull();
+                //            message.ShowDialog();
+                //        }
 
-                    }
-                    catch (Exception)
-                    {
-                        frmMessageBoxFail message = new frmMessageBoxFail();
-                        message.ShowDialog();
-                    }
-                }
+                //    }
+                //    catch (Exception)
+                //    {
+                //        frmMessageBoxFail message = new frmMessageBoxFail();
+                //        message.ShowDialog();
+                //    }
+                //}
             }
 
             if (staffView != null)

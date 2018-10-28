@@ -10,12 +10,16 @@ using System.Windows.Forms;
 
 namespace Tailor
 {
-    public partial class frmPosition : Form
+    public partial class frmStaffOverTime : Form
     {
-        public frmPosition()
+        public frmStaffOverTime()
         {
             InitializeComponent();
         }
 
+        private void frmStaffOverTime_Load(object sender, EventArgs e)
+        {
+            this.CenterToParent();
+        }
     }
 }

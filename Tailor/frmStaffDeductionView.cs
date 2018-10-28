@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Tailor.Model;
+using Tailor.Services;
 namespace Tailor
 {
     public partial class frmStaffDeductionView : Form
@@ -29,10 +30,7 @@ namespace Tailor
 
                 foreach (var s in staff)
                 {
-                    if (s.Status == true)
-                    {
-                        dgvList.Rows.Add(i++, s.StaffId, s.Staff.NameKh, s.Date, s.Amount, s.Reason);
-                    }
+                    dgvList.Rows.Add(i++, s.StaffCode, s.Staff.NameKh, s.Date, s.Amount, s.Reason);
                 }
             }
         }
@@ -61,7 +59,7 @@ namespace Tailor
                 var result = from s in context.StaffDeductions.ToList() where s.Staff.NameKh.ToLower().StartsWith(txtSearch.Text.ToLower()) select s;
                 foreach (var s in result)
                 {
-                    dgvList.Rows.Add(i++, s.StaffId, s.Staff.NameKh, s.Date, s.Amount, s.Reason);
+                    dgvList.Rows.Add(i++, s.StaffCode, s.Staff.NameKh, s.Date, s.Amount, s.Reason);
                 }
             }
         }
@@ -81,7 +79,7 @@ namespace Tailor
                         var remove = context.StaffDeductions.Find(Id);
                         if (remove != null)
                         {
-                            remove.Status = false;
+                            //remove.Status = false;
                             context.SaveChanges();
                             this.LoadData();
                             MessageBox.Show("Removed...");
@@ -108,6 +106,11 @@ namespace Tailor
                 frm.ShowDialog();
                 this.LoadData();
             }          
+        }
+
+        private void label6_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

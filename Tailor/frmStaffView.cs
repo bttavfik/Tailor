@@ -93,36 +93,36 @@ namespace Tailor
 
         private void btnDelete_Click(object sender, EventArgs e)
         {
-            if (index < 0)
-                return;
+            //if (index < 0)
+            //    return;
 
-            frmMessageBoxQuestion confirm = new frmMessageBoxQuestion();
-            confirm.label1.Text = "តើអ្នកចង់លុបទិន្នន័យមែនទេ?";
-            confirm.btnOkClick = true;
-            confirm.ShowDialog();
+            //frmMessageBoxQuestion confirm = new frmMessageBoxQuestion();
+            //confirm.label1.Text = "តើអ្នកចង់លុបទិន្នន័យមែនទេ?";
+            //confirm.btnOkClick = true;
+            //confirm.ShowDialog();
 
-            if (confirm.btnOkClick)
-            {
-                try
-                {
-                    var staff = db.Staffs.Find(id);
-                    staff.IsActive = false;
-                    int action = db.SaveChanges();
-                    {
-                        if (action >= 0)
-                        {
-                            LoadData();
-                            frmMessageBoxSuccessfull message = new frmMessageBoxSuccessfull();
-                            message.ShowDialog();
-                        }
-                    }
-                }
-                catch (Exception)
-                {
-                    frmMessageBoxFail message = new frmMessageBoxFail();
-                    message.ShowDialog();
-                }
-            }
+            //if (confirm.btnOkClick)
+            //{
+            //    try
+            //    {
+            //        var staff = db.Staffs.Find(id);
+            //        staff.IsActive = false;
+            //        int action = db.SaveChanges();
+            //        {
+            //            if (action >= 0)
+            //            {
+            //                LoadData();
+            //                frmMessageBoxSuccessfull message = new frmMessageBoxSuccessfull();
+            //                message.ShowDialog();
+            //            }
+            //        }
+            //    }
+            //    catch (Exception)
+            //    {
+            //        frmMessageBoxFail message = new frmMessageBoxFail();
+            //        message.ShowDialog();
+            //    }
+            //}
         }
 
         private void txtSearch_TextChanged(object sender, EventArgs e)

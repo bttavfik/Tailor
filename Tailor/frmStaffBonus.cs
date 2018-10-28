@@ -10,16 +10,11 @@ using System.Windows.Forms;
 
 namespace Tailor
 {
-    public partial class frmMessageBoxSuccessfull : Form
+    public partial class frmStaffBonus : Form
     {
-        public frmMessageBoxSuccessfull()
+        public frmStaffBonus()
         {
             InitializeComponent();
-        }
-
-        private void btnOK_Click(object sender, EventArgs e)
-        {
-            this.Close();
         }
     }
 }

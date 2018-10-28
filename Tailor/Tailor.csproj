@@ -56,7 +56,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Entities\TailorSetting.cs" />
+    <Compile Include="frmTailorMessage.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmTailorMessage.Designer.cs">
+      <DependentUpon>frmTailorMessage.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Services\TailorMessage.cs" />
+    <Compile Include="Services\TailorMessageIcon.cs" />
+    <Compile Include="Services\TailorService.cs" />
     <Compile Include="frmClothes.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -93,24 +101,6 @@
     <Compile Include="frmMeasurement.Designer.cs">
       <DependentUpon>frmMeasurement.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmMessageBoxFail.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="frmMessageBoxFail.Designer.cs">
-      <DependentUpon>frmMessageBoxFail.cs</DependentUpon>
-    </Compile>
-    <Compile Include="frmMessageBoxQuestion.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="frmMessageBoxQuestion.Designer.cs">
-      <DependentUpon>frmMessageBoxQuestion.cs</DependentUpon>
-    </Compile>
-    <Compile Include="frmMessageBoxSuccessfull.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="frmMessageBoxSuccessfull.Designer.cs">
-      <DependentUpon>frmMessageBoxSuccessfull.cs</DependentUpon>
-    </Compile>
     <Compile Include="frmPosition.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -122,6 +112,24 @@
     </Compile>
     <Compile Include="frmStaff.Designer.cs">
       <DependentUpon>frmStaff.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmStaffAttendance.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmStaffAttendance.designer.cs">
+      <DependentUpon>frmStaffAttendance.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmStaffAttendanceView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmStaffAttendanceView.Designer.cs">
+      <DependentUpon>frmStaffAttendanceView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmStaffBonus.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmStaffBonus.Designer.cs">
+      <DependentUpon>frmStaffBonus.cs</DependentUpon>
     </Compile>
     <Compile Include="frmStaffDeduction.cs">
       <SubType>Form</SubType>
@@ -135,17 +143,11 @@
     <Compile Include="frmStaffDeductionView.Designer.cs">
       <DependentUpon>frmStaffDeductionView.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmStaffPermission.cs">
+    <Compile Include="frmStaffOverTime.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmStaffPermission.Designer.cs">
-      <DependentUpon>frmStaffPermission.cs</DependentUpon>
-    </Compile>
-    <Compile Include="frmStaffPermissionView.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="frmStaffPermissionView.Designer.cs">
-      <DependentUpon>frmStaffPermissionView.cs</DependentUpon>
+    <Compile Include="frmStaffOverTime.Designer.cs">
+      <DependentUpon>frmStaffOverTime.cs</DependentUpon>
     </Compile>
     <Compile Include="frmStaffView.cs">
       <SubType>Form</SubType>
@@ -165,7 +167,7 @@
     <Compile Include="Model\BudgetAdjustment.cs">
       <DependentUpon>TailorModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Model\Clothes.cs">
+    <Compile Include="Model\Cloth.cs">
       <DependentUpon>TailorModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\ClothesDetail.cs">
@@ -207,10 +209,13 @@
     <Compile Include="Model\StaffAttendance.cs">
       <DependentUpon>TailorModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Model\StaffBonu.cs">
+      <DependentUpon>TailorModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Model\StaffDeduction.cs">
       <DependentUpon>TailorModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Model\StaffPermission.cs">
+    <Compile Include="Model\StaffOverTime.cs">
       <DependentUpon>TailorModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\sysdiagram.cs">
@@ -251,20 +256,20 @@
     <EmbeddedResource Include="frmMeasurement.resx">
       <DependentUpon>frmMeasurement.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmMessageBoxFail.resx">
-      <DependentUpon>frmMessageBoxFail.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="frmMessageBoxQuestion.resx">
-      <DependentUpon>frmMessageBoxQuestion.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="frmMessageBoxSuccessfull.resx">
-      <DependentUpon>frmMessageBoxSuccessfull.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="frmPosition.resx">
       <DependentUpon>frmPosition.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmStaff.resx">
       <DependentUpon>frmStaff.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmStaffAttendance.resx">
+      <DependentUpon>frmStaffAttendance.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmStaffAttendanceView.resx">
+      <DependentUpon>frmStaffAttendanceView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmStaffBonus.resx">
+      <DependentUpon>frmStaffBonus.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmStaffDeduction.resx">
       <DependentUpon>frmStaffDeduction.cs</DependentUpon>
@@ -272,14 +277,14 @@
     <EmbeddedResource Include="frmStaffDeductionView.resx">
       <DependentUpon>frmStaffDeductionView.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmStaffPermission.resx">
-      <DependentUpon>frmStaffPermission.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="frmStaffPermissionView.resx">
-      <DependentUpon>frmStaffPermissionView.cs</DependentUpon>
+    <EmbeddedResource Include="frmStaffOverTime.resx">
+      <DependentUpon>frmStaffOverTime.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmStaffView.resx">
       <DependentUpon>frmStaffView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmTailorMessage.resx">
+      <DependentUpon>frmTailorMessage.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmUser.resx">
       <DependentUpon>frmUser.cs</DependentUpon>
@@ -317,16 +322,6 @@
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
-    <Content Include="Model\TailorModel.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>TailorModel.edmx</DependentUpon>
-      <LastGenOutput>TailorModel.Context.cs</LastGenOutput>
-    </Content>
-    <Content Include="Model\TailorModel.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>TailorModel.edmx</DependentUpon>
-      <LastGenOutput>TailorModel.cs</LastGenOutput>
-    </Content>
     <None Include="Resources\Check.png" />
     <None Include="Resources\print-32px.png" />
     <None Include="Resources\edit-32px1.png" />
@@ -347,6 +342,30 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\icons8-search-32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Model\TailorModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>TailorModel.edmx</DependentUpon>
+      <LastGenOutput>TailorModel.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Model\TailorModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>TailorModel.edmx</DependentUpon>
+      <LastGenOutput>TailorModel.cs</LastGenOutput>
+    </Content>
+    <None Include="Resources\_question icon.png" />
+    <None Include="Resources\_warning icon.png" />
+    <None Include="Resources\_save 24.png" />
+    <None Include="Resources\_info icon.png" />
+    <None Include="Resources\_error icon.png" />
+    <None Include="Resources\_warning 128.png" />
+    <None Include="Resources\_question 128.png" />
+    <None Include="Resources\_information 128.png" />
+    <None Include="Resources\_done 128.png" />
+    <None Include="Resources\_warning 16.png" />
+    <None Include="Resources\_checked 16.png" />
+    <None Include="Resources\checked.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

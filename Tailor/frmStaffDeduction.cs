@@ -34,7 +34,7 @@ namespace Tailor
             if (editFlag)
             {
                 var staff = db.StaffDeductions.Find(editId);
-                cboStaff.SelectedValue = staff.StaffId;
+                cboStaff.SelectedValue = staff.StaffCode;
                 dtpDate.Value = staff.Date;
                 txtAmount.Text = staff.Amount.ToString();
                 txtReason.Text = staff.Reason;
@@ -54,12 +54,11 @@ namespace Tailor
             if (editFlag)
             {
                 var staff = db.StaffDeductions.Find(editId);
-                staff.StaffId=int.Parse(cboStaff.SelectedValue.ToString());
+                staff.StaffCode = cboStaff.SelectedValue.ToString();
                 staff.Date = dtpDate.Value;
                 staff.Amount = (txtAmount.Text != null) ? decimal.Parse(txtAmount.Text) : 0;
                 staff.Reason = txtReason.Text;
-                staff.Status = true;
-                staff.ComputerCode = Convert.ToInt32(Entities.TailorSetting.GetComputerCode());
+                staff.ComputerCode = Entities.TailorSetting.GetComputerCode();
                 staff.ComputeTime = Entities.TailorSetting.GetComputerTime();
 
                 editId = 0;
@@ -73,12 +72,11 @@ namespace Tailor
                 //Insert Staff Deduction
                 var staff = new StaffDeduction()
                 {
-                    StaffId = int.Parse(cboStaff.SelectedValue.ToString()),
+                    StaffCode = cboStaff.SelectedValue.ToString(),
                     Date = dtpDate.Value,
                     Amount = (!string.IsNullOrEmpty(txtAmount.Text.Trim()) ? decimal.Parse(txtAmount.Text) : 0),
                     Reason = txtReason.Text,
-                    Status = true,
-                    ComputerCode = Convert.ToInt32(Entities.TailorSetting.GetComputerCode()),
+                    ComputerCode = Entities.TailorSetting.GetComputerCode(),
                     ComputeTime = Entities.TailorSetting.GetComputerTime()
                 };
                 db.StaffDeductions.Add(staff);

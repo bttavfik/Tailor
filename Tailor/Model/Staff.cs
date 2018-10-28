@@ -17,11 +17,18 @@ namespace Tailor.Model
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Staff()
         {
-            this.Attendances = new HashSet<StaffAttendance>();
-            this.PermissionNote = new HashSet<StaffPermission>();
+            this.StaffAttendances = new HashSet<StaffAttendance>();
+            this.StaffAttendances1 = new HashSet<StaffAttendance>();
+            this.StaffOverTimes = new HashSet<StaffOverTime>();
+            this.StaffOverTimes1 = new HashSet<StaffOverTime>();
+            this.StaffBonus = new HashSet<StaffBonu>();
+            this.StaffBonus1 = new HashSet<StaffBonu>();
+            this.StaffDeductions = new HashSet<StaffDeduction>();
+            this.StaffDeductions1 = new HashSet<StaffDeduction>();
         }
     
         public int Id { get; set; }
+        public string Code { get; set; }
         public string NameKh { get; set; }
         public string NameEn { get; set; }
         public int GenderId { get; set; }
@@ -35,12 +42,22 @@ namespace Tailor.Model
         public bool IsActive { get; set; }
     
         public virtual Gender Gender { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<StaffAttendance> Attendances { get; set; }
-        public virtual StaffDeduction Deductions { get; set; }
-        public virtual StaffPermission Permissions { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<StaffPermission> PermissionNote { get; set; }
         public virtual Position Position { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<StaffAttendance> StaffAttendances { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<StaffAttendance> StaffAttendances1 { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<StaffOverTime> StaffOverTimes { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<StaffOverTime> StaffOverTimes1 { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<StaffBonu> StaffBonus { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<StaffBonu> StaffBonus1 { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<StaffDeduction> StaffDeductions { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<StaffDeduction> StaffDeductions1 { get; set; }
     }
 }

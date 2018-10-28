@@ -19,7 +19,7 @@ namespace Tailor.Model
         public decimal PriceIn { get; set; }
         public decimal PriceOut { get; set; }
     
-        public virtual Clothes Cloth { get; set; }
+        public virtual Cloth Cloth { get; set; }
         public virtual ClothesSize ClothesSize { get; set; }
     }
 }

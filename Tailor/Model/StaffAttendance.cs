@@ -14,10 +14,14 @@ namespace Tailor.Model
     
     public partial class StaffAttendance
     {
-        public int StaffId { get; set; }
+        public string StaffCode { get; set; }
         public System.DateTime Date { get; set; }
         public string Status { get; set; }
+        public string Remark { get; set; }
+        public string ComputerCode { get; set; }
+        public System.DateTime ComputeTime { get; set; }
     
         public virtual Staff Staff { get; set; }
+        public virtual Staff Staff1 { get; set; }
     }
 }
