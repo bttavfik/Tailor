@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="TailorModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="TailorModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Budget">
           <Key>
             <PropertyRef Name="Id" />
@@ -175,11 +175,10 @@ warning 6002: The table/view 'Tailor.dbo.StaffDeductions' does not have a primar
         <EntityType Name="StaffOverTime">
           <Key>
             <PropertyRef Name="StaffCode" />
-            <PropertyRef Name="FromDate" />
+            <PropertyRef Name="Date" />
           </Key>
           <Property Name="StaffCode" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="FromDate" Type="date" Nullable="false" />
-          <Property Name="UntilDate" Type="date" />
+          <Property Name="Date" Type="date" Nullable="false" />
           <Property Name="Status" Type="varchar" MaxLength="5" Nullable="false" />
           <Property Name="Wage" Type="decimal" Precision="18" Scale="3" Nullable="false" />
           <Property Name="ComputerCode" Type="nvarchar" MaxLength="50" Nullable="false" />
@@ -540,8 +539,7 @@ warning 6002: The table/view 'Tailor.dbo.StaffDeductions' does not have a primar
             <End Role="Staffs" EntitySet="Staffs" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="TailorModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -702,11 +700,10 @@ warning 6002: The table/view 'Tailor.dbo.StaffDeductions' does not have a primar
         <EntityType Name="StaffOverTime">
           <Key>
             <PropertyRef Name="StaffCode" />
-            <PropertyRef Name="FromDate" />
+            <PropertyRef Name="Date" />
           </Key>
           <Property Name="StaffCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="FromDate" Type="DateTime" Nullable="false" Precision="0" />
-          <Property Name="UntilDate" Type="DateTime" Precision="0" />
+          <Property Name="Date" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="Status" Type="String" MaxLength="5" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Wage" Type="Decimal" Precision="18" Scale="3" Nullable="false" />
           <Property Name="ComputerCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
@@ -1251,8 +1248,6 @@ warning 6002: The table/view 'Tailor.dbo.StaffDeductions' does not have a primar
             <EntityTypeMapping TypeName="TailorModel.StaffOverTime">
               <MappingFragment StoreEntitySet="StaffOverTime">
                 <ScalarProperty Name="StaffCode" ColumnName="StaffCode" />
-                <ScalarProperty Name="FromDate" ColumnName="FromDate" />
-                <ScalarProperty Name="UntilDate" ColumnName="UntilDate" />
                 <ScalarProperty Name="Status" ColumnName="Status" />
                 <ScalarProperty Name="Wage" ColumnName="Wage" />
                 <ScalarProperty Name="ComputerCode" ColumnName="ComputerCode" />

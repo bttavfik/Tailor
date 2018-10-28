@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Tailor.Model;
+using Tailor.Services;
 
 namespace Tailor
 {
@@ -41,34 +42,37 @@ namespace Tailor
 
         public void LoadData()
         {
-            var staff = db.Staffs.Where(s => s.IsActive).ToList();
-            dgvList.Rows.Clear();
-            foreach (var s in staff)
-            {
-                dgvList.Rows.Add(s.Id, s.NameKh, s.Gender.Description, s.DateOfBirth, s.NationalId, s.Phone, s.BasicSalary);
-            }
+            //var staff = db.Staffs.Where(s => s.IsActive).ToList();
+            //dgvList.Rows.Clear();
+            //foreach (var s in staff)
+            //{
+            //    dgvList.Rows.Add(s.Id, s.NameKh, s.Gender.Description, s.DateOfBirth, s.NationalId, s.Phone, s.BasicSalary);
+            //}
         }
 
         public void LoadInfo()
         {
             //Count all boy staff in database
-            var bStaff = db.Staffs.Where(s => s.GenderId == 1).Where(s => s.IsActive).Count();
-            lblBoy.Text = bStaff + " នាក់";
+            //var bStaff = db.Staffs.Where(s => s.GenderId == 1).Where(s => s.IsActive).Count();
+            //lblBoy.Text = bStaff + " នាក់";
 
-            //Count all girl staff in database 
-            var gStaff = db.Staffs.Where(s => s.GenderId == 2).Count();
-            lblGirl.Text = gStaff + " នាក់";
+            ////Count all girl staff in database 
+            //var gStaff = db.Staffs.Where(s => s.GenderId == 2).Count();
+            //lblGirl.Text = gStaff + " នាក់";
 
-            //Count all staff in database 
-            var staff = db.Staffs.Where(s => s.IsActive).Count();
-            lblAllStaff.Text = staff + "​​​​​​​​ នាក់";
+            ////Count all staff in database 
+            //var staff = db.Staffs.Where(s => s.IsActive).Count();
+            //lblAllStaff.Text = staff + "​​​​​​​​ នាក់";
         }
 
         private void btnNew_Click(object sender, EventArgs e)
         {
-            frmStaff staff = new frmStaff();
-            staff.staffView = this;
-            staff.ShowDialog();
+            DialogResult dr = TailorMessage.Show("Delete selected row Delete selected rowDelete selected ?", "Student", TailorMessageIcon.Warning);
+
+            MessageBox.Show("" + dr);
+            //frmStaff staff = new frmStaff();
+            //staff.staffView = this;
+            //staff.ShowDialog();
         }
 
         private void dgvList_CellClick(object sender, DataGridViewCellEventArgs e)

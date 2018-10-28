@@ -11,14 +11,14 @@ using Tailor.Model;
 
 namespace Tailor
 {
-    public partial class frmStaffPermission : Form
+    public partial class frmStaffAttendance : Form
     {
         TailorEntities db = new TailorEntities();
         //public frmStaffPermissionView StaffPermissionView = null;
         public int id = 0;
         public bool edit = false;
 
-        public frmStaffPermission()
+        public frmStaffAttendance()
         {
             InitializeComponent();
         }

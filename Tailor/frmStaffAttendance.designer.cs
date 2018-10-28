@@ -1,6 +1,6 @@
 ﻿namespace Tailor
 {
-    partial class frmStaffPermission
+    partial class frmStaffAttendance
     {
         /// <summary>
         /// Required designer variable.

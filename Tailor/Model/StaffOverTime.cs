@@ -15,8 +15,7 @@ namespace Tailor.Model
     public partial class StaffOverTime
     {
         public string StaffCode { get; set; }
-        public System.DateTime FromDate { get; set; }
-        public Nullable<System.DateTime> UntilDate { get; set; }
+        public System.DateTime Date { get; set; }
         public string Status { get; set; }
         public decimal Wage { get; set; }
         public string ComputerCode { get; set; }
