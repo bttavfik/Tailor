@@ -28,21 +28,19 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.panel3 = new System.Windows.Forms.Panel();
             this.label3 = new System.Windows.Forms.Label();
-            this.checkBox4 = new System.Windows.Forms.CheckBox();
-            this.dateTimePicker2 = new System.Windows.Forms.DateTimePicker();
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.checkBox3 = new System.Windows.Forms.CheckBox();
-            this.checkBox2 = new System.Windows.Forms.CheckBox();
-            this.checkBox1 = new System.Windows.Forms.CheckBox();
+            this.btnAttendance = new System.Windows.Forms.Button();
+            this.btnSearch = new System.Windows.Forms.Button();
+            this.dtpUntillDate = new System.Windows.Forms.DateTimePicker();
+            this.txtSeach = new System.Windows.Forms.TextBox();
+            this.dtpFromDate = new System.Windows.Forms.DateTimePicker();
+            this.dtpAttendanceDate = new System.Windows.Forms.DateTimePicker();
             this.pnlInfo = new System.Windows.Forms.Panel();
             this.label2 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
             this.btnNew = new System.Windows.Forms.Button();
@@ -55,8 +53,6 @@
             this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel1.SuspendLayout();
-            this.panel3.SuspendLayout();
-            this.panel2.SuspendLayout();
             this.pnlInfo.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvList)).BeginInit();
             this.SuspendLayout();
@@ -67,10 +63,15 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panel1.BackColor = System.Drawing.SystemColors.Control;
-            this.panel1.Controls.Add(this.textBox1);
-            this.panel1.Controls.Add(this.panel3);
-            this.panel1.Controls.Add(this.panel2);
+            this.panel1.Controls.Add(this.label3);
+            this.panel1.Controls.Add(this.btnAttendance);
+            this.panel1.Controls.Add(this.btnSearch);
+            this.panel1.Controls.Add(this.dtpUntillDate);
+            this.panel1.Controls.Add(this.txtSeach);
+            this.panel1.Controls.Add(this.dtpFromDate);
+            this.panel1.Controls.Add(this.dtpAttendanceDate);
             this.panel1.Controls.Add(this.pnlInfo);
+            this.panel1.Controls.Add(this.label4);
             this.panel1.Controls.Add(this.label1);
             this.panel1.Controls.Add(this.button1);
             this.panel1.Controls.Add(this.btnNew);
@@ -82,106 +83,84 @@
             this.panel1.Size = new System.Drawing.Size(1162, 539);
             this.panel1.TabIndex = 2;
             // 
-            // textBox1
-            // 
-            this.textBox1.Font = new System.Drawing.Font("Khmer OS Siemreap", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox1.Location = new System.Drawing.Point(69, 32);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(350, 31);
-            this.textBox1.TabIndex = 12;
-            // 
-            // panel3
-            // 
-            this.panel3.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.panel3.Controls.Add(this.label3);
-            this.panel3.Controls.Add(this.checkBox4);
-            this.panel3.Controls.Add(this.dateTimePicker2);
-            this.panel3.Controls.Add(this.dateTimePicker1);
-            this.panel3.Location = new System.Drawing.Point(1, 117);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(419, 40);
-            this.panel3.TabIndex = 11;
-            // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(202, 6);
+            this.label3.Location = new System.Drawing.Point(590, 122);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(36, 25);
             this.label3.TabIndex = 13;
             this.label3.Text = "ដល់";
             this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // checkBox4
+            // btnAttendance
             // 
-            this.checkBox4.AutoSize = true;
-            this.checkBox4.Location = new System.Drawing.Point(7, 5);
-            this.checkBox4.Name = "checkBox4";
-            this.checkBox4.Size = new System.Drawing.Size(73, 29);
-            this.checkBox4.TabIndex = 0;
-            this.checkBox4.Text = "ចាប់ពី :";
-            this.checkBox4.UseVisualStyleBackColor = true;
+            this.btnAttendance.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnAttendance.BackColor = System.Drawing.SystemColors.Control;
+            this.btnAttendance.Cursor = System.Windows.Forms.Cursors.Default;
+            this.btnAttendance.Font = new System.Drawing.Font("Khmer OS Siemreap", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAttendance.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.btnAttendance.Location = new System.Drawing.Point(539, 2);
+            this.btnAttendance.Margin = new System.Windows.Forms.Padding(2);
+            this.btnAttendance.Name = "btnAttendance";
+            this.btnAttendance.Size = new System.Drawing.Size(100, 35);
+            this.btnAttendance.TabIndex = 13;
+            this.btnAttendance.Text = "ស្រង់វត្តមាន";
+            this.btnAttendance.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
+            this.btnAttendance.UseVisualStyleBackColor = true;
+            this.btnAttendance.Click += new System.EventHandler(this.btnAttendance_Click);
             // 
-            // dateTimePicker2
+            // btnSearch
             // 
-            this.dateTimePicker2.Font = new System.Drawing.Font("Khmer OS Siemreap", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dateTimePicker2.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dateTimePicker2.Location = new System.Drawing.Point(244, 3);
-            this.dateTimePicker2.Name = "dateTimePicker2";
-            this.dateTimePicker2.Size = new System.Drawing.Size(110, 31);
-            this.dateTimePicker2.TabIndex = 12;
+            this.btnSearch.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnSearch.BackColor = System.Drawing.SystemColors.Control;
+            this.btnSearch.Cursor = System.Windows.Forms.Cursors.Default;
+            this.btnSearch.Font = new System.Drawing.Font("Khmer OS Siemreap", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSearch.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.btnSearch.Location = new System.Drawing.Point(752, 117);
+            this.btnSearch.Margin = new System.Windows.Forms.Padding(2);
+            this.btnSearch.Name = "btnSearch";
+            this.btnSearch.Size = new System.Drawing.Size(100, 35);
+            this.btnSearch.TabIndex = 14;
+            this.btnSearch.Text = "ស្វែងរក";
+            this.btnSearch.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
+            this.btnSearch.UseVisualStyleBackColor = true;
+            this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
             // 
-            // dateTimePicker1
+            // dtpUntillDate
             // 
-            this.dateTimePicker1.Font = new System.Drawing.Font("Khmer OS Siemreap", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dateTimePicker1.Location = new System.Drawing.Point(86, 3);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(110, 31);
-            this.dateTimePicker1.TabIndex = 12;
+            this.dtpUntillDate.Font = new System.Drawing.Font("Khmer OS Siemreap", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dtpUntillDate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dtpUntillDate.Location = new System.Drawing.Point(632, 119);
+            this.dtpUntillDate.Name = "dtpUntillDate";
+            this.dtpUntillDate.Size = new System.Drawing.Size(110, 31);
+            this.dtpUntillDate.TabIndex = 12;
             // 
-            // panel2
+            // txtSeach
             // 
-            this.panel2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.panel2.Controls.Add(this.checkBox3);
-            this.panel2.Controls.Add(this.checkBox2);
-            this.panel2.Controls.Add(this.checkBox1);
-            this.panel2.Location = new System.Drawing.Point(426, 117);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(426, 40);
-            this.panel2.TabIndex = 11;
+            this.txtSeach.Font = new System.Drawing.Font("Khmer OS Siemreap", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtSeach.Location = new System.Drawing.Point(95, 121);
+            this.txtSeach.Name = "txtSeach";
+            this.txtSeach.Size = new System.Drawing.Size(350, 31);
+            this.txtSeach.TabIndex = 12;
+            this.txtSeach.TextChanged += new System.EventHandler(this.txtSeach_TextChanged);
             // 
-            // checkBox3
+            // dtpFromDate
             // 
-            this.checkBox3.AutoSize = true;
-            this.checkBox3.Location = new System.Drawing.Point(243, 3);
-            this.checkBox3.Name = "checkBox3";
-            this.checkBox3.Size = new System.Drawing.Size(113, 29);
-            this.checkBox3.TabIndex = 0;
-            this.checkBox3.Text = "អវត្តមាន (W)";
-            this.checkBox3.UseVisualStyleBackColor = true;
+            this.dtpFromDate.Font = new System.Drawing.Font("Khmer OS Siemreap", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dtpFromDate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dtpFromDate.Location = new System.Drawing.Point(474, 119);
+            this.dtpFromDate.Name = "dtpFromDate";
+            this.dtpFromDate.Size = new System.Drawing.Size(110, 31);
+            this.dtpFromDate.TabIndex = 12;
             // 
-            // checkBox2
+            // dtpAttendanceDate
             // 
-            this.checkBox2.AutoSize = true;
-            this.checkBox2.Location = new System.Drawing.Point(129, 4);
-            this.checkBox2.Name = "checkBox2";
-            this.checkBox2.Size = new System.Drawing.Size(108, 29);
-            this.checkBox2.TabIndex = 0;
-            this.checkBox2.Text = "ឥតច្បាប់ (A)";
-            this.checkBox2.UseVisualStyleBackColor = true;
-            // 
-            // checkBox1
-            // 
-            this.checkBox1.AutoSize = true;
-            this.checkBox1.Location = new System.Drawing.Point(11, 3);
-            this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(112, 29);
-            this.checkBox1.TabIndex = 0;
-            this.checkBox1.Text = "មានច្បាប់ (P)";
-            this.checkBox1.UseVisualStyleBackColor = true;
+            this.dtpAttendanceDate.Font = new System.Drawing.Font("Khmer OS Siemreap", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dtpAttendanceDate.Location = new System.Drawing.Point(95, 3);
+            this.dtpAttendanceDate.Name = "dtpAttendanceDate";
+            this.dtpAttendanceDate.Size = new System.Drawing.Size(350, 31);
+            this.dtpAttendanceDate.TabIndex = 12;
             // 
             // pnlInfo
             // 
@@ -203,10 +182,19 @@
             this.label2.TabIndex = 0;
             this.label2.Text = "ព័តមានបន្ថែម";
             // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(3, 8);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(86, 25);
+            this.label4.TabIndex = 1;
+            this.label4.Text = "កាលបរិច្ឆេទ :";
+            // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(1, 35);
+            this.label1.Location = new System.Drawing.Point(27, 124);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(62, 25);
             this.label1.TabIndex = 1;
@@ -214,11 +202,12 @@
             // 
             // button1
             // 
+            this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.button1.BackColor = System.Drawing.SystemColors.Control;
             this.button1.Cursor = System.Windows.Forms.Cursors.Default;
             this.button1.Font = new System.Drawing.Font("Khmer OS Siemreap", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button1.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.button1.Location = new System.Drawing.Point(588, 30);
+            this.button1.Location = new System.Drawing.Point(752, 2);
             this.button1.Margin = new System.Windows.Forms.Padding(2);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(100, 35);
@@ -229,11 +218,12 @@
             // 
             // btnNew
             // 
+            this.btnNew.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnNew.BackColor = System.Drawing.SystemColors.Control;
             this.btnNew.Cursor = System.Windows.Forms.Cursors.Default;
             this.btnNew.Font = new System.Drawing.Font("Khmer OS Siemreap", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnNew.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.btnNew.Location = new System.Drawing.Point(477, 30);
+            this.btnNew.Location = new System.Drawing.Point(643, 2);
             this.btnNew.Margin = new System.Windows.Forms.Padding(2);
             this.btnNew.Name = "btnNew";
             this.btnNew.Size = new System.Drawing.Size(100, 35);
@@ -241,26 +231,27 @@
             this.btnNew.Text = "បន្ថែមថ្មី";
             this.btnNew.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
             this.btnNew.UseVisualStyleBackColor = true;
+            this.btnNew.Click += new System.EventHandler(this.btnNew_Click);
             // 
             // dgvList
             // 
             this.dgvList.AllowUserToAddRows = false;
             this.dgvList.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(226)))), ((int)(((byte)(255)))));
-            this.dgvList.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(226)))), ((int)(((byte)(255)))));
+            this.dgvList.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle7;
             this.dgvList.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dgvList.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvList.BackgroundColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Khmer OS Siemreap", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvList.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle8.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle8.Font = new System.Drawing.Font("Khmer OS Siemreap", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle8.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvList.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle8;
             this.dgvList.ColumnHeadersHeight = 35;
             this.dgvList.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Column8,
@@ -281,6 +272,8 @@
             this.dgvList.StandardTab = true;
             this.dgvList.TabIndex = 1;
             this.dgvList.TabStop = false;
+            this.dgvList.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvList_CellClick);
+            this.dgvList.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.dgvList_MouseDoubleClick);
             // 
             // Column8
             // 
@@ -347,10 +340,6 @@
             this.Load += new System.EventHandler(this.frmStaffAttendanceView_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
-            this.panel3.ResumeLayout(false);
-            this.panel3.PerformLayout();
-            this.panel2.ResumeLayout(false);
-            this.panel2.PerformLayout();
             this.pnlInfo.ResumeLayout(false);
             this.pnlInfo.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvList)).EndInit();
@@ -366,17 +355,11 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button btnNew;
         private System.Windows.Forms.DataGridView dgvList;
-        private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.CheckBox checkBox3;
-        private System.Windows.Forms.CheckBox checkBox2;
-        private System.Windows.Forms.CheckBox checkBox1;
-        private System.Windows.Forms.DateTimePicker dateTimePicker1;
+        private System.Windows.Forms.DateTimePicker dtpFromDate;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.DateTimePicker dateTimePicker2;
-        private System.Windows.Forms.CheckBox checkBox4;
+        private System.Windows.Forms.DateTimePicker dtpUntillDate;
         private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.Panel panel3;
+        private System.Windows.Forms.TextBox txtSeach;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column8;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
@@ -384,5 +367,9 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column5;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column7;
+        private System.Windows.Forms.Button btnAttendance;
+        private System.Windows.Forms.Button btnSearch;
+        private System.Windows.Forms.DateTimePicker dtpAttendanceDate;
+        private System.Windows.Forms.Label label4;
     }
 }
