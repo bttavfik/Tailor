@@ -28,36 +28,39 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.lblDate = new System.Windows.Forms.Label();
+            this.lblFinished = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
-            this.radioButton1 = new System.Windows.Forms.RadioButton();
-            this.radioButton2 = new System.Windows.Forms.RadioButton();
+            this.rbtnA = new System.Windows.Forms.RadioButton();
+            this.rbtnP = new System.Windows.Forms.RadioButton();
             this.panel2 = new System.Windows.Forms.Panel();
             this.dtpFromDate = new System.Windows.Forms.DateTimePicker();
             this.dtpUntillDate = new System.Windows.Forms.DateTimePicker();
-            this.label8 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
+            this.lblUntillDate = new System.Windows.Forms.Label();
+            this.lblFromDate = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.btnCancel = new System.Windows.Forms.Button();
             this.txtReason = new System.Windows.Forms.RichTextBox();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.cboCode = new System.Windows.Forms.ComboBox();
             this.cboStaff = new System.Windows.Forms.ComboBox();
             this.btnSave = new System.Windows.Forms.Button();
-            this.label5 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
+            this.error = new System.Windows.Forms.ErrorProvider(this.components);
             this.panel1.SuspendLayout();
             this.panel3.SuspendLayout();
             this.panel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.error)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.SystemColors.Control;
-            this.panel1.Controls.Add(this.label5);
-            this.panel1.Controls.Add(this.label3);
+            this.panel1.Controls.Add(this.lblDate);
+            this.panel1.Controls.Add(this.lblFinished);
             this.panel1.Controls.Add(this.panel3);
             this.panel1.Controls.Add(this.panel2);
             this.panel1.Controls.Add(this.label2);
@@ -66,7 +69,7 @@
             this.panel1.Controls.Add(this.label4);
             this.panel1.Controls.Add(this.btnCancel);
             this.panel1.Controls.Add(this.txtReason);
-            this.panel1.Controls.Add(this.comboBox1);
+            this.panel1.Controls.Add(this.cboCode);
             this.panel1.Controls.Add(this.cboStaff);
             this.panel1.Controls.Add(this.btnSave);
             this.panel1.Font = new System.Drawing.Font("Khmer OS Siemreap", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -76,50 +79,76 @@
             this.panel1.Size = new System.Drawing.Size(869, 431);
             this.panel1.TabIndex = 1;
             // 
+            // lblDate
+            // 
+            this.lblDate.ForeColor = System.Drawing.Color.Red;
+            this.lblDate.Image = global::Tailor.Properties.Resources._warning_16;
+            this.lblDate.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.lblDate.Location = new System.Drawing.Point(2, 399);
+            this.lblDate.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblDate.Name = "lblDate";
+            this.lblDate.Size = new System.Drawing.Size(300, 25);
+            this.lblDate.TabIndex = 55;
+            this.lblDate.Text = "      កាលបរិច្ឆេទ មិនត្រឹមត្រូវ";
+            this.lblDate.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // lblFinished
+            // 
+            this.lblFinished.Image = global::Tailor.Properties.Resources._checked_16;
+            this.lblFinished.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.lblFinished.Location = new System.Drawing.Point(453, 399);
+            this.lblFinished.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblFinished.Name = "lblFinished";
+            this.lblFinished.Size = new System.Drawing.Size(160, 25);
+            this.lblFinished.TabIndex = 55;
+            this.lblFinished.Text = "      រួចរាល់";
+            this.lblFinished.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
             // panel3
             // 
             this.panel3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel3.Controls.Add(this.radioButton1);
-            this.panel3.Controls.Add(this.radioButton2);
+            this.panel3.Controls.Add(this.rbtnA);
+            this.panel3.Controls.Add(this.rbtnP);
             this.panel3.Location = new System.Drawing.Point(0, 116);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(416, 80);
             this.panel3.TabIndex = 54;
+            this.panel3.TabStop = true;
             // 
-            // radioButton1
+            // rbtnA
             // 
-            this.radioButton1.AutoSize = true;
-            this.radioButton1.Location = new System.Drawing.Point(23, 25);
-            this.radioButton1.Name = "radioButton1";
-            this.radioButton1.Size = new System.Drawing.Size(107, 29);
-            this.radioButton1.TabIndex = 53;
-            this.radioButton1.TabStop = true;
-            this.radioButton1.Text = "ឈប់ឥតច្បាប់";
-            this.radioButton1.UseVisualStyleBackColor = true;
+            this.rbtnA.AutoSize = true;
+            this.rbtnA.Location = new System.Drawing.Point(23, 25);
+            this.rbtnA.Name = "rbtnA";
+            this.rbtnA.Size = new System.Drawing.Size(107, 29);
+            this.rbtnA.TabIndex = 2;
+            this.rbtnA.TabStop = true;
+            this.rbtnA.Text = "ឈប់ឥតច្បាប់";
+            this.rbtnA.UseVisualStyleBackColor = true;
             // 
-            // radioButton2
+            // rbtnP
             // 
-            this.radioButton2.AutoSize = true;
-            this.radioButton2.Location = new System.Drawing.Point(166, 25);
-            this.radioButton2.Name = "radioButton2";
-            this.radioButton2.Size = new System.Drawing.Size(111, 29);
-            this.radioButton2.TabIndex = 53;
-            this.radioButton2.TabStop = true;
-            this.radioButton2.Text = "ឈប់មានច្បាប់";
-            this.radioButton2.UseVisualStyleBackColor = true;
+            this.rbtnP.AutoSize = true;
+            this.rbtnP.Location = new System.Drawing.Point(166, 25);
+            this.rbtnP.Name = "rbtnP";
+            this.rbtnP.Size = new System.Drawing.Size(111, 29);
+            this.rbtnP.TabIndex = 3;
+            this.rbtnP.TabStop = true;
+            this.rbtnP.Text = "ឈប់មានច្បាប់";
+            this.rbtnP.UseVisualStyleBackColor = true;
             // 
             // panel2
             // 
             this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel2.Controls.Add(this.dtpFromDate);
             this.panel2.Controls.Add(this.dtpUntillDate);
-            this.panel2.Controls.Add(this.label8);
-            this.panel2.Controls.Add(this.label6);
+            this.panel2.Controls.Add(this.lblUntillDate);
+            this.panel2.Controls.Add(this.lblFromDate);
             this.panel2.Location = new System.Drawing.Point(0, 221);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(416, 140);
             this.panel2.TabIndex = 52;
-            this.panel2.Paint += new System.Windows.Forms.PaintEventHandler(this.panel2_Paint);
+            this.panel2.TabStop = true;
             // 
             // dtpFromDate
             // 
@@ -129,7 +158,8 @@
             this.dtpFromDate.Margin = new System.Windows.Forms.Padding(2);
             this.dtpFromDate.Name = "dtpFromDate";
             this.dtpFromDate.Size = new System.Drawing.Size(200, 32);
-            this.dtpFromDate.TabIndex = 1;
+            this.dtpFromDate.TabIndex = 4;
+            this.dtpFromDate.ValueChanged += new System.EventHandler(this.dtpFromDate_ValueChanged);
             // 
             // dtpUntillDate
             // 
@@ -139,27 +169,28 @@
             this.dtpUntillDate.Margin = new System.Windows.Forms.Padding(2);
             this.dtpUntillDate.Name = "dtpUntillDate";
             this.dtpUntillDate.Size = new System.Drawing.Size(200, 32);
-            this.dtpUntillDate.TabIndex = 2;
+            this.dtpUntillDate.TabIndex = 5;
+            this.dtpUntillDate.ValueChanged += new System.EventHandler(this.dtpUntillDate_ValueChanged);
             // 
-            // label8
+            // lblUntillDate
             // 
-            this.label8.Location = new System.Drawing.Point(27, 89);
-            this.label8.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(155, 25);
-            this.label8.TabIndex = 51;
-            this.label8.Text = "រហូតដល់ថ្ងៃទី :";
-            this.label8.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.lblUntillDate.Location = new System.Drawing.Point(27, 89);
+            this.lblUntillDate.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblUntillDate.Name = "lblUntillDate";
+            this.lblUntillDate.Size = new System.Drawing.Size(155, 25);
+            this.lblUntillDate.TabIndex = 51;
+            this.lblUntillDate.Text = "រហូតដល់ថ្ងៃទី :";
+            this.lblUntillDate.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
-            // label6
+            // lblFromDate
             // 
-            this.label6.Location = new System.Drawing.Point(27, 30);
-            this.label6.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(155, 25);
-            this.label6.TabIndex = 51;
-            this.label6.Text = "ចាប់ពីថ្ងៃទី :";
-            this.label6.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.lblFromDate.Location = new System.Drawing.Point(27, 30);
+            this.lblFromDate.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblFromDate.Name = "lblFromDate";
+            this.lblFromDate.Size = new System.Drawing.Size(155, 25);
+            this.lblFromDate.TabIndex = 51;
+            this.lblFromDate.Text = "ចាប់ពីថ្ងៃទី :";
+            this.lblFromDate.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // label2
             // 
@@ -209,7 +240,7 @@
             this.btnCancel.Margin = new System.Windows.Forms.Padding(2);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(110, 35);
-            this.btnCancel.TabIndex = 5;
+            this.btnCancel.TabIndex = 8;
             this.btnCancel.Text = "បោះបង់";
             this.btnCancel.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
             this.btnCancel.UseVisualStyleBackColor = true;
@@ -221,22 +252,26 @@
             this.txtReason.Margin = new System.Windows.Forms.Padding(2);
             this.txtReason.Name = "txtReason";
             this.txtReason.Size = new System.Drawing.Size(250, 359);
-            this.txtReason.TabIndex = 3;
+            this.txtReason.TabIndex = 6;
             this.txtReason.Text = "";
             // 
-            // comboBox1
+            // cboCode
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.IntegralHeight = false;
-            this.comboBox1.Location = new System.Drawing.Point(166, 2);
-            this.comboBox1.Margin = new System.Windows.Forms.Padding(2);
-            this.comboBox1.MaxDropDownItems = 5;
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(250, 32);
-            this.comboBox1.TabIndex = 0;
+            this.cboCode.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.cboCode.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.cboCode.FormattingEnabled = true;
+            this.cboCode.IntegralHeight = false;
+            this.cboCode.Location = new System.Drawing.Point(166, 2);
+            this.cboCode.Margin = new System.Windows.Forms.Padding(2);
+            this.cboCode.MaxDropDownItems = 5;
+            this.cboCode.Name = "cboCode";
+            this.cboCode.Size = new System.Drawing.Size(250, 32);
+            this.cboCode.TabIndex = 0;
             // 
             // cboStaff
             // 
+            this.cboStaff.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.cboStaff.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.cboStaff.FormattingEnabled = true;
             this.cboStaff.IntegralHeight = false;
             this.cboStaff.Location = new System.Drawing.Point(166, 59);
@@ -244,7 +279,7 @@
             this.cboStaff.MaxDropDownItems = 5;
             this.cboStaff.Name = "cboStaff";
             this.cboStaff.Size = new System.Drawing.Size(250, 32);
-            this.cboStaff.TabIndex = 0;
+            this.cboStaff.TabIndex = 1;
             // 
             // btnSave
             // 
@@ -255,38 +290,17 @@
             this.btnSave.Margin = new System.Windows.Forms.Padding(2);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(110, 35);
-            this.btnSave.TabIndex = 4;
+            this.btnSave.TabIndex = 7;
             this.btnSave.Text = "រក្សាទុក";
             this.btnSave.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
             this.btnSave.UseVisualStyleBackColor = true;
             this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
-            // label5
+            // error
             // 
-            this.label5.ForeColor = System.Drawing.Color.Red;
-            this.label5.Image = global::Tailor.Properties.Resources._warning_16;
-            this.label5.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.label5.Location = new System.Drawing.Point(2, 399);
-            this.label5.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(300, 25);
-            this.label5.TabIndex = 55;
-            this.label5.Text = "      កាលបរិច្ឆេទ មិនត្រឹមត្រូវ";
-            this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.error.ContainerControl = this;
             // 
-            // label3
-            // 
-            this.label3.Image = global::Tailor.Properties.Resources._checked_16;
-            this.label3.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.label3.Location = new System.Drawing.Point(453, 399);
-            this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(160, 25);
-            this.label3.TabIndex = 55;
-            this.label3.Text = "      រួចរាល់";
-            this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // frmStaffPermission
+            // frmStaffAttendance
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -296,7 +310,7 @@
             this.Margin = new System.Windows.Forms.Padding(2);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
-            this.Name = "frmStaffPermission";
+            this.Name = "frmStaffAttendance";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Staff attendance";
             this.Load += new System.EventHandler(this.frmStaffPermission_Load);
@@ -304,6 +318,7 @@
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
             this.panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.error)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -318,17 +333,18 @@
         private System.Windows.Forms.RichTextBox txtReason;
         private System.Windows.Forms.ComboBox cboStaff;
         private System.Windows.Forms.DateTimePicker dtpFromDate;
-        private System.Windows.Forms.ComboBox comboBox1;
-        private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.ComboBox cboCode;
+        private System.Windows.Forms.Label lblUntillDate;
+        private System.Windows.Forms.Label lblFromDate;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Panel panel3;
-        private System.Windows.Forms.RadioButton radioButton1;
-        private System.Windows.Forms.RadioButton radioButton2;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.RadioButton rbtnA;
+        private System.Windows.Forms.RadioButton rbtnP;
+        private System.Windows.Forms.Label lblFinished;
+        private System.Windows.Forms.Label lblDate;
+        private System.Windows.Forms.ErrorProvider error;
     }
 }

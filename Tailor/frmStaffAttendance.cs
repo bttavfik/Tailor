@@ -8,15 +8,17 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Tailor.Model;
+using Tailor.Services;
 
 namespace Tailor
 {
     public partial class frmStaffAttendance : Form
     {
-        TailorEntities db = new TailorEntities();
-        //public frmStaffPermissionView StaffPermissionView = null;
-        public int id = 0;
+
+        public frmStaffAttendanceView AttendanceView = null;
+        public string code;
         public bool edit = false;
+        public DateTime date;
 
         public frmStaffAttendance()
         {
@@ -25,154 +27,200 @@ namespace Tailor
 
         private void frmStaffPermission_Load(object sender, EventArgs e)
         {
-            //Load staff from database
-            var staff = db.Staffs.Where(s => s.IsActive == true).ToList();
-            cboStaff.DataSource = staff;
-            cboStaff.DisplayMember = "NameKh";
-            cboStaff.ValueMember = "Id";
 
-            //ComboBox defualt selection
+            lblDate.Visible = false;
+            lblFinished.Visible = false;
+            LoadStaffCode();
+            LoadStaffName();
+
+            rbtnA.Checked = true;
+
+            cboCode.SelectedIndex = -1;
             cboStaff.SelectedIndex = -1;
+
+            this.cboCode.SelectedIndexChanged += new System.EventHandler(this.cboCode_SelectedIndexChanged);
+            this.cboStaff.SelectedIndexChanged += new System.EventHandler(this.cboStaff_SelectedIndexChanged);
 
             if (edit)
             {
-                //var s = db.StaffPermissions.Find(id);
-                //cboStaff.SelectedValue = s.StaffId;
-                //dtpFromDate.Value = s.FromDate;
-                //dtpUntillDate.Value = s.UntilDate;
-                //txtReason.Text = s.Reason;
-                //btnSave.Text = "កែប្រែ";
-                //btnCancel.Enabled = false;
+                this.Edit();
+            }
+        }
+
+        private void LoadStaffCode()
+        {
+            using (var db = new TailorEntities())
+            {
+                var staff = db.Staffs.Where(s => s.IsActive).ToList();
+                cboCode.DataSource = staff;
+                cboCode.DisplayMember = "Code";
+                cboCode.ValueMember = "Code";
+            }
+        }
+
+        private void LoadStaffName()
+        {
+            using (var db = new TailorEntities())
+            {
+                var staff = db.Staffs.Where(s => s.IsActive).ToList();
+                cboStaff.DataSource = staff;
+                cboStaff.DisplayMember = "NameKh";
+                cboStaff.ValueMember = "Code";
+            }
+        }
+
+        private void Edit()
+        {
+            using(var db = new TailorEntities())
+            {
+                var query = db.StaffAttendances.SingleOrDefault(s => s.StaffCode == code && s.Date == date);
+                cboCode.SelectedValue = code;
+                if (query.Status == "P")
+                    rbtnP.Checked = true;
+                else if (query.Status == "A")
+                    rbtnA.Checked = true;
+                else
+                {
+                    rbtnA.Checked = false;
+                    rbtnP.Checked = false;
+                }
+                dtpFromDate.Value = query.Date;
+                dtpUntillDate.Value = query.Date;
+                dtpFromDate.Enabled = false;
+                dtpUntillDate.Enabled = false;
+                txtReason.Text = query.Remark;
             }
         }
 
         private void btnSave_Click(object sender, EventArgs e)
         {
+            if (cboCode.SelectedIndex < 0)
+            {
+                error.SetError(cboCode, null);
+                cboCode.Focus();
+                return;
+            }
+
             if (cboStaff.SelectedIndex < 0)
             {
-                MessageBox.Show("Please select name...", "Missing", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                error.SetError(cboStaff, null);
                 cboStaff.Focus();
                 return;
             }
 
-            if (dtpFromDate.Value == null)
+            if (dtpUntillDate.Value < dtpFromDate.Value)
             {
-                MessageBox.Show("Please choose date...", "Missing", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                dtpFromDate.Focus();
-                SendKeys.Send("{%DOWN}");
+                error.SetError(dtpUntillDate, null);
+                dtpUntillDate.Focus();
                 return;
             }
 
-            if (dtpUntillDate.Value == null)
+            string status = rbtnA.Checked ? "A" : "P";
+
+            DateTime startDate = dtpFromDate.Value;
+            DateTime endDate = dtpUntillDate.Value;
+
+            if (edit)
             {
-                MessageBox.Show("Please choose date...", "Missing", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                dtpFromDate.Focus();
-                SendKeys.Send("{%DOWN}");
-                return;
+                using (var db = new TailorEntities())
+                {
+                    var query = db.StaffAttendances.SingleOrDefault(a => a.StaffCode == code && a.Date == date);
+                    query.Status = status;
+                    query.Remark = txtReason.Text;
+
+                    int action = db.SaveChanges();
+                    if (action >= 1)
+                        lblFinished.Visible = true;
+                }
+            }
+            else
+            {
+                using (var db = new TailorEntities())
+                {
+                    var query = db.StaffAttendances.Where(a => a.Date.Month == dtpFromDate.Value.Month || a.Date.Month == dtpUntillDate.Value.Month).ToList();
+
+                    for (DateTime date = startDate.Date; date <= endDate.Date; date = date.AddDays(1))
+                    {
+                        int isExist = 0;
+                        foreach (var a in query)
+                        {
+                            if(a.StaffCode == cboCode.SelectedValue.ToString() && a.Date.Date == date)
+                            {
+                                isExist = 1;
+                            } 
+                        }
+                        if (isExist == 0)
+                        {
+                            StaffAttendance attendance = new StaffAttendance()
+                            {
+                                StaffCode = cboCode.SelectedValue.ToString(),
+                                Date = date,
+                                Status = status,
+                                Remark = txtReason.Text,
+                                ComputerCode = TailorService.GetComputerCode(),
+                                ComputeTime = TailorService.GetComputerTime()
+                            };
+                            db.StaffAttendances.Add(attendance);
+                        }
+                    }
+                    int action = db.SaveChanges();
+                    if (action >= 1)
+                        lblFinished.Visible = true;
+                }
+            }
+            if (AttendanceView != null)
+            {
+                AttendanceView.LoadStaffAttendance();
+                AttendanceView.LoadAttendanceInfo();
             }
 
-            if (string.IsNullOrEmpty(txtReason.Text.Trim()))
-            {
-                MessageBox.Show("Please write the reason...", "Missing", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                txtReason.Focus();
-                return;
-            }
-
-            //if (edit)
-            //{
-            //    try
-                //{
-                //    frmMessageBoxQuestion confirm = new frmMessageBoxQuestion();
-                //    confirm.label1.Text = "តើអ្នកចង់កែប្រែទិន្នន័យមែនទេ?";
-                //    confirm.btnOkClick = true;
-                //    confirm.ShowDialog();
-
-                //    if (confirm.btnOkClick)
-                //    {
-                //        //var s = db.StaffPermissions.Find(id);
-                //        //s.FromDate = dtpFromDate.Value;
-                //        //s.UntilDate = dtpUntillDate.Value;
-                //        //s.Reason = txtReason.Text;
-                //        //s.ComputerCode = Convert.ToInt32(Entities.TailorSetting.GetComputerCode());
-                //        //s.ComputeTime = Entities.TailorSetting.GetComputerTime();
-                //        //int action = db.SaveChanges();
-                //        //this.Close();
-                //        //if (action >= 1)
-                //        //{
-                //        //    if (StaffPermissionView != null)
-                //        //    {
-                //        //        StaffPermissionView.LoadData();
-                //        //    }
-                //        //    frmMessageBoxSuccessfull message = new frmMessageBoxSuccessfull();
-                //        //    message.ShowDialog();
-                //        //}
-                //    }
-                //}
-                //catch (Exception)
-                //{
-                //    frmMessageBoxFail message = new frmMessageBoxFail();
-                //    message.ShowDialog();
-                //}
-            //}
-            //else
-            //{
-                //try
-                //{
-                //    frmMessageBoxQuestion confirm = new frmMessageBoxQuestion();
-                //    confirm.label1.Text = "តើអ្នកចង់រក្សាទុក្ខទិន្នន័យមែនទេ?";
-                //    confirm.btnOkClick = true;
-                //    confirm.ShowDialog();
-
-                //    if (confirm.btnOkClick)
-                //    {
-                //        //StaffPermission staff = new StaffPermission()
-                //        //{
-                //        //    StaffId = Convert.ToInt32(cboStaff.SelectedValue.ToString()),
-                //        //    FromDate = dtpFromDate.Value,
-                //        //    UntilDate = dtpUntillDate.Value,
-                //        //    Reason = txtReason.Text,
-                //        //    ComputerCode = Convert.ToInt32(Entities.TailorSetting.GetComputerCode()),
-                //        //    ComputeTime = Entities.TailorSetting.GetComputerTime()
-                //        //};
-                //        //db.StaffPermissions.Add(staff);
-                //        //int action = db.SaveChanges();
-                //        //if (action >= 1)
-                //        //{
-                //        //    ClearData();
-                //        //    if (StaffPermissionView != null)
-                //        //    {
-                //        //        StaffPermissionView.LoadData();
-                //        //    }
-                //        //    frmMessageBoxSuccessfull message = new frmMessageBoxSuccessfull();
-                //        //    message.ShowDialog();
-                //        //}
-                //    }
-                //}
-                //catch (Exception)
-                //{
-                //    frmMessageBoxFail message = new frmMessageBoxFail();
-                //    message.ShowDialog();
-                //}
-            //}
         }
 
         private void btnCancel_Click(object sender, EventArgs e)
         {
-            ClearData();
+            this.Close();
         }
 
-        private void ClearData()
+        private void cboCode_SelectedIndexChanged(object sender, EventArgs e)
         {
-            cboStaff.SelectedIndex = -1;
-            dtpFromDate.Value = DateTime.Now;
-            dtpUntillDate.Value = DateTime.Now;
-            txtReason.Text = "";
-            cboStaff.Focus();
+            using (var db = new TailorEntities())
+            {
+                var staff = db.Staffs.SingleOrDefault(s => s.Code == cboCode.SelectedValue.ToString());
+                cboStaff.SelectedValue = staff.Code;
+            }
         }
 
-        private void panel2_Paint(object sender, PaintEventArgs e)
+        private void cboStaff_SelectedIndexChanged(object sender, EventArgs e)
         {
+            using (var db = new TailorEntities())
+            {
+                var staff = db.Staffs.SingleOrDefault(s => s.Code == cboStaff.SelectedValue.ToString());
+                cboCode.SelectedValue = staff.Code;
+            }
+        }
 
+        private void dtpFromDate_ValueChanged(object sender, EventArgs e)
+        {
+            if (edit)
+                return;
+            if (dtpUntillDate.Value < dtpFromDate.Value)
+                lblDate.Visible = true;
+            else
+                lblDate.Visible = false;
+
+            lblFinished.Visible = false;
+        }
+
+        private void dtpUntillDate_ValueChanged(object sender, EventArgs e)
+        {
+            if (edit)
+                return;
+            if (dtpUntillDate.Value < dtpFromDate.Value)
+                lblDate.Visible = true;
+            else
+                lblDate.Visible = false;
+
+            lblFinished.Visible = false;
         }
     }
 }

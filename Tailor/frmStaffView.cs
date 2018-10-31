@@ -14,9 +14,8 @@ namespace Tailor
 {
     public partial class frmStaffView : Form
     {
-        TailorEntities db = new TailorEntities();
         int index = -1;
-        int id = 0;
+        string code = "";
 
         public frmStaffView()
         {
@@ -26,7 +25,21 @@ namespace Tailor
         private void frmStaffView_Load(object sender, EventArgs e)
         {
             LoadData();
+            LoadInfo();
+        }
 
+        public void LoadData()
+        {
+            using (var context = new TailorEntities())
+            {
+                var query = context.Staffs.Where(s => s.IsActive).ToList();
+                dgvList.Rows.Clear();
+                foreach (var s in query)
+                {
+                    dgvList.Rows.Add("",s.Code, s.NameKh, s.Gender.Description, s.DateOfBirth, s.NationalId, s.Phone, s.BasicSalary);
+                }
+                TailorService.GenerateRowNumber(dgvList);
+            }
             //disable sort in datagridview 
             foreach (DataGridViewColumn col in dgvList.Columns)
             {
@@ -34,54 +47,45 @@ namespace Tailor
             }
 
             //format cell with currency
-            dgvList.Columns[6].DefaultCellStyle.Format = "c";
-            dgvList.Columns[3].DefaultCellStyle.Format = "dd/MM/yyyy";
-
-            LoadInfo();
-        }
-
-        public void LoadData()
-        {
-            //var staff = db.Staffs.Where(s => s.IsActive).ToList();
-            //dgvList.Rows.Clear();
-            //foreach (var s in staff)
-            //{
-            //    dgvList.Rows.Add(s.Id, s.NameKh, s.Gender.Description, s.DateOfBirth, s.NationalId, s.Phone, s.BasicSalary);
-            //}
+            dgvList.Columns[7].DefaultCellStyle.Format = "c";
+            dgvList.Columns[4].DefaultCellStyle.Format = "dd/MM/yyyy";
         }
 
         public void LoadInfo()
         {
-            //Count all boy staff in database
-            //var bStaff = db.Staffs.Where(s => s.GenderId == 1).Where(s => s.IsActive).Count();
-            //lblBoy.Text = bStaff + " នាក់";
+            using (var context = new TailorEntities())
+            {
+                //Count all boy staff in database
+                var bStaff = context.Staffs.Where(s => s.GenderId == 1 && s.IsActive).Count();
+                lblBoy.Text = bStaff + " នាក់";
 
-            ////Count all girl staff in database 
-            //var gStaff = db.Staffs.Where(s => s.GenderId == 2).Count();
-            //lblGirl.Text = gStaff + " នាក់";
+                //Count all girl staff in database 
+                var gStaff = context.Staffs.Where(s => s.GenderId == 2 && s.IsActive).Count();
+                lblGirl.Text = gStaff + " នាក់";
 
-            ////Count all staff in database 
-            //var staff = db.Staffs.Where(s => s.IsActive).Count();
-            //lblAllStaff.Text = staff + "​​​​​​​​ នាក់";
+                //Count all staff in database 
+                var staff = context.Staffs.Where(s => s.IsActive).Count();
+                lblAllStaff.Text = staff + "​​​​​​​​ នាក់";
+            }
         }
 
         private void btnNew_Click(object sender, EventArgs e)
         {
-            DialogResult dr = TailorMessage.Show("Delete selected row Delete selected rowDelete selected ?", "Student", TailorMessageIcon.Warning);
-
-            MessageBox.Show("" + dr);
-            //frmStaff staff = new frmStaff();
-            //staff.staffView = this;
-            //staff.ShowDialog();
+            frmStaff staff = new frmStaff();
+            staff.staffView = this;
+            staff.ShowDialog();
         }
 
         private void dgvList_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            index = dgvList.CurrentRow.Index;
-            if (index >= 0)
+            index = e.RowIndex;
+            if (dgvList.RowCount > 0)
             {
-                id = Convert.ToInt32(dgvList.Rows[index].Cells[0].Value.ToString());
+                if (index < 0)
+                    return;
+                code = dgvList.Rows[index].Cells[1].Value.ToString();
             }
+            
         }
 
         private void btnView_Click(object sender, EventArgs e)
@@ -90,55 +94,45 @@ namespace Tailor
                 return;
             frmStaff staff = new frmStaff();
             staff.staffView = this;
-            staff.id = id;
             staff.edit = true;
+            staff.code = code;
             staff.ShowDialog();
         }
 
         private void btnDelete_Click(object sender, EventArgs e)
         {
-            //if (index < 0)
-            //    return;
-
-            //frmMessageBoxQuestion confirm = new frmMessageBoxQuestion();
-            //confirm.label1.Text = "តើអ្នកចង់លុបទិន្នន័យមែនទេ?";
-            //confirm.btnOkClick = true;
-            //confirm.ShowDialog();
-
-            //if (confirm.btnOkClick)
-            //{
-            //    try
-            //    {
-            //        var staff = db.Staffs.Find(id);
-            //        staff.IsActive = false;
-            //        int action = db.SaveChanges();
-            //        {
-            //            if (action >= 0)
-            //            {
-            //                LoadData();
-            //                frmMessageBoxSuccessfull message = new frmMessageBoxSuccessfull();
-            //                message.ShowDialog();
-            //            }
-            //        }
-            //    }
-            //    catch (Exception)
-            //    {
-            //        frmMessageBoxFail message = new frmMessageBoxFail();
-            //        message.ShowDialog();
-            //    }
-            //}
+            if (index < 0)
+                return;
+            DialogResult dr = TailorMessage.Show("តើអ្នកចង់លុបទិន្នន័យមែនទេ?", "លុបទិន្នន័យ", TailorMessageIcon.Warning);
+            if (dr == DialogResult.Yes)
+            {
+                using (var context = new TailorEntities())
+                {
+                    var staff = context.Staffs.SingleOrDefault(s => s.Code == code);
+                    staff.IsActive = false;
+                    int action = context.SaveChanges();
+                    {
+                        if (action >= 1)
+                        {
+                            LoadData();
+                            LoadInfo();
+                        }
+                    }
+                }
+            }
         }
 
         private void txtSearch_TextChanged(object sender, EventArgs e)
         {
-            var staff = from s in db.Staffs.ToList()
-                        where s.NameKh.Contains(txtSearch.Text.Trim()) && s.NameEn.Contains(txtSearch.Text.Trim().ToLower())
-                        where s.IsActive
-                        select s;
-            dgvList.Rows.Clear();
-            foreach (var s in staff)
+            using (var context = new TailorEntities())
             {
-                dgvList.Rows.Add(s.Id, s.NameKh, s.Gender.Description, s.DateOfBirth, s.NationalId, s.Phone, s.BasicSalary);
+                var query = context.Staffs.ToList().Where(s => s.NameKh.Contains(txtSearch.Text.Trim()) || s.Code.ToLower().Contains(txtSearch.Text.Trim().ToLower()) && s.IsActive);
+                dgvList.Rows.Clear();
+                foreach (var s in query)
+                {
+                    dgvList.Rows.Add("", s.Code, s.NameKh, s.Gender.Description, s.DateOfBirth, s.NationalId, s.Phone, s.BasicSalary);
+                }
+                TailorService.GenerateRowNumber(dgvList);
             }
         }
 

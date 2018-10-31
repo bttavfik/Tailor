@@ -41,8 +41,8 @@
             this.txtNationalId = new System.Windows.Forms.TextBox();
             this.txtNameEn = new System.Windows.Forms.TextBox();
             this.txtNameKh = new System.Windows.Forms.TextBox();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
+            this.lblFinished = new System.Windows.Forms.Label();
+            this.lblCode = new System.Windows.Forms.Label();
             this.label15 = new System.Windows.Forms.Label();
             this.label14 = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
@@ -74,8 +74,8 @@
             this.panel1.Controls.Add(this.txtNationalId);
             this.panel1.Controls.Add(this.txtNameEn);
             this.panel1.Controls.Add(this.txtNameKh);
-            this.panel1.Controls.Add(this.label4);
-            this.panel1.Controls.Add(this.label7);
+            this.panel1.Controls.Add(this.lblFinished);
+            this.panel1.Controls.Add(this.lblCode);
             this.panel1.Controls.Add(this.label15);
             this.panel1.Controls.Add(this.label14);
             this.panel1.Controls.Add(this.label13);
@@ -118,9 +118,7 @@
             this.txtBasicSalary.Name = "txtBasicSalary";
             this.txtBasicSalary.Size = new System.Drawing.Size(250, 32);
             this.txtBasicSalary.TabIndex = 8;
-            this.txtBasicSalary.Enter += new System.EventHandler(this.txtBasicSalary_Enter);
             this.txtBasicSalary.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtBasicSalary_KeyPress);
-            this.txtBasicSalary.Leave += new System.EventHandler(this.txtBasicSalary_Leave);
             // 
             // cboGender
             // 
@@ -198,27 +196,27 @@
             this.txtNameKh.Size = new System.Drawing.Size(250, 32);
             this.txtNameKh.TabIndex = 0;
             // 
-            // label4
+            // lblFinished
             // 
-            this.label4.Image = global::Tailor.Properties.Resources._checked_16;
-            this.label4.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.label4.Location = new System.Drawing.Point(447, 399);
-            this.label4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(160, 25);
-            this.label4.TabIndex = 48;
-            this.label4.Text = "      រួចរាល់";
-            this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.lblFinished.Image = global::Tailor.Properties.Resources._checked_16;
+            this.lblFinished.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.lblFinished.Location = new System.Drawing.Point(447, 399);
+            this.lblFinished.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblFinished.Name = "lblFinished";
+            this.lblFinished.Size = new System.Drawing.Size(160, 25);
+            this.lblFinished.TabIndex = 48;
+            this.lblFinished.Text = "      រួចរាល់";
+            this.lblFinished.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // label7
+            // lblCode
             // 
-            this.label7.Location = new System.Drawing.Point(2, 399);
-            this.label7.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(320, 25);
-            this.label7.TabIndex = 48;
-            this.label7.Text = "លេខកូដសម្គាល់ : ";
-            this.label7.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.lblCode.Location = new System.Drawing.Point(2, 399);
+            this.lblCode.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblCode.Name = "lblCode";
+            this.lblCode.Size = new System.Drawing.Size(320, 25);
+            this.lblCode.TabIndex = 48;
+            this.lblCode.Text = "លេខកូដសម្គាល់ : ";
+            this.lblCode.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // label15
             // 
@@ -277,7 +275,7 @@
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(160, 25);
             this.label6.TabIndex = 48;
-            this.label6.Text = "ប្រាក់ខែគោល :";
+            this.label6.Text = "ប្រាក់ខែគោល ($) :";
             this.label6.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // label5
@@ -401,7 +399,7 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Label lblFinished;
+        private System.Windows.Forms.Label lblCode;
     }
 }

@@ -17,6 +17,7 @@ namespace Tailor
         string code;
         int index = -1;
         DateTime date;
+
         public frmStaffAttendanceView()
         {
             InitializeComponent();
@@ -25,42 +26,21 @@ namespace Tailor
         private void frmStaffAttendanceView_Load(object sender, EventArgs e)
         {
             this.WindowState = FormWindowState.Maximized;
+            LoadStaffAttendance();
+            LoadAttendanceInfo();
         }
 
         private void btnAttendance_Click(object sender, EventArgs e)
         {
-            using(var db = new TailorEntities())
-            {
-                var query = db.Staffs.Where(s => s.IsActive).ToList();
-                var attendances = db.StaffAttendances.Where(a => a.Date.Month==dtpAttendanceDate.Value.Month).ToList();
+            //Load frmAddAttendance
+            frmAddAttendance attendance = new frmAddAttendance();
+            attendance.view = this;
+            attendance.ShowDialog();
 
-                foreach (var s in query)
-                {
-                    int isExist = 0;
-                    foreach (var a in attendances)
-                    {
-                        if(s.Code==a.Staff.Code && a.Date==dtpAttendanceDate.Value.Date)
-                        {
-                            isExist = 1;
-                        }
-                    }
-                    if(isExist==0)
-                    {
-                        var attendance = new StaffAttendance()
-                        {
-                            StaffCode = s.Code,
-                            Date = dtpAttendanceDate.Value,
-                            Status = "W",
-                            ComputerCode = TailorService.GetComputerCode(),
-                            ComputeTime = TailorService.GetComputerTime()
-                        };
-                        db.StaffAttendances.Add(attendance);
-                        
-                    }
-                }
-                db.SaveChanges();
-            }
-            LoadStaffAttendance();
+            //Load frmStaffAttendance
+            frmStaffAttendance staffAttendance = new frmStaffAttendance();
+            staffAttendance.AttendanceView = this;
+            staffAttendance.ShowDialog();
         }
 
         public void LoadStaffAttendance()
@@ -75,10 +55,28 @@ namespace Tailor
                 }
                 TailorService.GenerateRowNumber(dgvList);
 
-                dgvList.Columns[4].DefaultCellStyle.Format = "dd/MM/yyyy";
-
                 foreach (DataGridViewColumn col in dgvList.Columns)
                     col.SortMode = DataGridViewColumnSortMode.NotSortable;
+
+                dgvList.Columns[4].DefaultCellStyle.Format = "dd/MM/yyyy";
+            }
+        }
+
+        public void LoadAttendanceInfo()
+        {
+            using(var db = new TailorEntities())
+            {
+                var work = db.StaffAttendances.Where(a => a.Date == DateTime.Today && a.Status == "W").Count();
+                lblW.Text = work + " នាក់";
+
+                var permission = db.StaffAttendances.Where(a => a.Date == DateTime.Today && a.Status == "P").Count();
+                lblP.Text = permission + " នាក់";
+
+                var absent = db.StaffAttendances.Where(a => a.Date == DateTime.Today && a.Status == "A").Count();
+                lblA.Text = absent + " នាក់";
+
+                var all = db.StaffAttendances.Where(a => a.Date == DateTime.Today).Count();
+                lblAll.Text = all + " នាក់";
             }
         }
 
@@ -102,39 +100,41 @@ namespace Tailor
             staffAttendance.edit = true;
             staffAttendance.code = code;
             staffAttendance.date = date;
-            staffAttendance.staffAttendanceView = this;
+            staffAttendance.AttendanceView = this;
             staffAttendance.ShowDialog();
-        }
-        private void btnNew_Click(object sender, EventArgs e)
-        {
-            frmStaffAttendance staffAttedance = new frmStaffAttendance();
-            staffAttedance.staffAttendanceView = this;
-            staffAttedance.ShowDialog();
-        }
-
-        private void txtSeach_TextChanged(object sender, EventArgs e)
-        {
-            using(var db = new TailorEntities())
-            {
-                var query = db.StaffAttendances.Where(s => s.Staff.NameKh.Contains(txtSeach.Text.Trim())).ToList();
-                dgvList.Rows.Clear();
-                foreach (var a in query)
-                {
-                    dgvList.Rows.Add("", a.StaffCode, a.Staff.NameKh, a.Staff.Gender.Description, a.Date, a.Status, a.Remark);
-                }
-                TailorService.GenerateRowNumber(dgvList);
-            }
         }
 
         private void btnSearch_Click(object sender, EventArgs e)
         {
             using (var db = new TailorEntities())
             {
-                var query = db.StaffAttendances.Where(a => a.Date >= dtpFromDate.Value.Date && a.Date <= dtpUntillDate.Value.Date).ToList();
+                var query = db.StaffAttendances.Where(a => a.Date >= dtpFromDate.Value.Date && a.Date <= dtpUntillDate.Value.Date).OrderByDescending(a => a.Date).ToList();
                 dgvList.Rows.Clear();
                 foreach (var a in query)
                 {
                     dgvList.Rows.Add("", a.StaffCode, a.Staff.NameKh, a.Staff.Gender.Description, a.Date.ToShortDateString(), a.Status, a.Remark);
+                }
+                TailorService.GenerateRowNumber(dgvList);
+            }
+        }
+
+        private void btnEdit_Click(object sender, EventArgs e)
+        {
+            frmStaffAttendance staffAttedance = new frmStaffAttendance();
+            staffAttedance.AttendanceView = this;
+            staffAttedance.ShowDialog();
+        }
+
+        private void txtSeach_TextChanged(object sender, EventArgs e)
+        {
+            using (var db = new TailorEntities())
+            {
+                var query = db.StaffAttendances.Where(a => a.Staff.NameKh.Contains(txtSeach.Text.Trim()) || a.StaffCode.ToLower().Contains(txtSeach.Text.Trim().ToLower())).OrderByDescending(a => a.Date).ToList();
+
+                dgvList.Rows.Clear();
+                foreach (var a in query)
+                {
+                    dgvList.Rows.Add("", a.StaffCode, a.Staff.NameKh, a.Staff.Gender.Description, a.Date, a.Status, a.Remark);
                 }
                 TailorService.GenerateRowNumber(dgvList);
             }

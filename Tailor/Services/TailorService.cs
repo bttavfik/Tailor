@@ -5,9 +5,9 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace Tailor.Entities
+namespace Tailor.Services
 {
-    class TailorSetting
+    class TailorService
     {
         public static DateTime GetComputerTime()
         {
