@@ -81,5 +81,6 @@ namespace Tailor
             lblFinished.Visible = false;
             progressBar1.Value = 0;
         }
+
     }
 }

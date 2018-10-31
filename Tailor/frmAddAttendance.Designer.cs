@@ -29,13 +29,13 @@
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
-            this.dtpAttendanceDate = new System.Windows.Forms.DateTimePicker();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
+            this.progressBar1 = new System.Windows.Forms.ProgressBar();
+            this.lblFinished = new System.Windows.Forms.Label();
             this.btnCancel = new System.Windows.Forms.Button();
             this.btnSave = new System.Windows.Forms.Button();
-            this.lblFinished = new System.Windows.Forms.Label();
-            this.progressBar1 = new System.Windows.Forms.ProgressBar();
+            this.label1 = new System.Windows.Forms.Label();
+            this.dtpAttendanceDate = new System.Windows.Forms.DateTimePicker();
+            this.label4 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -54,31 +54,24 @@
             this.panel1.Size = new System.Drawing.Size(460, 287);
             this.panel1.TabIndex = 0;
             // 
-            // dtpAttendanceDate
+            // progressBar1
             // 
-            this.dtpAttendanceDate.Font = new System.Drawing.Font("Khmer OS Siemreap", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dtpAttendanceDate.Location = new System.Drawing.Point(148, 46);
-            this.dtpAttendanceDate.Name = "dtpAttendanceDate";
-            this.dtpAttendanceDate.Size = new System.Drawing.Size(312, 31);
-            this.dtpAttendanceDate.TabIndex = 14;
-            this.dtpAttendanceDate.ValueChanged += new System.EventHandler(this.dtpAttendanceDate_ValueChanged);
+            this.progressBar1.Location = new System.Drawing.Point(67, 138);
+            this.progressBar1.Name = "progressBar1";
+            this.progressBar1.Size = new System.Drawing.Size(394, 20);
+            this.progressBar1.TabIndex = 50;
             // 
-            // label4
+            // lblFinished
             // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(63, 51);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(79, 24);
-            this.label4.TabIndex = 13;
-            this.label4.Text = "កាលបរិច្ឆេទ :";
-            // 
-            // label1
-            // 
-            this.label1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.label1.Location = new System.Drawing.Point(0, 224);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(460, 2);
-            this.label1.TabIndex = 15;
+            this.lblFinished.Image = global::Tailor.Properties.Resources._checked_16;
+            this.lblFinished.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.lblFinished.Location = new System.Drawing.Point(63, 242);
+            this.lblFinished.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblFinished.Name = "lblFinished";
+            this.lblFinished.Size = new System.Drawing.Size(139, 25);
+            this.lblFinished.TabIndex = 49;
+            this.lblFinished.Text = "      រួចរាល់";
+            this.lblFinished.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // btnCancel
             // 
@@ -109,24 +102,31 @@
             this.btnSave.UseVisualStyleBackColor = true;
             this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
-            // lblFinished
+            // label1
             // 
-            this.lblFinished.Image = global::Tailor.Properties.Resources._checked_16;
-            this.lblFinished.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.lblFinished.Location = new System.Drawing.Point(63, 242);
-            this.lblFinished.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.lblFinished.Name = "lblFinished";
-            this.lblFinished.Size = new System.Drawing.Size(139, 25);
-            this.lblFinished.TabIndex = 49;
-            this.lblFinished.Text = "      រួចរាល់";
-            this.lblFinished.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.label1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.label1.Location = new System.Drawing.Point(0, 224);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(460, 2);
+            this.label1.TabIndex = 15;
             // 
-            // progressBar1
+            // dtpAttendanceDate
             // 
-            this.progressBar1.Location = new System.Drawing.Point(67, 138);
-            this.progressBar1.Name = "progressBar1";
-            this.progressBar1.Size = new System.Drawing.Size(394, 20);
-            this.progressBar1.TabIndex = 50;
+            this.dtpAttendanceDate.Font = new System.Drawing.Font("Khmer OS Siemreap", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dtpAttendanceDate.Location = new System.Drawing.Point(148, 46);
+            this.dtpAttendanceDate.Name = "dtpAttendanceDate";
+            this.dtpAttendanceDate.Size = new System.Drawing.Size(312, 31);
+            this.dtpAttendanceDate.TabIndex = 14;
+            this.dtpAttendanceDate.ValueChanged += new System.EventHandler(this.dtpAttendanceDate_ValueChanged);
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(63, 51);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(79, 24);
+            this.label4.TabIndex = 13;
+            this.label4.Text = "កាលបរិច្ឆេទ :";
             // 
             // frmAddAttendance
             // 
